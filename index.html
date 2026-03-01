@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ArqonixGen Semiconductor Pvt Ltd</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #050810;
+    --surface: #0a0f1e;
+    --surface2: #0f1629;
+    --accent: #00e5ff;
+    --accent2: #7c3aed;
+    --accent3: #10b981;
+    --text: #e8eaf6;
+    --muted: #6b7280;
+    --border: rgba(0,229,255,0.12);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* Custom Cursor */
+  .cursor {
+    position: fixed;
+    width: 10px; height: 10px;
+    background: var(--accent);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s, height 0.2s, opacity 0.2s;
+  }
+  .cursor-ring {
+    position: fixed;
+    width: 36px; height: 36px;
+    border: 1.5px solid rgba(0,229,255,0.4);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: transform 0.12s ease, width 0.2s, height 0.2s;
+  }
+
+  /* Grid noise overlay */
+  body::before {
+    content:'';
+    position: fixed; inset: 0;
+    background-image:
+      linear-gradient(rgba(0,229,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,229,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.5rem 4rem;
+    background: rgba(5,8,16,0.7);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.25rem;
+    letter-spacing: -0.02em;
+    color: #fff;
+  }
+  .logo span { color: var(--accent); }
+
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  .nav-cta {
+    background: transparent;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    padding: 0.6rem 1.5rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: none;
+    letter-spacing: 0.05em;
+    transition: background 0.2s, color 0.2s;
+  }
+  .nav-cta:hover { background: var(--accent); color: var(--bg); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 0 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-glow {
+    position: absolute;
+    width: 800px; height: 800px;
+    background: radial-gradient(ellipse, rgba(0,229,255,0.07) 0%, transparent 70%);
+    top: -200px; right: -200px;
+    pointer-events: none;
+    animation: pulse 8s ease-in-out infinite;
+  }
+  .hero-glow2 {
+    position: absolute;
+    width: 600px; height: 600px;
+    background: radial-gradient(ellipse, rgba(124,58,237,0.08) 0%, transparent 70%);
+    bottom: -100px; left: -100px;
+    pointer-events: none;
+    animation: pulse 10s ease-in-out infinite reverse;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.1); }
+  }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    border: 1px solid var(--border);
+    padding: 0.4rem 1rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    width: fit-content;
+    animation: fadeUp 0.8s ease both;
+  }
+  .hero-badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    animation: blink 1.5s ease infinite;
+  }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
+
+  .hero-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(3rem, 7vw, 7rem);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    animation: fadeUp 0.8s 0.1s ease both;
+    max-width: 900px;
+  }
+  .hero-title .line2 { color: var(--accent); display: block; }
+
+  .hero-sub {
+    margin-top: 1.5rem;
+    font-size: 1.1rem;
+    color: var(--muted);
+    font-weight: 300;
+    max-width: 540px;
+    line-height: 1.7;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+
+  .hero-actions {
+    margin-top: 3rem;
+    display: flex; gap: 1.2rem;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: var(--bg);
+    border: none;
+    padding: 1rem 2.5rem;
+    font-family: 'Syne', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: none;
+    letter-spacing: 0.04em;
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 40px rgba(0,229,255,0.25); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 1rem 2.5rem;
+    font-family: 'Syne', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: none;
+    letter-spacing: 0.04em;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+  .hero-stats {
+    position: absolute; bottom: 4rem; right: 4rem;
+    display: flex; gap: 4rem;
+    animation: fadeUp 0.8s 0.5s ease both;
+  }
+  .stat-item { text-align: right; }
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1;
+  }
+  .stat-num span { color: var(--accent); }
+  .stat-label { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.08em; margin-top: 0.3rem; text-transform: uppercase; }
+
+  /* Scroll indicator */
+  .scroll-hint {
+    position: absolute; bottom: 4rem; left: 4rem;
+    display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+    animation: fadeUp 1s 0.7s ease both;
+  }
+  .scroll-hint span { font-size: 0.7rem; letter-spacing: 0.15em; color: var(--muted); text-transform: uppercase; writing-mode: vertical-rl; }
+  .scroll-line { width: 1px; height: 60px; background: linear-gradient(to bottom, var(--accent), transparent); animation: scrollLine 2s ease infinite; }
+  @keyframes scrollLine { 0%{transform:scaleY(0);transform-origin:top} 50%{transform:scaleY(1)} 100%{transform:scaleY(0);transform-origin:bottom} }
+
+  @keyframes fadeUp { from { opacity:0; transform: translateY(30px); } to { opacity:1; transform: translateY(0); } }
+
+  /* MARQUEE */
+  .marquee-section {
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+  }
+  .marquee-track {
+    display: flex; gap: 4rem;
+    animation: marquee 25s linear infinite;
+    white-space: nowrap;
+  }
+  .marquee-item {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
+  .marquee-item .dot { color: var(--accent); margin: 0 1rem; }
+  @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  /* SERVICES */
+  section { position: relative; z-index: 1; }
+
+  .services {
+    padding: 8rem 4rem;
+  }
+
+  .section-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-desc {
+    color: var(--muted);
+    font-size: 1rem;
+    max-width: 480px;
+    line-height: 1.7;
+    margin-bottom: 4rem;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    background: var(--border);
+  }
+
+  .service-card {
+    background: var(--surface);
+    padding: 3rem;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s;
+    group: true;
+  }
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-card:hover { background: var(--surface2); }
+
+  .service-icon {
+    width: 48px; height: 48px;
+    margin-bottom: 1.5rem;
+    color: var(--accent);
+  }
+  .service-icon svg { width: 100%; height: 100%; }
+
+  .service-num {
+    position: absolute;
+    top: 2rem; right: 2.5rem;
+    font-family: 'Syne', sans-serif;
+    font-size: 4rem;
+    font-weight: 800;
+    color: rgba(255,255,255,0.03);
+    line-height: 1;
+  }
+
+  .service-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #fff;
+  }
+
+  .service-desc {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  .service-tags {
+    display: flex; flex-wrap: wrap; gap: 0.5rem;
+    margin-top: 1.5rem;
+  }
+  .tag {
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid rgba(0,229,255,0.2);
+    padding: 0.25rem 0.6rem;
+  }
+
+  /* ABOUT / WHY US */
+  .about {
+    padding: 8rem 4rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+    border-top: 1px solid var(--border);
+  }
+
+  .about-visual {
+    position: relative;
+    height: 500px;
+  }
+
+  .chip-art {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .chip-outer {
+    width: 320px; height: 320px;
+    border: 1px solid rgba(0,229,255,0.15);
+    position: relative;
+    animation: rotate 30s linear infinite;
+  }
+  .chip-outer::before, .chip-outer::after {
+    content: '';
+    position: absolute; inset: 20px;
+    border: 1px solid rgba(0,229,255,0.08);
+  }
+  .chip-outer::after { inset: 40px; animation: rotateFast 10s linear infinite reverse; border-color: rgba(124,58,237,0.12); }
+
+  @keyframes rotate { from{transform:rotate(0)} to{transform:rotate(360deg)} }
+  @keyframes rotateFast { from{transform:rotate(0)} to{transform:rotate(-360deg)} }
+
+  .chip-inner {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120px; height: 120px;
+    background: var(--surface2);
+    border: 1px solid rgba(0,229,255,0.3);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .chip-core {
+    width: 60px; height: 60px;
+    background: linear-gradient(135deg, rgba(0,229,255,0.2), rgba(124,58,237,0.2));
+    border: 1px solid rgba(0,229,255,0.5);
+    animation: pulse 3s ease infinite;
+  }
+
+  .circuit-line {
+    position: absolute;
+    background: rgba(0,229,255,0.15);
+  }
+  .cl-h { height: 1px; }
+  .cl-v { width: 1px; }
+
+  .orbit {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    border: 1px solid;
+  }
+  .orbit-1 { width: 180px; height: 180px; border-color: rgba(0,229,255,0.1); animation: rotate 8s linear infinite; }
+  .orbit-2 { width: 260px; height: 260px; border-color: rgba(124,58,237,0.08); animation: rotate 15s linear infinite reverse; }
+  .orbit-3 { width: 360px; height: 360px; border-color: rgba(0,229,255,0.05); animation: rotate 25s linear infinite; }
+
+  .orbit-dot {
+    position: absolute;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    top: -3px; left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 0 10px var(--accent);
+  }
+  .orbit-dot-2 {
+    background: var(--accent2);
+    box-shadow: 0 0 10px var(--accent2);
+    top: auto; bottom: -3px;
+  }
+
+  .feat-list { list-style: none; display: flex; flex-direction: column; gap: 1.5rem; margin-top: 2rem; }
+  .feat-item {
+    display: flex; align-items: flex-start; gap: 1rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .feat-item:last-child { border-bottom: none; }
+  .feat-icon {
+    width: 36px; height: 36px;
+    background: rgba(0,229,255,0.08);
+    border: 1px solid rgba(0,229,255,0.2);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    color: var(--accent);
+    font-size: 0.9rem;
+  }
+  .feat-text h4 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.95rem; margin-bottom: 0.25rem; }
+  .feat-text p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+
+  /* TECH STACK */
+  .tech {
+    padding: 6rem 4rem;
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+  .tech-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1px;
+    background: var(--border);
+    margin-top: 4rem;
+  }
+  .tech-item {
+    background: var(--surface);
+    padding: 2.5rem 1.5rem;
+    display: flex; flex-direction: column; align-items: center; gap: 1rem;
+    transition: background 0.3s;
+  }
+  .tech-item:hover { background: var(--surface2); }
+  .tech-logo {
+    width: 40px; height: 40px;
+    border-radius: 8px;
+    background: rgba(0,229,255,0.1);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem;
+  }
+  .tech-name { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.05em; text-transform: uppercase; }
+
+  /* PROCESS */
+  .process {
+    padding: 8rem 4rem;
+    border-top: 1px solid var(--border);
+  }
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin-top: 5rem;
+    position: relative;
+  }
+  .process-steps::before {
+    content: '';
+    position: absolute;
+    top: 2rem; left: calc(12.5% + 1.5rem); right: calc(12.5% + 1.5rem);
+    height: 1px;
+    background: linear-gradient(to right, var(--accent), var(--accent2));
+    opacity: 0.3;
+  }
+  .step {
+    padding: 0 2.5rem;
+    position: relative;
+    text-align: center;
+  }
+  .step-num {
+    width: 4rem; height: 4rem;
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--accent);
+    background: var(--bg);
+    margin: 0 auto 1.5rem;
+    position: relative;
+    z-index: 1;
+  }
+  .step h3 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.05rem; margin-bottom: 0.75rem; }
+  .step p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+
+  /* CTA */
+  .cta {
+    padding: 8rem 4rem;
+    border-top: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+  .cta::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at center, rgba(0,229,255,0.05) 0%, transparent 70%);
+  }
+  .cta-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 5rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    position: relative;
+    z-index: 1;
+  }
+  .cta-title .highlight {
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .cta p {
+    margin-top: 1.5rem;
+    color: var(--muted);
+    font-size: 1rem;
+    max-width: 480px;
+    margin-left: auto; margin-right: auto;
+    line-height: 1.7;
+    position: relative; z-index: 1;
+  }
+  .cta-actions { margin-top: 3rem; display: flex; gap: 1rem; justify-content: center; position: relative; z-index: 1; }
+
+  /* FOOTER */
+  footer {
+    padding: 4rem;
+    border-top: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 4rem;
+  }
+  .footer-brand p { font-size: 0.85rem; color: var(--muted); margin-top: 1rem; line-height: 1.7; max-width: 280px; }
+  .footer-col h5 {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text);
+    margin-bottom: 1.2rem;
+  }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+  .footer-col a { font-size: 0.85rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .footer-col a:hover { color: var(--accent); }
+  .footer-bottom {
+    padding: 2rem 4rem;
+    border-top: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .footer-bottom p { font-size: 0.8rem; color: var(--muted); }
+  .footer-bottom span { color: var(--accent); }
+
+  /* Intersection observer animations */
+  .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+
+  @media (max-width: 1024px) {
+    nav { padding: 1.5rem 2rem; }
+    .hero { padding: 0 2rem; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    .about { grid-template-columns: 1fr; padding: 6rem 2rem; }
+    .about-visual { display: none; }
+    .tech-grid { grid-template-columns: repeat(3, 1fr); }
+    .process-steps { grid-template-columns: 1fr 1fr; gap: 3rem; }
+    .process-steps::before { display: none; }
+    footer { grid-template-columns: 1fr 1fr; padding: 3rem 2rem; }
+    .services, .process, .tech, .cta { padding: 6rem 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Custom Cursor -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Arqonix<span>Gen</span></div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="nav-cta">Get Started</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+
+  <div class="hero-badge">Next-Gen Silicon Intelligence</div>
+
+  <h1 class="hero-title">
+    Engineering the<br>
+    <span class="line2">Silicon Future</span>
+  </h1>
+
+  <p class="hero-sub">
+    Bridging advanced semiconductor design with AI-driven intelligence — powering the next wave of intelligent hardware.
+  </p>
+
+  <div class="hero-actions">
+    <button class="btn-primary">Explore Services</button>
+    <button class="btn-outline">View Capabilities</button>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat-item">
+      <div class="stat-num">50<span>+</span></div>
+      <div class="stat-label">AI Models Deployed</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">3<span>nm</span></div>
+      <div class="stat-label">Process Node</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">99<span>.9%</span></div>
+      <div class="stat-label">Uptime SLA</div>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <span class="marquee-item">VLSI Design <span class="dot">◆</span></span>
+    <span class="marquee-item">AI Accelerators <span class="dot">◆</span></span>
+    <span class="marquee-item">Edge Computing <span class="dot">◆</span></span>
+    <span class="marquee-item">Custom Silicon <span class="dot">◆</span></span>
+    <span class="marquee-item">Neural Processing Units <span class="dot">◆</span></span>
+    <span class="marquee-item">EDA Tools <span class="dot">◆</span></span>
+    <span class="marquee-item">RTL Design <span class="dot">◆</span></span>
+    <span class="marquee-item">Machine Learning IP <span class="dot">◆</span></span>
+    <span class="marquee-item">Fab-less Solutions <span class="dot">◆</span></span>
+    <span class="marquee-item">SoC Development <span class="dot">◆</span></span>
+    <!-- duplicate for infinite -->
+    <span class="marquee-item">VLSI Design <span class="dot">◆</span></span>
+    <span class="marquee-item">AI Accelerators <span class="dot">◆</span></span>
+    <span class="marquee-item">Edge Computing <span class="dot">◆</span></span>
+    <span class="marquee-item">Custom Silicon <span class="dot">◆</span></span>
+    <span class="marquee-item">Neural Processing Units <span class="dot">◆</span></span>
+    <span class="marquee-item">EDA Tools <span class="dot">◆</span></span>
+    <span class="marquee-item">RTL Design <span class="dot">◆</span></span>
+    <span class="marquee-item">Machine Learning IP <span class="dot">◆</span></span>
+    <span class="marquee-item">Fab-less Solutions <span class="dot">◆</span></span>
+    <span class="marquee-item">SoC Development <span class="dot">◆</span></span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <p class="section-label reveal">What We Offer</p>
+  <h2 class="section-title reveal">Dual-Domain<br>Expertise</h2>
+  <p class="section-desc reveal">From silicon tape-out to intelligent AI deployment — ArqonixGen delivers end-to-end solutions at the intersection of hardware and intelligence.</p>
+
+  <div class="services-grid">
+    <!-- Semiconductor -->
+    <div class="service-card reveal">
+      <div class="service-num">01</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="2" y="2" width="20" height="20" rx="2"/>
+          <rect x="7" y="7" width="10" height="10" rx="1"/>
+          <line x1="7" y1="2" x2="7" y2="5"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="17" y1="2" x2="17" y2="5"/>
+          <line x1="7" y1="19" x2="7" y2="22"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="17" y1="19" x2="17" y2="22"/>
+          <line x1="2" y1="7" x2="5" y2="7"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="2" y1="17" x2="5" y2="17"/>
+          <line x1="19" y1="7" x2="22" y2="7"/><line x1="19" y1="12" x2="22" y2="12"/><line x1="19" y1="17" x2="22" y2="17"/>
+        </svg>
+      </div>
+      <h3 class="service-title">VLSI & SoC Design</h3>
+      <p class="service-desc">Full-cycle custom chip design from RTL to GDSII. We deliver high-performance, power-optimized silicon for any application domain.</p>
+      <div class="service-tags">
+        <span class="tag">RTL</span><span class="tag">Physical Design</span><span class="tag">DFT</span><span class="tag">Sign-off</span>
+      </div>
+    </div>
+
+    <div class="service-card reveal reveal-delay-1">
+      <div class="service-num">02</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+          <path d="M2 17l10 5 10-5"/>
+          <path d="M2 12l10 5 10-5"/>
+        </svg>
+      </div>
+      <h3 class="service-title">AI Chip Architecture</h3>
+      <p class="service-desc">Purpose-built neural processing units and AI accelerators designed for extreme throughput with minimal power envelope.</p>
+      <div class="service-tags">
+        <span class="tag">NPU</span><span class="tag">GPU IP</span><span class="tag">Tensor Cores</span><span class="tag">SIMD</span>
+      </div>
+    </div>
+
+    <div class="service-card reveal reveal-delay-2">
+      <div class="service-num">03</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
+        </svg>
+      </div>
+      <h3 class="service-title">Edge AI Solutions</h3>
+      <p class="service-desc">Optimized inference engines for edge deployment — enabling real-time AI in constrained environments without cloud dependency.</p>
+      <div class="service-tags">
+        <span class="tag">TinyML</span><span class="tag">Quantization</span><span class="tag">ONNX</span><span class="tag">IoT</span>
+      </div>
+    </div>
+
+    <div class="service-card reveal">
+      <div class="service-num">04</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+        </svg>
+      </div>
+      <h3 class="service-title">AI/ML Platform Services</h3>
+      <p class="service-desc">End-to-end machine learning pipelines — from data engineering to model training, optimization, and production deployment.</p>
+      <div class="service-tags">
+        <span class="tag">MLOps</span><span class="tag">LLM Fine-tuning</span><span class="tag">AutoML</span>
+      </div>
+    </div>
+
+    <div class="service-card reveal reveal-delay-1">
+      <div class="service-num">05</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+        </svg>
+      </div>
+      <h3 class="service-title">Embedded Security IP</h3>
+      <p class="service-desc">Hardware root-of-trust, secure enclaves, and cryptographic accelerators integrated at silicon level for unbreakable security.</p>
+      <div class="service-tags">
+        <span class="tag">PUF</span><span class="tag">HSM</span><span class="tag">TEE</span><span class="tag">Crypto IP</span>
+      </div>
+    </div>
+
+    <div class="service-card reveal reveal-delay-2">
+      <div class="service-num">06</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+        </svg>
+      </div>
+      <h3 class="service-title">Verification & Validation</h3>
+      <p class="service-desc">Rigorous functional verification, formal methods, and AI-assisted test generation ensuring silicon correctness at every node.</p>
+      <div class="service-tags">
+        <span class="tag">UVM</span><span class="tag">Formal</span><span class="tag">Coverage</span><span class="tag">Emulation</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-visual">
+    <div class="chip-art">
+      <div class="orbit orbit-3"><div class="orbit-dot"></div></div>
+      <div class="orbit orbit-2"><div class="orbit-dot orbit-dot-2"></div></div>
+      <div class="orbit orbit-1"></div>
+      <div class="chip-outer">
+        <div class="chip-inner">
+          <div class="chip-core"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="about-content">
+    <p class="section-label reveal">Why ArqonixGen</p>
+    <h2 class="section-title reveal">Built at the<br>Intersection</h2>
+    <p class="section-desc reveal">We are a deep-tech company operating at the nexus of semiconductor engineering and artificial intelligence — building foundational technology that powers tomorrow's intelligent systems.</p>
+
+    <ul class="feat-list">
+      <li class="feat-item reveal">
+        <div class="feat-icon">⚡</div>
+        <div class="feat-text">
+          <h4>Silicon-Native AI</h4>
+          <p>Our AI architectures are co-designed with hardware from day one — maximizing efficiency that software-only solutions cannot achieve.</p>
+        </div>
+      </li>
+      <li class="feat-item reveal reveal-delay-1">
+        <div class="feat-icon">🔬</div>
+        <div class="feat-text">
+          <h4>Research-Led Engineering</h4>
+          <p>Grounded in cutting-edge research from top institutions, we translate academic breakthroughs into production-ready silicon and AI systems.</p>
+        </div>
+      </li>
+      <li class="feat-item reveal reveal-delay-2">
+        <div class="feat-icon">🌐</div>
+        <div class="feat-text">
+          <h4>Full Stack Capability</h4>
+          <p>From transistor-level design to cloud-deployed AI services — we own the entire stack, eliminating integration friction and reducing time-to-market.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- TECH -->
+<section class="tech" id="tech">
+  <p class="section-label reveal">Technology Stack</p>
+  <h2 class="section-title reveal" style="margin-bottom:0">Tools & Frameworks</h2>
+
+  <div class="tech-grid">
+    <div class="tech-item reveal">
+      <div class="tech-logo">⚙️</div>
+      <span class="tech-name">Cadence Virtuoso</span>
+    </div>
+    <div class="tech-item reveal reveal-delay-1">
+      <div class="tech-logo">🔧</div>
+      <span class="tech-name">Synopsys DC</span>
+    </div>
+    <div class="tech-item reveal reveal-delay-2">
+      <div class="tech-logo">🧠</div>
+      <span class="tech-name">TensorFlow</span>
+    </div>
+    <div class="tech-item reveal">
+      <div class="tech-logo">🔥</div>
+      <span class="tech-name">PyTorch</span>
+    </div>
+    <div class="tech-item reveal reveal-delay-1">
+      <div class="tech-logo">📐</div>
+      <span class="tech-name">Mentor Calibre</span>
+    </div>
+    <div class="tech-item reveal reveal-delay-2">
+      <div class="tech-logo">🚀</div>
+      <span class="tech-name">CUDA</span>
+    </div>
+    <div class="tech-item reveal">
+      <div class="tech-logo">📊</div>
+      <span class="tech-name">Questa Sim</span>
+    </div>
+    <div class="tech-item reveal reveal-delay-1">
+      <div class="tech-logo">🌊</div>
+      <span class="tech-name">RISC-V ISA</span>
+    </div>
+    <div class="tech-item reveal reveal-delay-2">
+      <div class="tech-logo">☁️</div>
+      <span class="tech-name">AWS Nitro</span>
+    </div>
+    <div class="tech-item reveal">
+      <div class="tech-logo">🔑</div>
+      <span class="tech-name">ONNX Runtime</span>
+    </div>
+    <div class="tech-item reveal reveal-delay-1">
+      <div class="tech-logo">💾</div>
+      <span class="tech-name">SystemVerilog</span>
+    </div>
+    <div class="tech-item reveal reveal-delay-2">
+      <div class="tech-logo">📡</div>
+      <span class="tech-name">OpenROAD</span>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div style="text-align:center">
+    <p class="section-label reveal">How We Work</p>
+    <h2 class="section-title reveal">Our Methodology</h2>
+  </div>
+
+  <div class="process-steps">
+    <div class="step reveal">
+      <div class="step-num">01</div>
+      <h3>Discovery & Spec</h3>
+      <p>We deep-dive into your requirements, define performance targets, power budgets, and design the optimal architecture for your use case.</p>
+    </div>
+    <div class="step reveal reveal-delay-1">
+      <div class="step-num">02</div>
+      <h3>Design & Modeling</h3>
+      <p>RTL coding, AI model development, and co-simulation to validate the hardware-software interface at the earliest stage possible.</p>
+    </div>
+    <div class="step reveal reveal-delay-2">
+      <div class="step-num">03</div>
+      <h3>Verification & Sign-off</h3>
+      <p>Exhaustive functional coverage, timing closure, DRC/LVS sign-off, and AI-driven test generation ensure zero silicon surprises.</p>
+    </div>
+    <div class="step reveal reveal-delay-3">
+      <div class="step-num">04</div>
+      <h3>Deploy & Optimize</h3>
+      <p>Tape-out or cloud deployment with continuous monitoring, model refinement, and iterative performance optimization post-launch.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="contact">
+  <h2 class="cta-title reveal">Ready to Build<br><span class="highlight">Smarter Silicon?</span></h2>
+  <p class="reveal">Partner with ArqonixGen to bring your most ambitious hardware and AI visions to life — from concept to silicon to deployment.</p>
+  <div class="cta-actions reveal">
+    <button class="btn-primary">Start a Project</button>
+    <button class="btn-outline">Schedule a Call</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">
+    <div class="logo" style="font-size:1.1rem">Arqonix<span>Gen</span> <span style="font-family:'DM Sans';font-weight:300;font-size:0.8rem;color:var(--muted);margin-left:0.3rem">Semiconductor Pvt Ltd</span></div>
+    <p>Advanced semiconductor design and AI solutions for the future of intelligent computing.<br>
+    21, Royal Homes Layout Road, AECS Layout – A Block,<br>
+    Singasandra, Bengaluru, Karnataka – 560068</p>
+  </div>
+  <div class="footer-col">
+    <h5>Services</h5>
+    <ul>
+      <li><a href="#">VLSI Design</a></li>
+      <li><a href="#">AI Chip Architecture</a></li>
+      <li><a href="#">Edge AI</a></li>
+      <li><a href="#">MLOps Platform</a></li>
+      <li><a href="#">Security IP</a></li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h5>Company</h5>
+    <ul>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Careers</a></li>
+      <li><a href="#">Research</a></li>
+      <li><a href="#">Blog</a></li>
+      <li><a href="#">Press</a></li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h5>Contact</h5>
+    <ul>
+      <li><a href="mailto:arqonixgen@gmail.com">arqonixgen@gmail.com</a></li>
+      <li><a href="https://www.arqonixgen.com" target="_blank">www.arqonixgen.com</a></li>
+      <li><a href="tel:+916239214369">+91 6239 214369</a></li>
+      <li><a href="#">LinkedIn</a></li>
+      <li><a href="#">Twitter / X</a></li>
+    </ul>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <p>© 2025 <span>ArqonixGen Semiconductor Private Limited</span>. All rights reserved.</p>
+  <p style="font-size:0.75rem;color:var(--muted)">CIN: U62011PB2025PTC066273</p>
+</div>
+
+<script>
+  // Custom cursor
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    cursor.style.left = mx + 'px';
+    cursor.style.top = my + 'px';
+  });
+
+  function animateCursor() {
+    rx += (mx - rx) * 0.15;
+    ry += (my - ry) * 0.15;
+    ring.style.left = rx + 'px';
+    ring.style.top = ry + 'px';
+    requestAnimationFrame(animateCursor);
+  }
+  animateCursor();
+
+  document.querySelectorAll('a, button').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      cursor.style.width = '16px'; cursor.style.height = '16px';
+      ring.style.width = '52px'; ring.style.height = '52px';
+    });
+    el.addEventListener('mouseleave', () => {
+      cursor.style.width = '10px'; cursor.style.height = '10px';
+      ring.style.width = '36px'; ring.style.height = '36px';
+    });
+  });
+
+  // Intersection Observer for reveal animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
