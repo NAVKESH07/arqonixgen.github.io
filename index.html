@@ -3,1060 +3,854 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ArqonixGen Semiconductor Pvt Ltd</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<title>ArqonixGen Semiconductor</title>
+<meta name="description" content="ArqonixGen Semiconductor Pvt Ltd is a fabless chip design company in Bengaluru working across VLSI, SoC design, verification, and AI systems.">
+<meta property="og:title" content="ArqonixGen Semiconductor">
+<meta property="og:description" content="Fabless chip design across VLSI, SoC design, verification, and AI systems.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.arqonixgen.com/">
+<meta name="theme-color" content="#06070b">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23000'/%3E%3Crect x='9' y='9' width='14' height='14' rx='2' fill='none' stroke='%23fff' stroke-width='2'/%3E%3Crect x='13' y='13' width='6' height='6' fill='%23fff'/%3E%3C/svg%3E">
 <style>
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --bg: #050810;
-    --surface: #0a0f1e;
-    --surface2: #0f1629;
-    --accent: #00e5ff;
-    --accent2: #7c3aed;
-    --accent3: #10b981;
-    --text: #e8eaf6;
-    --muted: #6b7280;
-    --border: rgba(0,229,255,0.12);
+    --bg: #ffffff;
+    --bg-soft: #f4f4f2;
+    --ink: #0d0d0d;
+    --ink-2: #4a4a4a;
+    --ink-3: #8a8a8a;
+    --rule: #e3e3e0;
+    --rule-strong: #0d0d0d;
+    --accent: #3d7bfd;
+    --space: #06070b;
+    --radius: 20px;
+    --gutter: clamp(1.25rem, 4vw, 3rem);
+    --measure: 44rem;
+    --max: 1320px;
+    --nav-h: 64px;
   }
 
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+  }
 
   body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    overflow-x: hidden;
-    cursor: none;
+    font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 1rem; line-height: 1.6;
+    color: var(--ink); background: var(--bg);
+    -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+    font-feature-settings: "ss01", "cv11";
   }
 
-  /* Custom Cursor */
-  .cursor {
-    position: fixed;
-    width: 10px; height: 10px;
-    background: var(--accent);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9999;
-    transform: translate(-50%, -50%);
-    transition: width 0.2s, height 0.2s, opacity 0.2s;
-  }
-  .cursor-ring {
-    position: fixed;
-    width: 36px; height: 36px;
-    border: 1.5px solid rgba(0,229,255,0.4);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9998;
-    transform: translate(-50%, -50%);
-    transition: transform 0.12s ease, width 0.2s, height 0.2s;
-  }
+  a { color: inherit; text-decoration: none; }
+  a:hover { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+  :focus-visible { outline: 2px solid currentColor; outline-offset: 3px; border-radius: 4px; }
+  img, svg { display: block; max-width: 100%; }
+  ul { list-style: none; }
 
-  /* Grid noise overlay */
-  body::before {
-    content:'';
-    position: fixed; inset: 0;
-    background-image:
-      linear-gradient(rgba(0,229,255,0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0,229,255,0.03) 1px, transparent 1px);
-    background-size: 60px 60px;
-    pointer-events: none;
-    z-index: 0;
-  }
+  .wrap { max-width: var(--max); margin: 0 auto; padding-left: var(--gutter); padding-right: var(--gutter); }
+  .measure { max-width: var(--measure); }
+  .skip { position: absolute; left: -999px; top: 0; background: var(--ink); color: #fff; padding: .5rem 1rem; z-index: 1000; }
+  .skip:focus { left: 1rem; top: 1rem; }
 
-  /* NAV */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 1.5rem 4rem;
-    background: rgba(5,8,16,0.7);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--border);
+  /* ---------- Navigation ---------- */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    height: var(--nav-h);
+    background: rgba(255,255,255,.82);
+    backdrop-filter: saturate(160%) blur(14px);
+    -webkit-backdrop-filter: saturate(160%) blur(14px);
+    border-bottom: 1px solid var(--rule);
+    color: var(--ink);
+    transition: background .35s, border-color .35s, color .35s;
   }
-
-  .logo {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: 1.25rem;
-    letter-spacing: -0.02em;
-    color: #fff;
+  .nav-inner { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
+  .brand { display: inline-flex; align-items: center; gap: .6rem; font-weight: 600; font-size: 1.05rem; letter-spacing: -.01em; color: inherit; }
+  .brand:hover { text-decoration: none; }
+  .brand-mark { width: 22px; height: 22px; border-radius: 5px; background: currentColor; position: relative; flex: none; }
+  .brand-mark::before { content: ''; position: absolute; inset: 6px; border: 1.5px solid var(--bg); border-radius: 2px; }
+  .brand-mark::after { content: ''; position: absolute; inset: 9px; background: var(--bg); }
+  .brand small { font-weight: 400; opacity: .55; font-size: .85rem; margin-left: .2rem; }
+  .nav-links { display: flex; align-items: center; gap: 1.75rem; font-size: .9rem; }
+  .nav-links a { opacity: .7; transition: opacity .2s; }
+  .nav-links a:hover { opacity: 1; text-decoration: none; }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+    padding: .65rem 1.15rem; border-radius: 999px;
+    font-size: .9rem; font-weight: 500; line-height: 1;
+    border: 1px solid var(--ink); background: var(--ink); color: #fff;
+    transition: background .2s, color .2s, border-color .2s, transform .2s, box-shadow .2s;
+    cursor: pointer; white-space: nowrap;
   }
-  .logo span { color: var(--accent); }
+  .btn:hover { background: #2a2a2a; border-color: #2a2a2a; text-decoration: none; transform: translateY(-1px); }
+  .btn.ghost { background: transparent; color: var(--ink); }
+  .btn.ghost:hover { background: var(--bg-soft); border-color: var(--ink); }
+  .btn.lg { padding: .95rem 1.6rem; font-size: 1rem; }
+  .nav-toggle { display: none; background: none; border: 0; width: 40px; height: 40px; cursor: pointer; border-radius: 8px; color: inherit; }
+  .nav-toggle span { display: block; width: 20px; height: 1.5px; background: currentColor; margin: 5px auto; transition: transform .25s, opacity .25s; }
+  .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+  .mobile-menu { display: none; }
 
-  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-  .nav-links a {
-    text-decoration: none;
-    color: var(--muted);
-    font-size: 0.875rem;
-    font-weight: 500;
-    letter-spacing: 0.04em;
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--accent); }
+  /* Nav over the dark hero */
+  .nav.on-dark { background: linear-gradient(to bottom, rgba(6,7,11,.55), rgba(6,7,11,0)); border-bottom-color: transparent; color: #fff; backdrop-filter: none; -webkit-backdrop-filter: none; }
+  .nav.on-dark .brand-mark::before { border-color: var(--space); }
+  .nav.on-dark .brand-mark::after { background: var(--space); }
+  .nav.on-dark .btn { background: #fff; color: var(--space); border-color: #fff; }
+  .nav.on-dark .btn:hover { background: #e6e6e6; border-color: #e6e6e6; }
 
-  .nav-cta {
-    background: transparent;
-    border: 1px solid var(--accent);
-    color: var(--accent);
-    padding: 0.6rem 1.5rem;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 500;
-    cursor: none;
-    letter-spacing: 0.05em;
-    transition: background 0.2s, color 0.2s;
-  }
-  .nav-cta:hover { background: var(--accent); color: var(--bg); }
+  /* ---------- Type scale ---------- */
+  .eyebrow { font-size: .85rem; color: var(--ink-3); font-weight: 500; letter-spacing: .01em; }
+  h1, h2, h3 { font-weight: 400; letter-spacing: -.03em; line-height: 1.05; text-wrap: balance; }
+  h1 { font-size: clamp(2.6rem, 6.2vw, 5.4rem); }
+  h2 { font-size: clamp(2rem, 4.2vw, 3.6rem); }
+  h3 { font-size: clamp(1.25rem, 1.8vw, 1.5rem); letter-spacing: -.015em; line-height: 1.25; }
+  .lede { font-size: clamp(1.15rem, 1.6vw, 1.45rem); line-height: 1.5; letter-spacing: -.01em; color: var(--ink); }
+  .lede + .lede { margin-top: 1.25rem; }
 
-  /* HERO */
+  /* ---------- Hero ---------- */
   .hero {
-    min-height: 100vh;
-    display: flex; flex-direction: column; justify-content: center;
-    padding: 0 4rem;
-    position: relative;
-    overflow: hidden;
+    position: relative; min-height: 100vh; min-height: 100svh;
+    background: var(--space); color: #fff; overflow: hidden;
+    display: flex; align-items: center;
+    padding: calc(var(--nav-h) + 3rem) 0 5rem;
+  }
+  .hero canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  .hero::before {
+    content: ''; position: absolute; inset: 0; pointer-events: none;
+    background:
+      radial-gradient(ellipse 60% 70% at 66% 50%, rgba(60,80,140,.16), transparent 70%),
+      linear-gradient(to bottom, rgba(6,7,11,.6), transparent 25%, transparent 80%, rgba(6,7,11,.85));
+  }
+  .hero .wrap { position: relative; z-index: 2; width: 100%; }
+  .hero-content { max-width: 44rem; }
+  .hero .eyebrow { color: rgba(255,255,255,.55); margin-bottom: 1.5rem; }
+  .hero h1 { max-width: 20ch; text-shadow: 0 2px 40px rgba(0,0,0,.6); }
+  .hero-meta { margin-top: 2rem; display: flex; flex-wrap: wrap; gap: .5rem 2rem; font-size: .9rem; color: rgba(255,255,255,.6); }
+  .hero-meta span::before { content: ''; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px var(--accent); margin-right: .6rem; vertical-align: 2px; }
+  .hero-actions { margin-top: 2.5rem; display: flex; gap: .75rem; flex-wrap: wrap; }
+  .hero .btn { background: #fff; color: var(--space); border-color: #fff; }
+  .hero .btn:hover { background: #e9e9e9; border-color: #e9e9e9; box-shadow: 0 10px 40px rgba(255,255,255,.12); }
+  .hero .btn.ghost { background: rgba(255,255,255,.04); color: #fff; border-color: rgba(255,255,255,.35); backdrop-filter: blur(6px); }
+  .hero .btn.ghost:hover { background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.7); box-shadow: none; }
+  .hero-state { position: absolute; z-index: 2; left: var(--gutter); bottom: 2rem; display: flex; align-items: center; gap: .75rem; font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.45); }
+  .hero-state .dot { width: 6px; height: 6px; border-radius: 50%; background: #fff; box-shadow: 0 0 12px #fff; animation: blink 2.4s ease-in-out infinite; }
+  .hero-state b { font-weight: 500; color: rgba(255,255,255,.8); min-width: 9ch; }
+  .hero-hint { position: absolute; z-index: 2; right: var(--gutter); bottom: 2rem; display: flex; align-items: center; gap: .75rem; font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.45); }
+  .hero-hint i { display: block; width: 1px; height: 48px; background: linear-gradient(to bottom, #fff, transparent); animation: hint 2.2s ease-in-out infinite; transform-origin: top; }
+  @keyframes hint { 0% { transform: scaleY(0); opacity: 0 } 40% { transform: scaleY(1); opacity: 1 } 100% { transform: scaleY(1) translateY(20px); opacity: 0 } }
+  @keyframes blink { 0%, 100% { opacity: 1 } 50% { opacity: .25 } }
+  .hero-content > * { opacity: 0; animation: rise 1.1s cubic-bezier(.2,.7,.2,1) forwards; }
+  .hero-content > :nth-child(1) { animation-delay: .15s }
+  .hero-content > :nth-child(2) { animation-delay: .3s }
+  .hero-content > :nth-child(3) { animation-delay: .5s }
+  .hero-content > :nth-child(4) { animation-delay: .65s }
+  @keyframes rise { from { opacity: 0; transform: translateY(24px); filter: blur(6px) } to { opacity: 1; transform: none; filter: none } }
+  @media (max-width: 900px) {
+    .hero { align-items: flex-start; padding-top: calc(var(--nav-h) + 2.5rem); min-height: 100svh; }
+    .hero::before { background: linear-gradient(to bottom, rgba(6,7,11,.7), rgba(6,7,11,.2) 30%, transparent 50%, rgba(6,7,11,.85)); }
+    .hero-hint { display: none; }
   }
 
-  .hero-glow {
-    position: absolute;
-    width: 800px; height: 800px;
-    background: radial-gradient(ellipse, rgba(0,229,255,0.07) 0%, transparent 70%);
-    top: -200px; right: -200px;
-    pointer-events: none;
-    animation: pulse 8s ease-in-out infinite;
-  }
-  .hero-glow2 {
-    position: absolute;
-    width: 600px; height: 600px;
-    background: radial-gradient(ellipse, rgba(124,58,237,0.08) 0%, transparent 70%);
-    bottom: -100px; left: -100px;
-    pointer-events: none;
-    animation: pulse 10s ease-in-out infinite reverse;
-  }
+  /* ---------- Figures ---------- */
+  .figure { margin: clamp(2rem, 4vw, 3.5rem) 0; }
+  .figure-frame { background: var(--bg-soft); border-radius: var(--radius); overflow: hidden; aspect-ratio: 16 / 8; position: relative; }
+  .figure-frame svg { width: 100%; height: 100%; }
+  .figure figcaption { margin-top: .9rem; font-size: .85rem; color: var(--ink-3); }
+  .figure-frame.tall { aspect-ratio: 16 / 10; }
+  .figure-frame.flow { aspect-ratio: 16 / 5; }
+  @media (max-width: 720px) { .figure-frame, .figure-frame.tall { aspect-ratio: 4 / 3; } .figure-frame.flow { aspect-ratio: 16 / 9; } }
 
-  @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.6; transform: scale(1.1); }
-  }
+  /* Design-flow SVG animation */
+  .link-base { stroke: #0d0d0d; stroke-opacity: .18; }
+  .link-pulse { stroke: var(--accent); stroke-width: 2; stroke-linecap: round; stroke-dasharray: 8 92; stroke-dashoffset: 100; animation: dash 2.6s linear infinite; animation-delay: var(--d, 0s); }
+  .link-pulse.slow { animation-duration: 5s; stroke-dasharray: 5 95; }
+  @keyframes dash { to { stroke-dashoffset: 0; } }
+  .node { fill: #fff; stroke: #0d0d0d; stroke-opacity: .35; }
+  .node.node-dark { fill: #0d0d0d; stroke: none; }
+  .node-dot { fill: var(--accent); animation: glow 2.6s ease-in-out infinite; animation-delay: var(--d, 0s); transform-box: fill-box; transform-origin: center; }
+  @keyframes glow { 0%, 100% { opacity: .35; transform: scale(1) } 50% { opacity: 1; transform: scale(1.6) } }
 
-  .hero-badge {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    border: 1px solid var(--border);
-    padding: 0.4rem 1rem;
-    font-size: 0.75rem;
-    letter-spacing: 0.1em;
-    color: var(--accent);
-    text-transform: uppercase;
-    margin-bottom: 2rem;
-    width: fit-content;
-    animation: fadeUp 0.8s ease both;
-  }
-  .hero-badge::before {
-    content: '';
-    width: 6px; height: 6px;
-    background: var(--accent);
-    border-radius: 50%;
-    animation: blink 1.5s ease infinite;
-  }
-  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
+  /* Waveform SVG animation */
+  .trace { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  .figure.in .trace { animation: draw 1.8s cubic-bezier(.4,0,.2,1) forwards; animation-delay: var(--d, 0s); }
+  @keyframes draw { to { stroke-dashoffset: 0; } }
+  .wcursor { animation: sweep 10s ease-in-out infinite alternate; }
+  @keyframes sweep { from { transform: translateX(-380px) } to { transform: translateX(380px) } }
+  .cell { opacity: 0; transform: scale(.2); transform-box: fill-box; transform-origin: center; }
+  .figure.in .cell { animation: pop .55s cubic-bezier(.2,.8,.2,1) forwards; animation-delay: calc(.6s + var(--i) * 22ms); }
+  @keyframes pop { to { opacity: 1; transform: scale(1); } }
 
-  .hero-title {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(3rem, 7vw, 7rem);
-    font-weight: 800;
-    line-height: 0.95;
-    letter-spacing: -0.03em;
-    animation: fadeUp 0.8s 0.1s ease both;
-    max-width: 900px;
-  }
-  .hero-title .line2 { color: var(--accent); display: block; }
+  /* ---------- Sections ---------- */
+  section { padding: clamp(3.5rem, 7vw, 6.5rem) 0; }
+  section + section { border-top: 1px solid var(--rule); }
+  .hero + section { border-top: 0; }
+  .section-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 2rem clamp(2rem, 6vw, 6rem); align-items: start; margin-bottom: clamp(2.5rem, 5vw, 4rem); }
+  .section-head h2 { margin-top: .75rem; }
+  @media (max-width: 900px) { .section-head { grid-template-columns: 1fr; gap: 1.5rem; } }
 
-  .hero-sub {
-    margin-top: 1.5rem;
-    font-size: 1.1rem;
-    color: var(--muted);
-    font-weight: 300;
-    max-width: 540px;
-    line-height: 1.7;
-    animation: fadeUp 0.8s 0.2s ease both;
-  }
+  /* Capabilities */
+  .cap-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 clamp(2rem, 5vw, 5rem); }
+  .cap { padding: 2rem 0 2.25rem; border-top: 1px solid var(--rule); position: relative; transition: transform .35s cubic-bezier(.2,.7,.2,1); }
+  .cap::before { content: ''; position: absolute; top: -1px; left: 0; height: 1px; width: 0; background: var(--ink); transition: width .6s cubic-bezier(.2,.7,.2,1); }
+  .cap:hover::before { width: 100%; }
+  .cap-num { font-size: .8rem; color: var(--ink-3); font-variant-numeric: tabular-nums; margin-bottom: 1.25rem; display: flex; align-items: center; gap: .6rem; }
+  .cap-num::after { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--rule); transition: background .3s, box-shadow .3s; }
+  .cap:hover .cap-num::after { background: var(--accent); box-shadow: 0 0 10px var(--accent); }
+  .cap h3 { margin-bottom: .75rem; }
+  .cap p { color: var(--ink-2); max-width: 36rem; }
+  .cap-tags { margin-top: 1.25rem; display: flex; flex-wrap: wrap; gap: .5rem; }
+  .tag { font-size: .78rem; color: var(--ink-2); border: 1px solid var(--rule); border-radius: 999px; padding: .28rem .7rem; transition: border-color .25s, color .25s; }
+  .cap:hover .tag { border-color: #c9c9c5; color: var(--ink); }
+  @media (max-width: 720px) { .cap-grid { grid-template-columns: 1fr; } }
 
-  .hero-actions {
-    margin-top: 3rem;
-    display: flex; gap: 1.2rem;
-    animation: fadeUp 0.8s 0.3s ease both;
-  }
+  /* Statement */
+  .statement { padding: clamp(4rem, 9vw, 8rem) 0; }
+  .statement p { font-size: clamp(1.6rem, 3.2vw, 2.75rem); line-height: 1.2; letter-spacing: -.025em; max-width: 30ch; text-wrap: balance; }
+  .statement p em { font-style: normal; color: var(--ink-3); }
 
-  .btn-primary {
-    background: var(--accent);
-    color: var(--bg);
-    border: none;
-    padding: 1rem 2.5rem;
-    font-family: 'Syne', sans-serif;
-    font-size: 0.95rem;
-    font-weight: 700;
-    cursor: none;
-    letter-spacing: 0.04em;
-    transition: transform 0.2s, box-shadow 0.2s;
-    position: relative;
-    overflow: hidden;
-  }
-  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 40px rgba(0,229,255,0.25); }
+  /* Principles */
+  .principles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(1.5rem, 3vw, 3rem); }
+  .principle { border-top: 1px solid var(--rule-strong); padding-top: 1.25rem; }
+  .principle h3 { margin-bottom: .75rem; font-size: 1.15rem; }
+  .principle p { color: var(--ink-2); font-size: .98rem; }
+  @media (max-width: 900px) { .principles { grid-template-columns: 1fr; } }
 
-  .btn-outline {
-    background: transparent;
-    color: var(--text);
-    border: 1px solid rgba(255,255,255,0.2);
-    padding: 1rem 2.5rem;
-    font-family: 'Syne', sans-serif;
-    font-size: 0.95rem;
-    font-weight: 600;
-    cursor: none;
-    letter-spacing: 0.04em;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+  /* Process */
+  .steps { border-top: 1px solid var(--rule-strong); }
+  .step { display: grid; grid-template-columns: 5rem minmax(0, 1fr) minmax(0, 1.6fr); gap: 1.5rem clamp(1.5rem, 4vw, 4rem); padding: 2rem 0; border-bottom: 1px solid var(--rule); align-items: start; transition: padding-left .35s; }
+  .step:hover { padding-left: .5rem; }
+  .step-num { font-size: .9rem; color: var(--ink-3); font-variant-numeric: tabular-nums; padding-top: .3rem; }
+  .step h3 { font-size: 1.3rem; }
+  .step p { color: var(--ink-2); }
+  @media (max-width: 900px) { .step { grid-template-columns: 3.5rem minmax(0, 1fr); } .step p { grid-column: 2; } }
 
-  .hero-stats {
-    position: absolute; bottom: 4rem; right: 4rem;
-    display: flex; gap: 4rem;
-    animation: fadeUp 0.8s 0.5s ease both;
-  }
-  .stat-item { text-align: right; }
-  .stat-num {
-    font-family: 'Syne', sans-serif;
-    font-size: 2.5rem;
-    font-weight: 800;
-    color: #fff;
-    line-height: 1;
-  }
-  .stat-num span { color: var(--accent); }
-  .stat-label { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.08em; margin-top: 0.3rem; text-transform: uppercase; }
+  /* Table */
+  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  table { width: 100%; border-collapse: collapse; min-width: 680px; font-size: .95rem; }
+  thead th { text-align: left; font-weight: 500; font-size: .8rem; color: var(--ink-3); padding: 0 1rem .9rem 0; border-bottom: 1px solid var(--rule-strong); }
+  tbody th { text-align: left; font-weight: 500; padding: 1.1rem 1rem 1.1rem 0; border-bottom: 1px solid var(--rule); vertical-align: top; white-space: nowrap; }
+  tbody td { padding: 1.1rem 1rem 1.1rem 0; border-bottom: 1px solid var(--rule); color: var(--ink-2); vertical-align: top; }
+  tbody tr { transition: background .2s; }
+  tbody tr:hover { background: var(--bg-soft); }
+  tbody tr:last-child th, tbody tr:last-child td { border-bottom: 1px solid var(--rule-strong); }
+  .table-note { margin-top: 1rem; font-size: .85rem; color: var(--ink-3); }
 
-  /* Scroll indicator */
-  .scroll-hint {
-    position: absolute; bottom: 4rem; left: 4rem;
-    display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
-    animation: fadeUp 1s 0.7s ease both;
-  }
-  .scroll-hint span { font-size: 0.7rem; letter-spacing: 0.15em; color: var(--muted); text-transform: uppercase; writing-mode: vertical-rl; }
-  .scroll-line { width: 1px; height: 60px; background: linear-gradient(to bottom, var(--accent), transparent); animation: scrollLine 2s ease infinite; }
-  @keyframes scrollLine { 0%{transform:scaleY(0);transform-origin:top} 50%{transform:scaleY(1)} 100%{transform:scaleY(0);transform-origin:bottom} }
+  /* Contact */
+  .contact-grid { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 3rem clamp(2rem, 6vw, 6rem); align-items: start; }
+  .contact-grid h2 { max-width: 16ch; }
+  .contact-list { border-top: 1px solid var(--rule-strong); }
+  .contact-list li { display: flex; justify-content: space-between; gap: 1rem; padding: 1.1rem 0; border-bottom: 1px solid var(--rule); font-size: .98rem; }
+  .contact-list li span:first-child { color: var(--ink-3); flex: none; }
+  .contact-list li span:last-child { text-align: right; }
+  @media (max-width: 900px) { .contact-grid { grid-template-columns: 1fr; } }
 
-  @keyframes fadeUp { from { opacity:0; transform: translateY(30px); } to { opacity:1; transform: translateY(0); } }
+  /* Footer */
+  footer { border-top: 1px solid var(--rule); padding: 3rem 0 2.5rem; font-size: .85rem; color: var(--ink-2); }
+  .foot-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 2rem; }
+  .foot-grid h4 { font-size: .8rem; font-weight: 500; color: var(--ink); margin-bottom: 1rem; }
+  .foot-grid li + li { margin-top: .55rem; }
+  .foot-grid address { font-style: normal; line-height: 1.7; margin-top: .75rem; max-width: 26rem; }
+  .foot-bottom { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--rule); display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; color: var(--ink-3); font-size: .8rem; }
+  @media (max-width: 900px) { .foot-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 540px) { .foot-grid { grid-template-columns: 1fr; } }
 
-  /* MARQUEE */
-  .marquee-section {
-    padding: 1.5rem 0;
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    overflow: hidden;
-    position: relative;
-    z-index: 1;
-  }
-  .marquee-track {
-    display: flex; gap: 4rem;
-    animation: marquee 25s linear infinite;
-    white-space: nowrap;
-  }
-  .marquee-item {
-    font-family: 'Syne', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    color: var(--muted);
-    text-transform: uppercase;
-    flex-shrink: 0;
-  }
-  .marquee-item .dot { color: var(--accent); margin: 0 1rem; }
-  @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+  /* Reveal */
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1); }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .reveal, .hero-content > *, .cell, .trace { opacity: 1; transform: none; stroke-dashoffset: 0; } }
 
-  /* SERVICES */
-  section { position: relative; z-index: 1; }
-
-  .services {
-    padding: 8rem 4rem;
-  }
-
-  .section-label {
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
-    color: var(--accent);
-    text-transform: uppercase;
-    margin-bottom: 1rem;
-  }
-
-  .section-title {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(2rem, 4vw, 3.5rem);
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    line-height: 1.1;
-    margin-bottom: 1.5rem;
-  }
-
-  .section-desc {
-    color: var(--muted);
-    font-size: 1rem;
-    max-width: 480px;
-    line-height: 1.7;
-    margin-bottom: 4rem;
-  }
-
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5px;
-    background: var(--border);
-  }
-
-  .service-card {
-    background: var(--surface);
-    padding: 3rem;
-    position: relative;
-    overflow: hidden;
-    transition: background 0.3s;
-    group: true;
-  }
-  .service-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 1px;
-    background: var(--accent);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.4s ease;
-  }
-  .service-card:hover::before { transform: scaleX(1); }
-  .service-card:hover { background: var(--surface2); }
-
-  .service-icon {
-    width: 48px; height: 48px;
-    margin-bottom: 1.5rem;
-    color: var(--accent);
-  }
-  .service-icon svg { width: 100%; height: 100%; }
-
-  .service-num {
-    position: absolute;
-    top: 2rem; right: 2.5rem;
-    font-family: 'Syne', sans-serif;
-    font-size: 4rem;
-    font-weight: 800;
-    color: rgba(255,255,255,0.03);
-    line-height: 1;
-  }
-
-  .service-title {
-    font-family: 'Syne', sans-serif;
-    font-size: 1.25rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    color: #fff;
-  }
-
-  .service-desc {
-    font-size: 0.9rem;
-    color: var(--muted);
-    line-height: 1.7;
-  }
-
-  .service-tags {
-    display: flex; flex-wrap: wrap; gap: 0.5rem;
-    margin-top: 1.5rem;
-  }
-  .tag {
-    font-size: 0.65rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--accent);
-    border: 1px solid rgba(0,229,255,0.2);
-    padding: 0.25rem 0.6rem;
-  }
-
-  /* ABOUT / WHY US */
-  .about {
-    padding: 8rem 4rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 6rem;
-    align-items: center;
-    border-top: 1px solid var(--border);
-  }
-
-  .about-visual {
-    position: relative;
-    height: 500px;
-  }
-
-  .chip-art {
-    position: absolute; inset: 0;
-    display: flex; align-items: center; justify-content: center;
-  }
-
-  .chip-outer {
-    width: 320px; height: 320px;
-    border: 1px solid rgba(0,229,255,0.15);
-    position: relative;
-    animation: rotate 30s linear infinite;
-  }
-  .chip-outer::before, .chip-outer::after {
-    content: '';
-    position: absolute; inset: 20px;
-    border: 1px solid rgba(0,229,255,0.08);
-  }
-  .chip-outer::after { inset: 40px; animation: rotateFast 10s linear infinite reverse; border-color: rgba(124,58,237,0.12); }
-
-  @keyframes rotate { from{transform:rotate(0)} to{transform:rotate(360deg)} }
-  @keyframes rotateFast { from{transform:rotate(0)} to{transform:rotate(-360deg)} }
-
-  .chip-inner {
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    width: 120px; height: 120px;
-    background: var(--surface2);
-    border: 1px solid rgba(0,229,255,0.3);
-    display: flex; align-items: center; justify-content: center;
-  }
-  .chip-core {
-    width: 60px; height: 60px;
-    background: linear-gradient(135deg, rgba(0,229,255,0.2), rgba(124,58,237,0.2));
-    border: 1px solid rgba(0,229,255,0.5);
-    animation: pulse 3s ease infinite;
-  }
-
-  .circuit-line {
-    position: absolute;
-    background: rgba(0,229,255,0.15);
-  }
-  .cl-h { height: 1px; }
-  .cl-v { width: 1px; }
-
-  .orbit {
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-    border: 1px solid;
-  }
-  .orbit-1 { width: 180px; height: 180px; border-color: rgba(0,229,255,0.1); animation: rotate 8s linear infinite; }
-  .orbit-2 { width: 260px; height: 260px; border-color: rgba(124,58,237,0.08); animation: rotate 15s linear infinite reverse; }
-  .orbit-3 { width: 360px; height: 360px; border-color: rgba(0,229,255,0.05); animation: rotate 25s linear infinite; }
-
-  .orbit-dot {
-    position: absolute;
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: var(--accent);
-    top: -3px; left: 50%;
-    transform: translateX(-50%);
-    box-shadow: 0 0 10px var(--accent);
-  }
-  .orbit-dot-2 {
-    background: var(--accent2);
-    box-shadow: 0 0 10px var(--accent2);
-    top: auto; bottom: -3px;
-  }
-
-  .feat-list { list-style: none; display: flex; flex-direction: column; gap: 1.5rem; margin-top: 2rem; }
-  .feat-item {
-    display: flex; align-items: flex-start; gap: 1rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 1px solid var(--border);
-  }
-  .feat-item:last-child { border-bottom: none; }
-  .feat-icon {
-    width: 36px; height: 36px;
-    background: rgba(0,229,255,0.08);
-    border: 1px solid rgba(0,229,255,0.2);
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-    color: var(--accent);
-    font-size: 0.9rem;
-  }
-  .feat-text h4 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.95rem; margin-bottom: 0.25rem; }
-  .feat-text p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
-
-  /* TECH STACK */
-  .tech {
-    padding: 6rem 4rem;
-    border-top: 1px solid var(--border);
-    text-align: center;
-  }
-  .tech-grid {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 1px;
-    background: var(--border);
-    margin-top: 4rem;
-  }
-  .tech-item {
-    background: var(--surface);
-    padding: 2.5rem 1.5rem;
-    display: flex; flex-direction: column; align-items: center; gap: 1rem;
-    transition: background 0.3s;
-  }
-  .tech-item:hover { background: var(--surface2); }
-  .tech-logo {
-    width: 40px; height: 40px;
-    border-radius: 8px;
-    background: rgba(0,229,255,0.1);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1.3rem;
-  }
-  .tech-name { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.05em; text-transform: uppercase; }
-
-  /* PROCESS */
-  .process {
-    padding: 8rem 4rem;
-    border-top: 1px solid var(--border);
-  }
-  .process-steps {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0;
-    margin-top: 5rem;
-    position: relative;
-  }
-  .process-steps::before {
-    content: '';
-    position: absolute;
-    top: 2rem; left: calc(12.5% + 1.5rem); right: calc(12.5% + 1.5rem);
-    height: 1px;
-    background: linear-gradient(to right, var(--accent), var(--accent2));
-    opacity: 0.3;
-  }
-  .step {
-    padding: 0 2.5rem;
-    position: relative;
-    text-align: center;
-  }
-  .step-num {
-    width: 4rem; height: 4rem;
-    border: 1px solid var(--border);
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Syne', sans-serif;
-    font-size: 1.1rem;
-    font-weight: 800;
-    color: var(--accent);
-    background: var(--bg);
-    margin: 0 auto 1.5rem;
-    position: relative;
-    z-index: 1;
-  }
-  .step h3 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.05rem; margin-bottom: 0.75rem; }
-  .step p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
-
-  /* CTA */
-  .cta {
-    padding: 8rem 4rem;
-    border-top: 1px solid var(--border);
-    position: relative;
-    overflow: hidden;
-    text-align: center;
-  }
-  .cta::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: radial-gradient(ellipse at center, rgba(0,229,255,0.05) 0%, transparent 70%);
-  }
-  .cta-title {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(2.5rem, 5vw, 5rem);
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    line-height: 1.05;
-    position: relative;
-    z-index: 1;
-  }
-  .cta-title .highlight {
-    background: linear-gradient(90deg, var(--accent), var(--accent2));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  .cta p {
-    margin-top: 1.5rem;
-    color: var(--muted);
-    font-size: 1rem;
-    max-width: 480px;
-    margin-left: auto; margin-right: auto;
-    line-height: 1.7;
-    position: relative; z-index: 1;
-  }
-  .cta-actions { margin-top: 3rem; display: flex; gap: 1rem; justify-content: center; position: relative; z-index: 1; }
-
-  /* FOOTER */
-  footer {
-    padding: 4rem;
-    border-top: 1px solid var(--border);
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: 4rem;
-  }
-  .footer-brand p { font-size: 0.85rem; color: var(--muted); margin-top: 1rem; line-height: 1.7; max-width: 280px; }
-  .footer-col h5 {
-    font-family: 'Syne', sans-serif;
-    font-size: 0.8rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text);
-    margin-bottom: 1.2rem;
-  }
-  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
-  .footer-col a { font-size: 0.85rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
-  .footer-col a:hover { color: var(--accent); }
-  .footer-bottom {
-    padding: 2rem 4rem;
-    border-top: 1px solid var(--border);
-    display: flex; align-items: center; justify-content: space-between;
-  }
-  .footer-bottom p { font-size: 0.8rem; color: var(--muted); }
-  .footer-bottom span { color: var(--accent); }
-
-  /* Intersection observer animations */
-  .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.7s ease, transform 0.7s ease; }
-  .reveal.visible { opacity: 1; transform: none; }
-  .reveal-delay-1 { transition-delay: 0.1s; }
-  .reveal-delay-2 { transition-delay: 0.2s; }
-  .reveal-delay-3 { transition-delay: 0.3s; }
-
-  @media (max-width: 1024px) {
-    nav { padding: 1.5rem 2rem; }
-    .hero { padding: 0 2rem; }
-    .services-grid { grid-template-columns: 1fr 1fr; }
-    .about { grid-template-columns: 1fr; padding: 6rem 2rem; }
-    .about-visual { display: none; }
-    .tech-grid { grid-template-columns: repeat(3, 1fr); }
-    .process-steps { grid-template-columns: 1fr 1fr; gap: 3rem; }
-    .process-steps::before { display: none; }
-    footer { grid-template-columns: 1fr 1fr; padding: 3rem 2rem; }
-    .services, .process, .tech, .cta { padding: 6rem 2rem; }
+  /* Mobile nav */
+  @media (max-width: 860px) {
+    .nav-links, .nav-cta { display: none; }
+    .nav-toggle { display: block; }
+    .mobile-menu {
+      display: block; position: fixed; top: var(--nav-h); left: 0; right: 0; height: calc(100vh - var(--nav-h)); z-index: 99;
+      background: #fff; padding: 1.5rem var(--gutter) 2rem;
+      transform: translateY(-8px); opacity: 0; pointer-events: none; transition: opacity .2s, transform .2s;
+    }
+    .mobile-menu.open { opacity: 1; transform: none; pointer-events: auto; }
+    .mobile-menu a { display: block; font-size: 1.6rem; letter-spacing: -.02em; padding: .9rem 0; border-bottom: 1px solid var(--rule); color: var(--ink); }
+    .mobile-menu .btn { display: inline-flex; margin-top: 1.5rem; padding: .9rem 1.5rem; font-size: 1rem; border-bottom: 1px solid var(--ink); background: var(--ink); color: #fff; }
+    body.menu-open { overflow: hidden; }
+    .brand small { display: none; }
   }
 </style>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 
-<!-- Custom Cursor -->
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursorRing"></div>
-
-<!-- NAV -->
-<nav>
-  <div class="logo">Arqonix<span>Gen</span></div>
-  <ul class="nav-links">
-    <li><a href="#services">Services</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#process">Process</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-  <button class="nav-cta">Get Started</button>
-</nav>
-
-<!-- HERO -->
-<section class="hero" id="home">
-  <div class="hero-glow"></div>
-  <div class="hero-glow2"></div>
-
-  <div class="hero-badge">Next-Gen Silicon Intelligence</div>
-
-  <h1 class="hero-title">
-    Engineering the<br>
-    <span class="line2">Silicon Future</span>
-  </h1>
-
-  <p class="hero-sub">
-    Bridging advanced semiconductor design with AI-driven intelligence — powering the next wave of intelligent hardware.
-  </p>
-
-  <div class="hero-actions">
-    <button class="btn-primary">Explore Services</button>
-    <button class="btn-outline">View Capabilities</button>
+<header class="nav on-dark" id="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top" aria-label="ArqonixGen home">
+      <span class="brand-mark" aria-hidden="true"></span>
+      ArqonixGen <small>Semiconductor</small>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#capabilities">Capabilities</a>
+      <a href="#approach">Approach</a>
+      <a href="#process">Process</a>
+      <a href="#tooling">Tooling</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="btn nav-cta" href="mailto:arqonixgen@gmail.com">Start a conversation</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
-
-  <div class="hero-stats">
-    <div class="stat-item">
-      <div class="stat-num">50<span>+</span></div>
-      <div class="stat-label">AI Models Deployed</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">3<span>nm</span></div>
-      <div class="stat-label">Process Node</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">99<span>.9%</span></div>
-      <div class="stat-label">Uptime SLA</div>
-    </div>
-  </div>
-
-  <div class="scroll-hint">
-    <div class="scroll-line"></div>
-    <span>Scroll</span>
-  </div>
-</section>
-
-<!-- MARQUEE -->
-<div class="marquee-section">
-  <div class="marquee-track">
-    <span class="marquee-item">VLSI Design <span class="dot">◆</span></span>
-    <span class="marquee-item">AI Accelerators <span class="dot">◆</span></span>
-    <span class="marquee-item">Edge Computing <span class="dot">◆</span></span>
-    <span class="marquee-item">Custom Silicon <span class="dot">◆</span></span>
-    <span class="marquee-item">Neural Processing Units <span class="dot">◆</span></span>
-    <span class="marquee-item">EDA Tools <span class="dot">◆</span></span>
-    <span class="marquee-item">RTL Design <span class="dot">◆</span></span>
-    <span class="marquee-item">Machine Learning IP <span class="dot">◆</span></span>
-    <span class="marquee-item">Fab-less Solutions <span class="dot">◆</span></span>
-    <span class="marquee-item">SoC Development <span class="dot">◆</span></span>
-    <!-- duplicate for infinite -->
-    <span class="marquee-item">VLSI Design <span class="dot">◆</span></span>
-    <span class="marquee-item">AI Accelerators <span class="dot">◆</span></span>
-    <span class="marquee-item">Edge Computing <span class="dot">◆</span></span>
-    <span class="marquee-item">Custom Silicon <span class="dot">◆</span></span>
-    <span class="marquee-item">Neural Processing Units <span class="dot">◆</span></span>
-    <span class="marquee-item">EDA Tools <span class="dot">◆</span></span>
-    <span class="marquee-item">RTL Design <span class="dot">◆</span></span>
-    <span class="marquee-item">Machine Learning IP <span class="dot">◆</span></span>
-    <span class="marquee-item">Fab-less Solutions <span class="dot">◆</span></span>
-    <span class="marquee-item">SoC Development <span class="dot">◆</span></span>
-  </div>
+</header>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#capabilities">Capabilities</a>
+  <a href="#approach">Approach</a>
+  <a href="#process">Process</a>
+  <a href="#tooling">Tooling</a>
+  <a href="#contact">Contact</a>
+  <a class="btn" href="mailto:arqonixgen@gmail.com">Start a conversation</a>
 </div>
 
-<!-- SERVICES -->
-<section class="services" id="services">
-  <p class="section-label reveal">What We Offer</p>
-  <h2 class="section-title reveal">Dual-Domain<br>Expertise</h2>
-  <p class="section-desc reveal">From silicon tape-out to intelligent AI deployment — ArqonixGen delivers end-to-end solutions at the intersection of hardware and intelligence.</p>
+<main id="main">
 
-  <div class="services-grid">
-    <!-- Semiconductor -->
-    <div class="service-card reveal">
-      <div class="service-num">01</div>
-      <div class="service-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <rect x="2" y="2" width="20" height="20" rx="2"/>
-          <rect x="7" y="7" width="10" height="10" rx="1"/>
-          <line x1="7" y1="2" x2="7" y2="5"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="17" y1="2" x2="17" y2="5"/>
-          <line x1="7" y1="19" x2="7" y2="22"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="17" y1="19" x2="17" y2="22"/>
-          <line x1="2" y1="7" x2="5" y2="7"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="2" y1="17" x2="5" y2="17"/>
-          <line x1="19" y1="7" x2="22" y2="7"/><line x1="19" y1="12" x2="22" y2="12"/><line x1="19" y1="17" x2="22" y2="17"/>
-        </svg>
+<!-- ---------- Hero ---------- -->
+<section class="hero" id="hero">
+  <div id="top"></div>
+  <canvas id="heroCanvas" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div class="hero-content">
+      <p class="eyebrow">ArqonixGen Semiconductor Pvt Ltd</p>
+      <h1>Silicon designed with intelligence built in.</h1>
+      <div class="hero-meta">
+        <span>Fabless semiconductor design</span>
+        <span>Bengaluru, India</span>
       </div>
-      <h3 class="service-title">VLSI & SoC Design</h3>
-      <p class="service-desc">Full-cycle custom chip design from RTL to GDSII. We deliver high-performance, power-optimized silicon for any application domain.</p>
-      <div class="service-tags">
-        <span class="tag">RTL</span><span class="tag">Physical Design</span><span class="tag">DFT</span><span class="tag">Sign-off</span>
+      <div class="hero-actions">
+        <a class="btn lg" href="#capabilities">Explore capabilities</a>
+        <a class="btn lg ghost" href="#contact">Contact us</a>
       </div>
     </div>
+  </div>
+  <div class="hero-state" aria-hidden="true"><span class="dot"></span><b id="heroState">Silicon galaxy</b></div>
+  <div class="hero-hint" aria-hidden="true"><span>Scroll</span><i></i></div>
+</section>
 
-    <div class="service-card reveal reveal-delay-1">
-      <div class="service-num">02</div>
-      <div class="service-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-          <path d="M2 17l10 5 10-5"/>
-          <path d="M2 12l10 5 10-5"/>
-        </svg>
-      </div>
-      <h3 class="service-title">AI Chip Architecture</h3>
-      <p class="service-desc">Purpose-built neural processing units and AI accelerators designed for extreme throughput with minimal power envelope.</p>
-      <div class="service-tags">
-        <span class="tag">NPU</span><span class="tag">GPU IP</span><span class="tag">Tensor Cores</span><span class="tag">SIMD</span>
-      </div>
+<!-- ---------- Intro ---------- -->
+<section id="about" aria-labelledby="about-h">
+  <div class="wrap">
+    <div class="measure">
+      <h2 id="about-h" class="reveal" style="font-size:clamp(1.6rem,2.6vw,2.2rem);margin-bottom:1.5rem">A deep-tech company at the boundary of hardware and intelligence.</h2>
+      <p class="lede reveal">ArqonixGen Semiconductor is a fabless chip design company based in Bengaluru. We work across the full design flow, from architecture and RTL through verification, physical design, and sign-off, and we bring the same discipline to the AI systems that run on that silicon.</p>
+      <p class="lede reveal">Hardware and software are designed together from the start. That is how efficiency that neither side can reach alone gets built into the chip rather than bolted on afterwards.</p>
     </div>
 
-    <div class="service-card reveal reveal-delay-2">
-      <div class="service-num">03</div>
-      <div class="service-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <circle cx="12" cy="12" r="3"/>
-          <path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
+    <figure class="figure reveal">
+      <div class="figure-frame flow" role="img" aria-label="Diagram of the chip design flow: architecture, RTL, verification, synthesis, place and route, sign-off, tape-out, with signals traveling between stages">
+        <svg viewBox="0 0 1600 500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+          <defs>
+            <pattern id="fine" width="20" height="20" patternUnits="userSpaceOnUse">
+              <path d="M20 0H0V20" fill="none" stroke="#000" stroke-opacity=".05" stroke-width="1"/>
+            </pattern>
+          </defs>
+          <rect width="1600" height="500" fill="#f4f4f2"/>
+          <rect width="1600" height="500" fill="url(#fine)"/>
+          <g fill="none" stroke-width="1.5">
+            <!-- forward links -->
+            <path class="link-base" d="M250 250h100"/><path class="link-pulse" pathLength="100" style="--d:0s" d="M250 250h100"/>
+            <path class="link-base" d="M500 250h100"/><path class="link-pulse" pathLength="100" style="--d:.35s" d="M500 250h100"/>
+            <path class="link-base" d="M750 250h100"/><path class="link-pulse" pathLength="100" style="--d:.7s" d="M750 250h100"/>
+            <path class="link-base" d="M1000 250h100"/><path class="link-pulse" pathLength="100" style="--d:1.05s" d="M1000 250h100"/>
+            <path class="link-base" d="M1250 250h100"/><path class="link-pulse" pathLength="100" style="--d:1.4s" d="M1250 250h100"/>
+            <!-- iteration loops -->
+            <path class="link-base" stroke-dasharray="4 6" d="M675 216V150H425v66"/><path class="link-pulse slow" pathLength="100" style="--d:.9s" d="M675 216V150H425v66"/>
+            <path class="link-base" stroke-dasharray="4 6" d="M1175 284v66H925v-66"/><path class="link-pulse slow" pathLength="100" style="--d:2.1s" d="M1175 284v66H925v-66"/>
+          </g>
+          <g font-family="Inter, system-ui, sans-serif" font-size="17" text-anchor="middle" fill="#0d0d0d">
+            <g><rect class="node" x="100" y="216" width="150" height="68" rx="12"/><text x="175" y="256">Architecture</text><circle class="node-dot" style="--d:0s" cx="100" cy="250" r="4"/></g>
+            <g><rect class="node" x="350" y="216" width="150" height="68" rx="12"/><text x="425" y="256">RTL design</text><circle class="node-dot" style="--d:.35s" cx="350" cy="250" r="4"/></g>
+            <g><rect class="node" x="600" y="216" width="150" height="68" rx="12"/><text x="675" y="256">Verification</text><circle class="node-dot" style="--d:.7s" cx="600" cy="250" r="4"/></g>
+            <g><rect class="node" x="850" y="216" width="150" height="68" rx="12"/><text x="925" y="256">Synthesis</text><circle class="node-dot" style="--d:1.05s" cx="850" cy="250" r="4"/></g>
+            <g><rect class="node" x="1100" y="216" width="150" height="68" rx="12"/><text x="1175" y="256">Place and route</text><circle class="node-dot" style="--d:1.4s" cx="1100" cy="250" r="4"/></g>
+            <g><rect class="node node-dark" x="1350" y="216" width="150" height="68" rx="12"/><text x="1425" y="256" fill="#fff">Sign-off</text><circle class="node-dot" style="--d:1.75s" cx="1350" cy="250" r="4"/></g>
+          </g>
+          <g font-family="Inter, system-ui, sans-serif" font-size="13" fill="#0d0d0d" fill-opacity=".5" text-anchor="middle">
+            <text x="550" y="138">coverage and bug feedback</text>
+            <text x="1050" y="378">timing and congestion feedback</text>
+            <text x="1425" y="320">DRC · LVS · STA · tape-out</text>
+          </g>
         </svg>
       </div>
-      <h3 class="service-title">Edge AI Solutions</h3>
-      <p class="service-desc">Optimized inference engines for edge deployment — enabling real-time AI in constrained environments without cloud dependency.</p>
-      <div class="service-tags">
-        <span class="tag">TinyML</span><span class="tag">Quantization</span><span class="tag">ONNX</span><span class="tag">IoT</span>
+      <figcaption>The design flow we run, with the two feedback loops that matter most: verification back into RTL, and physical results back into synthesis.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ---------- Capabilities ---------- -->
+<section id="capabilities" aria-labelledby="cap-h">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow reveal">What we do</p>
+        <h2 id="cap-h" class="reveal">Six capabilities, one design flow</h2>
       </div>
+      <p class="lede reveal" style="font-size:1.15rem;color:var(--ink-2)">From tape-out to deployed models, each capability is staffed and tooled as part of a single flow rather than as a separate practice.</p>
     </div>
 
-    <div class="service-card reveal">
-      <div class="service-num">04</div>
-      <div class="service-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
-        </svg>
-      </div>
-      <h3 class="service-title">AI/ML Platform Services</h3>
-      <p class="service-desc">End-to-end machine learning pipelines — from data engineering to model training, optimization, and production deployment.</p>
-      <div class="service-tags">
-        <span class="tag">MLOps</span><span class="tag">LLM Fine-tuning</span><span class="tag">AutoML</span>
-      </div>
+    <div class="cap-grid">
+      <article class="cap reveal">
+        <div class="cap-num">01</div>
+        <h3>VLSI and SoC design</h3>
+        <p>Custom chip design from RTL to GDSII, with power, performance, and area targets set at architecture time and tracked through sign-off.</p>
+        <div class="cap-tags"><span class="tag">RTL</span><span class="tag">Physical design</span><span class="tag">DFT</span><span class="tag">Sign-off</span></div>
+      </article>
+      <article class="cap reveal">
+        <div class="cap-num">02</div>
+        <h3>AI chip architecture</h3>
+        <p>Purpose-built neural processing units and accelerators, designed around the workloads they will run and the power envelope they must fit.</p>
+        <div class="cap-tags"><span class="tag">NPU</span><span class="tag">GPU IP</span><span class="tag">Tensor cores</span><span class="tag">SIMD</span></div>
+      </article>
+      <article class="cap reveal">
+        <div class="cap-num">03</div>
+        <h3>Edge AI</h3>
+        <p>Inference engines optimized for constrained devices, so real-time AI runs locally without a dependency on the cloud.</p>
+        <div class="cap-tags"><span class="tag">TinyML</span><span class="tag">Quantization</span><span class="tag">ONNX</span><span class="tag">IoT</span></div>
+      </article>
+      <article class="cap reveal">
+        <div class="cap-num">04</div>
+        <h3>AI and ML platform services</h3>
+        <p>End-to-end machine learning pipelines: data engineering, training, optimization, and production deployment.</p>
+        <div class="cap-tags"><span class="tag">MLOps</span><span class="tag">LLM fine-tuning</span><span class="tag">AutoML</span></div>
+      </article>
+      <article class="cap reveal">
+        <div class="cap-num">05</div>
+        <h3>Embedded security IP</h3>
+        <p>Hardware root of trust, secure enclaves, and cryptographic accelerators integrated at the silicon level.</p>
+        <div class="cap-tags"><span class="tag">PUF</span><span class="tag">HSM</span><span class="tag">TEE</span><span class="tag">Crypto IP</span></div>
+      </article>
+      <article class="cap reveal">
+        <div class="cap-num">06</div>
+        <h3>Verification and validation</h3>
+        <p>Functional verification with UVM, formal methods, coverage closure, and AI-assisted test generation to catch issues before silicon.</p>
+        <div class="cap-tags"><span class="tag">UVM</span><span class="tag">Formal</span><span class="tag">Coverage</span><span class="tag">Emulation</span></div>
+      </article>
     </div>
 
-    <div class="service-card reveal reveal-delay-1">
-      <div class="service-num">05</div>
-      <div class="service-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
-          <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+    <figure class="figure reveal">
+      <div class="figure-frame tall" role="img" aria-label="Illustration of digital waveforms for a valid/ready handshake and a functional coverage grid">
+        <svg viewBox="0 0 1600 1000" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+          <rect width="1600" height="1000" fill="#f4f4f2"/>
+          <rect width="1600" height="1000" fill="url(#fine)"/>
+          <g transform="translate(120 120)">
+            <g font-family="Inter, system-ui, sans-serif" font-size="14" fill="#0d0d0d" fill-opacity=".55">
+              <text x="0" y="58">clk</text>
+              <text x="0" y="158">valid</text>
+              <text x="0" y="258">ready</text>
+              <text x="0" y="358">data[63:0]</text>
+              <text x="0" y="458">resp</text>
+            </g>
+            <g stroke="#0d0d0d" stroke-opacity=".08">
+              <path d="M140 0v520M280 0v520M420 0v520M560 0v520M700 0v520M840 0v520M980 0v520M1120 0v520M1260 0v520"/>
+            </g>
+            <g fill="none" stroke="#0d0d0d" stroke-width="1.5">
+              <path class="trace" pathLength="1" style="--d:0s" d="M140 80h35v-50h35v50h35v-50h35v50h35v-50h35v50h35v-50h35v50h35v-50h35v50h35v-50h35v50h35v-50h35v50h35v-50h35v50h35v-50h35v50h35v-50h35v50h35v-50h35v50h35v-50h35v50h35v-50h35v50h35v-50h35v50h35v-50h35v50h35v-50h35v50h35v-50h35v50"/>
+              <path class="trace" pathLength="1" style="--d:.2s" d="M140 180h140v-50h420v50h140v-50h280v50h140"/>
+              <path class="trace" pathLength="1" style="--d:.4s" d="M140 280h280v-50h140v50h140v-50h420v50h140"/>
+              <path class="trace" pathLength="1" style="--d:.6s" d="M140 355h130l10-25h130l10 25l-10 25h-130l-10-25"/>
+              <path class="trace" pathLength="1" style="--d:.7s" d="M420 355h130l10-25h130l10 25l-10 25h-130l-10-25"/>
+              <path class="trace" pathLength="1" style="--d:.8s" d="M700 355h130l10-25h130l10 25l-10 25h-130l-10-25"/>
+              <path class="trace" pathLength="1" style="--d:.9s" d="M980 355h130l10-25h130l10 25l-10 25h-130l-10-25"/>
+              <path class="trace" pathLength="1" style="--d:1s" d="M140 480h560v-50h140v50h420"/>
+            </g>
+            <g font-family="ui-monospace, Menlo, monospace" font-size="13" fill="#0d0d0d" fill-opacity=".7">
+              <text x="300" y="360">0x3A1F</text><text x="580" y="360">0x9C02</text><text x="860" y="360">0x44E7</text><text x="1140" y="360">0x0B1D</text>
+            </g>
+            <g class="wcursor">
+              <path d="M770 -20v560" stroke="#3d7bfd" stroke-width="1.5" stroke-dasharray="4 4"/>
+              <circle cx="770" cy="130" r="4" fill="#3d7bfd"/>
+            </g>
+            <g transform="translate(140 600)">
+              <text font-family="Inter, system-ui, sans-serif" font-size="14" fill="#0d0d0d" fill-opacity=".55" x="0" y="-16">FUNCTIONAL COVERAGE</text>
+              <g id="covgrid" fill="#0d0d0d"></g>
+            </g>
+          </g>
         </svg>
       </div>
-      <h3 class="service-title">Embedded Security IP</h3>
-      <p class="service-desc">Hardware root-of-trust, secure enclaves, and cryptographic accelerators integrated at silicon level for unbreakable security.</p>
-      <div class="service-tags">
-        <span class="tag">PUF</span><span class="tag">HSM</span><span class="tag">TEE</span><span class="tag">Crypto IP</span>
+      <figcaption>A valid/ready handshake and a coverage map. Verification is a first-class capability, not a final checkpoint.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ---------- Statement ---------- -->
+<section class="statement" id="approach" aria-label="Approach">
+  <div class="wrap">
+    <p class="reveal">We own the stack from transistor-level design to deployed AI services. <em>That removes integration friction between teams that usually never meet, and it shortens the path from concept to product.</em></p>
+  </div>
+</section>
+
+<!-- ---------- Principles ---------- -->
+<section aria-labelledby="why-h">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow reveal">Why ArqonixGen</p>
+        <h2 id="why-h" class="reveal">Built at the intersection</h2>
       </div>
     </div>
-
-    <div class="service-card reveal reveal-delay-2">
-      <div class="service-num">06</div>
-      <div class="service-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
-        </svg>
+    <div class="principles">
+      <div class="principle reveal">
+        <h3>Silicon-native AI</h3>
+        <p>Our AI architectures are co-designed with the hardware from day one. The model, the compiler, and the datapath are shaped together, not negotiated after the fact.</p>
       </div>
-      <h3 class="service-title">Verification & Validation</h3>
-      <p class="service-desc">Rigorous functional verification, formal methods, and AI-assisted test generation ensuring silicon correctness at every node.</p>
-      <div class="service-tags">
-        <span class="tag">UVM</span><span class="tag">Formal</span><span class="tag">Coverage</span><span class="tag">Emulation</span>
+      <div class="principle reveal">
+        <h3>Research-led engineering</h3>
+        <p>We follow current research closely and translate what holds up into production-ready silicon and AI systems, with the engineering rigor that tape-out demands.</p>
+      </div>
+      <div class="principle reveal">
+        <h3>Full-stack capability</h3>
+        <p>One team spans RTL, verification, physical design, firmware, and ML deployment. Fewer handoffs means fewer surprises late in the schedule.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ABOUT -->
-<section class="about" id="about">
-  <div class="about-visual">
-    <div class="chip-art">
-      <div class="orbit orbit-3"><div class="orbit-dot"></div></div>
-      <div class="orbit orbit-2"><div class="orbit-dot orbit-dot-2"></div></div>
-      <div class="orbit orbit-1"></div>
-      <div class="chip-outer">
-        <div class="chip-inner">
-          <div class="chip-core"></div>
-        </div>
+<!-- ---------- Process ---------- -->
+<section id="process" aria-labelledby="proc-h">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow reveal">How we work</p>
+        <h2 id="proc-h" class="reveal">Four stages, no silicon surprises</h2>
+      </div>
+      <p class="lede reveal" style="font-size:1.15rem;color:var(--ink-2)">Every engagement runs through the same four stages. Targets are set early, verified continuously, and carried through to deployment.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-num">01</div>
+        <h3>Discovery and specification</h3>
+        <p>We work through your requirements, define performance targets and power budgets, and choose the architecture that fits the use case.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">02</div>
+        <h3>Design and modeling</h3>
+        <p>RTL development, AI model development, and co-simulation validate the hardware and software interface at the earliest possible stage.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">03</div>
+        <h3>Verification and sign-off</h3>
+        <p>Functional coverage closure, timing closure, and DRC and LVS sign-off, supported by AI-driven test generation.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">04</div>
+        <h3>Deploy and optimize</h3>
+        <p>Tape-out or cloud deployment, followed by monitoring, model refinement, and iterative performance work after launch.</p>
       </div>
     </div>
   </div>
-  <div class="about-content">
-    <p class="section-label reveal">Why ArqonixGen</p>
-    <h2 class="section-title reveal">Built at the<br>Intersection</h2>
-    <p class="section-desc reveal">We are a deep-tech company operating at the nexus of semiconductor engineering and artificial intelligence — building foundational technology that powers tomorrow's intelligent systems.</p>
+</section>
 
-    <ul class="feat-list">
-      <li class="feat-item reveal">
-        <div class="feat-icon">⚡</div>
-        <div class="feat-text">
-          <h4>Silicon-Native AI</h4>
-          <p>Our AI architectures are co-designed with hardware from day one — maximizing efficiency that software-only solutions cannot achieve.</p>
-        </div>
-      </li>
-      <li class="feat-item reveal reveal-delay-1">
-        <div class="feat-icon">🔬</div>
-        <div class="feat-text">
-          <h4>Research-Led Engineering</h4>
-          <p>Grounded in cutting-edge research from top institutions, we translate academic breakthroughs into production-ready silicon and AI systems.</p>
-        </div>
-      </li>
-      <li class="feat-item reveal reveal-delay-2">
-        <div class="feat-icon">🌐</div>
-        <div class="feat-text">
-          <h4>Full Stack Capability</h4>
-          <p>From transistor-level design to cloud-deployed AI services — we own the entire stack, eliminating integration friction and reducing time-to-market.</p>
-        </div>
-      </li>
+<!-- ---------- Tooling ---------- -->
+<section id="tooling" aria-labelledby="tool-h">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow reveal">Design flow and tooling</p>
+        <h2 id="tool-h" class="reveal">Industry-standard tools across the flow</h2>
+      </div>
+    </div>
+    <div class="table-wrap reveal">
+      <table>
+        <thead>
+          <tr><th scope="col">Domain</th><th scope="col">Languages and standards</th><th scope="col">Tools and frameworks</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Front-end design</th><td>SystemVerilog, RISC-V ISA</td><td>Synopsys Design Compiler, OpenROAD</td></tr>
+          <tr><th scope="row">Verification</th><td>SystemVerilog, UVM</td><td>Questa Sim, formal and emulation flows</td></tr>
+          <tr><th scope="row">Physical design and sign-off</th><td>GDSII, DRC and LVS</td><td>Cadence Virtuoso, Mentor Calibre</td></tr>
+          <tr><th scope="row">AI and ML</th><td>ONNX</td><td>PyTorch, TensorFlow, CUDA, ONNX Runtime</td></tr>
+          <tr><th scope="row">Cloud deployment</th><td>MLOps pipelines</td><td>AWS Nitro</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="table-note">Tool names are the property of their respective owners and are listed to describe the flows we work in.</p>
+  </div>
+</section>
+
+<!-- ---------- Contact ---------- -->
+<section id="contact" aria-labelledby="contact-h">
+  <div class="wrap contact-grid">
+    <div>
+      <p class="eyebrow reveal">Work with us</p>
+      <h2 id="contact-h" class="reveal">Ready to build smarter silicon?</h2>
+      <p class="lede reveal" style="margin-top:1.5rem;font-size:1.15rem;color:var(--ink-2);max-width:34rem">Tell us what you are building. We will come back with an honest view of the architecture, the schedule, and where the risk sits.</p>
+      <div class="hero-actions reveal">
+        <a class="btn lg" href="mailto:arqonixgen@gmail.com">Start a project</a>
+        <a class="btn lg ghost" href="tel:+916239214369">Schedule a call</a>
+      </div>
+    </div>
+    <ul class="contact-list reveal">
+      <li><span>Email</span><span><a href="mailto:arqonixgen@gmail.com">arqonixgen@gmail.com</a></span></li>
+      <li><span>Phone</span><span><a href="tel:+916239214369">+91 6239 214369</a></span></li>
+      <li><span>Web</span><span><a href="https://www.arqonixgen.com">www.arqonixgen.com</a></span></li>
+      <li><span>Office</span><span>21, Royal Homes Layout Road, AECS Layout – A Block, Singasandra, Bengaluru, Karnataka 560068</span></li>
     </ul>
   </div>
 </section>
+</main>
 
-<!-- TECH -->
-<section class="tech" id="tech">
-  <p class="section-label reveal">Technology Stack</p>
-  <h2 class="section-title reveal" style="margin-bottom:0">Tools & Frameworks</h2>
-
-  <div class="tech-grid">
-    <div class="tech-item reveal">
-      <div class="tech-logo">⚙️</div>
-      <span class="tech-name">Cadence Virtuoso</span>
-    </div>
-    <div class="tech-item reveal reveal-delay-1">
-      <div class="tech-logo">🔧</div>
-      <span class="tech-name">Synopsys DC</span>
-    </div>
-    <div class="tech-item reveal reveal-delay-2">
-      <div class="tech-logo">🧠</div>
-      <span class="tech-name">TensorFlow</span>
-    </div>
-    <div class="tech-item reveal">
-      <div class="tech-logo">🔥</div>
-      <span class="tech-name">PyTorch</span>
-    </div>
-    <div class="tech-item reveal reveal-delay-1">
-      <div class="tech-logo">📐</div>
-      <span class="tech-name">Mentor Calibre</span>
-    </div>
-    <div class="tech-item reveal reveal-delay-2">
-      <div class="tech-logo">🚀</div>
-      <span class="tech-name">CUDA</span>
-    </div>
-    <div class="tech-item reveal">
-      <div class="tech-logo">📊</div>
-      <span class="tech-name">Questa Sim</span>
-    </div>
-    <div class="tech-item reveal reveal-delay-1">
-      <div class="tech-logo">🌊</div>
-      <span class="tech-name">RISC-V ISA</span>
-    </div>
-    <div class="tech-item reveal reveal-delay-2">
-      <div class="tech-logo">☁️</div>
-      <span class="tech-name">AWS Nitro</span>
-    </div>
-    <div class="tech-item reveal">
-      <div class="tech-logo">🔑</div>
-      <span class="tech-name">ONNX Runtime</span>
-    </div>
-    <div class="tech-item reveal reveal-delay-1">
-      <div class="tech-logo">💾</div>
-      <span class="tech-name">SystemVerilog</span>
-    </div>
-    <div class="tech-item reveal reveal-delay-2">
-      <div class="tech-logo">📡</div>
-      <span class="tech-name">OpenROAD</span>
-    </div>
-  </div>
-</section>
-
-<!-- PROCESS -->
-<section class="process" id="process">
-  <div style="text-align:center">
-    <p class="section-label reveal">How We Work</p>
-    <h2 class="section-title reveal">Our Methodology</h2>
-  </div>
-
-  <div class="process-steps">
-    <div class="step reveal">
-      <div class="step-num">01</div>
-      <h3>Discovery & Spec</h3>
-      <p>We deep-dive into your requirements, define performance targets, power budgets, and design the optimal architecture for your use case.</p>
-    </div>
-    <div class="step reveal reveal-delay-1">
-      <div class="step-num">02</div>
-      <h3>Design & Modeling</h3>
-      <p>RTL coding, AI model development, and co-simulation to validate the hardware-software interface at the earliest stage possible.</p>
-    </div>
-    <div class="step reveal reveal-delay-2">
-      <div class="step-num">03</div>
-      <h3>Verification & Sign-off</h3>
-      <p>Exhaustive functional coverage, timing closure, DRC/LVS sign-off, and AI-driven test generation ensure zero silicon surprises.</p>
-    </div>
-    <div class="step reveal reveal-delay-3">
-      <div class="step-num">04</div>
-      <h3>Deploy & Optimize</h3>
-      <p>Tape-out or cloud deployment with continuous monitoring, model refinement, and iterative performance optimization post-launch.</p>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="cta" id="contact">
-  <h2 class="cta-title reveal">Ready to Build<br><span class="highlight">Smarter Silicon?</span></h2>
-  <p class="reveal">Partner with ArqonixGen to bring your most ambitious hardware and AI visions to life — from concept to silicon to deployment.</p>
-  <div class="cta-actions reveal">
-    <button class="btn-primary">Start a Project</button>
-    <button class="btn-outline">Schedule a Call</button>
-  </div>
-</section>
-
-<!-- FOOTER -->
+<!-- ---------- Footer ---------- -->
 <footer>
-  <div class="footer-brand">
-    <div class="logo" style="font-size:1.1rem">Arqonix<span>Gen</span> <span style="font-family:'DM Sans';font-weight:300;font-size:0.8rem;color:var(--muted);margin-left:0.3rem">Semiconductor Pvt Ltd</span></div>
-    <p>Advanced semiconductor design and AI solutions for the future of intelligent computing.<br>
-    21, Royal Homes Layout Road, AECS Layout – A Block,<br>
-    Singasandra, Bengaluru, Karnataka – 560068</p>
-  </div>
-  <div class="footer-col">
-    <h5>Services</h5>
-    <ul>
-      <li><a href="#">VLSI Design</a></li>
-      <li><a href="#">AI Chip Architecture</a></li>
-      <li><a href="#">Edge AI</a></li>
-      <li><a href="#">MLOps Platform</a></li>
-      <li><a href="#">Security IP</a></li>
-    </ul>
-  </div>
-  <div class="footer-col">
-    <h5>Company</h5>
-    <ul>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Careers</a></li>
-      <li><a href="#">Research</a></li>
-      <li><a href="#">Blog</a></li>
-      <li><a href="#">Press</a></li>
-    </ul>
-  </div>
-  <div class="footer-col">
-    <h5>Contact</h5>
-    <ul>
-      <li><a href="mailto:arqonixgen@gmail.com">arqonixgen@gmail.com</a></li>
-      <li><a href="https://www.arqonixgen.com" target="_blank">www.arqonixgen.com</a></li>
-      <li><a href="tel:+916239214369">+91 6239 214369</a></li>
-      <li><a href="#">LinkedIn</a></li>
-      <li><a href="#">Twitter / X</a></li>
-    </ul>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true"></span>ArqonixGen <small>Semiconductor Pvt Ltd</small></a>
+        <address>21, Royal Homes Layout Road, AECS Layout – A Block,<br>Singasandra, Bengaluru, Karnataka 560068, India</address>
+      </div>
+      <div>
+        <h4>Capabilities</h4>
+        <ul>
+          <li><a href="#capabilities">VLSI and SoC design</a></li>
+          <li><a href="#capabilities">AI chip architecture</a></li>
+          <li><a href="#capabilities">Edge AI</a></li>
+          <li><a href="#capabilities">Security IP</a></li>
+          <li><a href="#capabilities">Verification</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#approach">Approach</a></li>
+          <li><a href="#process">Process</a></li>
+          <li><a href="#tooling">Tooling</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:arqonixgen@gmail.com">arqonixgen@gmail.com</a></li>
+          <li><a href="tel:+916239214369">+91 6239 214369</a></li>
+          <li><a href="https://www.arqonixgen.com">www.arqonixgen.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p>© <span id="year">2026</span> ArqonixGen Semiconductor Private Limited. All rights reserved.</p>
+      <p>CIN: U62011PB2025PTC066273</p>
+    </div>
   </div>
 </footer>
-<div class="footer-bottom">
-  <p>© 2025 <span>ArqonixGen Semiconductor Private Limited</span>. All rights reserved.</p>
-  <p style="font-size:0.75rem;color:var(--muted)">CIN: U62011PB2025PTC066273</p>
-</div>
 
 <script>
-  // Custom cursor
-  const cursor = document.getElementById('cursor');
-  const ring = document.getElementById('cursorRing');
-  let mx = 0, my = 0, rx = 0, ry = 0;
+/* ---------- Hero: silicon galaxy that resolves into a chip floorplan ---------- */
+(function () {
+  var canvas = document.getElementById('heroCanvas');
+  var hero = document.getElementById('hero');
+  var stateLabel = document.getElementById('heroState');
+  if (!canvas || !canvas.getContext) return;
+  var ctx = canvas.getContext('2d');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var TAU = Math.PI * 2;
+  var W = 0, H = 0, cx = 0, cy = 0, R = 0, S = 0, N = 0;
+  var parts = [], segs = [], cum = [], total = 0, pulses = [];
+  var mouse = { x: 0, y: 0, tx: 0, ty: 0 };
+  var raf = 0, visible = true, last = 0, start = performance.now();
 
-  document.addEventListener('mousemove', e => {
-    mx = e.clientX; my = e.clientY;
-    cursor.style.left = mx + 'px';
-    cursor.style.top = my + 'px';
-  });
-
-  function animateCursor() {
-    rx += (mx - rx) * 0.15;
-    ry += (my - ry) * 0.15;
-    ring.style.left = rx + 'px';
-    ring.style.top = ry + 'px';
-    requestAnimationFrame(animateCursor);
+  function gauss() { var u = 1 - Math.random(), v = Math.random(); return Math.sqrt(-2 * Math.log(u)) * Math.cos(TAU * v); }
+  function sprite(r, g, b) {
+    var c = document.createElement('canvas'); c.width = c.height = 64;
+    var x = c.getContext('2d'); var grd = x.createRadialGradient(32, 32, 0, 32, 32, 32);
+    grd.addColorStop(0, 'rgba(' + r + ',' + g + ',' + b + ',1)');
+    grd.addColorStop(0.18, 'rgba(' + r + ',' + g + ',' + b + ',.75)');
+    grd.addColorStop(0.45, 'rgba(' + r + ',' + g + ',' + b + ',.18)');
+    grd.addColorStop(1, 'rgba(' + r + ',' + g + ',' + b + ',0)');
+    x.fillStyle = grd; x.fillRect(0, 0, 64, 64); return c;
   }
-  animateCursor();
+  var SP = { white: sprite(255, 255, 255), blue: sprite(150, 185, 255), warm: sprite(255, 168, 110), core: sprite(255, 242, 225), accent: sprite(120, 160, 255) };
 
-  document.querySelectorAll('a, button').forEach(el => {
-    el.addEventListener('mouseenter', () => {
-      cursor.style.width = '16px'; cursor.style.height = '16px';
-      ring.style.width = '52px'; ring.style.height = '52px';
-    });
-    el.addEventListener('mouseleave', () => {
-      cursor.style.width = '10px'; cursor.style.height = '10px';
-      ring.style.width = '36px'; ring.style.height = '36px';
-    });
-  });
+  /* Chip floorplan geometry in die units (x in [-1,1], y in [-0.72,0.72]) */
+  function seg(x1, y1, x2, y2) { segs.push([x1, y1, x2, y2]); }
+  function rect(x1, y1, x2, y2) { seg(x1, y1, x2, y1); seg(x2, y1, x2, y2); seg(x2, y2, x1, y2); seg(x1, y2, x1, y1); }
+  function buildSegs() {
+    segs = [];
+    rect(-1, -0.72, 1, 0.72);
+    for (var r = 0; r < 3; r++) for (var c = 0; c < 4; c++) {
+      var x = -0.92 + c * 0.30, y = -0.64 + r * 0.30;
+      rect(x, y, x + 0.26, y + 0.26); rect(x + 0.08, y + 0.08, x + 0.18, y + 0.18);
+    }
+    rect(0.36, -0.64, 0.92, 0.30);
+    for (var yy = -0.57; yy < 0.29; yy += 0.07) seg(0.40, yy, 0.88, yy);
+    rect(-0.92, 0.40, 0.92, 0.64);
+    for (var xx = -0.88; xx < 0.92; xx += 0.08) seg(xx, 0.44, xx, 0.60);
+    seg(-0.92, -0.36, 0.36, -0.36); seg(-0.92, -0.06, 0.36, -0.06); seg(-0.92, 0.31, 0.92, 0.31);
+    seg(-0.64, -0.64, -0.64, 0.40); seg(-0.34, -0.64, -0.34, 0.40); seg(-0.04, -0.64, -0.04, 0.40); seg(0.30, -0.64, 0.30, 0.40);
+    for (var i = 0; i < 7; i++) { var py = -0.6 + i * 0.2; seg(-1.07, py, -1.02, py); seg(1.02, py, 1.07, py); }
+    for (var j = 0; j < 10; j++) { var px = -0.9 + j * 0.2; seg(px, -0.79, px, -0.74); seg(px, 0.74, px, 0.79); }
+    cum = []; total = 0;
+    for (var k = 0; k < segs.length; k++) { var s = segs[k]; total += Math.hypot(s[2] - s[0], s[3] - s[1]); cum.push(total); }
+  }
+  function segAt(d) { var lo = 0, hi = cum.length - 1; while (lo < hi) { var mid = (lo + hi) >> 1; if (cum[mid] < d) lo = mid + 1; else hi = mid; } return lo; }
+  function pointOn(i, t) { var s = segs[i]; return [s[0] + (s[2] - s[0]) * t, s[1] + (s[3] - s[1]) * t]; }
+  function segLen(i) { return cum[i] - (i ? cum[i - 1] : 0); }
+  function newPulse() { var i = segAt(Math.random() * total); return { i: i, t: Math.random(), v: (0.18 + Math.random() * 0.35) * (Math.random() < .5 ? 1 : -1), a: .6 + Math.random() * .4 }; }
 
-  // Intersection Observer for reveal animations
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
+  function build() {
+    var b = hero.getBoundingClientRect(); W = Math.round(b.width); H = Math.round(b.height);
+    var DPR = Math.min(2, window.devicePixelRatio || 1);
+    canvas.width = W * DPR; canvas.height = H * DPR; ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    var wide = W > 900;
+    if (wide) { cx = W * 0.66; cy = H * 0.5; R = Math.min(W * 0.30, H * 0.40); }
+    else {
+      var content = hero.querySelector('.hero-content'), cb = content ? (content.getBoundingClientRect().bottom - b.top) : H * 0.5;
+      var room = Math.max(H - cb - 40, 160);
+      cx = W * 0.5; cy = cb + room * 0.55; R = Math.min(W * 0.44, room * 0.42);
+    }
+    S = R * 1.02;
+    N = Math.round(Math.min(3800, Math.max(1400, W * H / 480)));
+    buildSegs();
+    parts = [];
+    for (var i = 0; i < N; i++) {
+      var core = i < N * 0.07, arm = i % 3, t = Math.pow(Math.random(), 0.8), r, th;
+      if (core) { r = Math.abs(gauss()) * R * 0.08; th = Math.random() * TAU; }
+      else { r = R * (0.10 + 0.90 * t) * (1 + gauss() * 0.035); th = arm * TAU / 3 + t * TAU * 0.78 + gauss() * 0.17 * (1 - 0.5 * t); }
+      var si = segAt(Math.random() * total), cp = pointOn(si, Math.random());
+      var rnd = Math.random(), col = rnd < 0.13 ? 'warm' : rnd < 0.5 ? 'blue' : 'white';
+      var big = Math.random() < 0.09;
+      parts.push({
+        r: r, th: th, cx: cp[0] + (Math.random() - .5) * 0.006, cy: cp[1] + (Math.random() - .5) * 0.006, col: col,
+        size: big ? 2.8 + Math.random() * 2.6 : 1.1 + Math.random() * 1.6,
+        a: core ? .95 : .5 + Math.random() * .5, ph: Math.random() * TAU, sp: .5 + Math.random() * 1.6
+      });
+    }
+    pulses = []; for (var k = 0; k < 36; k++) pulses.push(newPulse());
+  }
+
+  function ease(x) { return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; }
+  var HOLD = 6.5, MORPH = 3.2, CYC = (HOLD + MORPH) * 2;
+  function stateAt(t) {
+    var m = (t + 1.5) % CYC;
+    if (m < HOLD) return 0; m -= HOLD;
+    if (m < MORPH) return ease(m / MORPH); m -= MORPH;
+    if (m < HOLD) return 1; m -= HOLD;
+    return 1 - ease(m / MORPH);
+  }
+  function draw(img, x, y, d, a) { ctx.globalAlpha = a; ctx.drawImage(img, x - d / 2, y - d / 2, d, d); }
+
+  var lastLabel = '';
+  function frame(now, once) {
+    raf = 0;
+    var t = (now - start) / 1000, dt = Math.min(0.05, (now - last) / 1000 || 0.016); last = now;
+    var s = reduce ? 0 : stateAt(t);
+    if (stateLabel) { var lbl = s < 0.5 ? 'Silicon galaxy' : 'SoC floorplan'; if (lbl !== lastLabel) { stateLabel.textContent = lbl; lastLabel = lbl; } }
+    mouse.x += (mouse.tx - mouse.x) * 0.04; mouse.y += (mouse.ty - mouse.y) * 0.04;
+    var ox = cx + mouse.x * 26, oy = cy + mouse.y * 18;
+    var rot = t * 0.06, breathe = 1 + 0.012 * Math.sin(t * 0.7);
+    ctx.clearRect(0, 0, W, H);
+    ctx.globalCompositeOperation = 'lighter';
+    var g = 1 - s;
+    if (g > 0) { draw(SP.core, ox, oy, R * 1.1, 0.30 * g); draw(SP.core, ox, oy, R * 0.34, 0.85 * g); }
+    if (s > 0) {
+      ctx.globalAlpha = 0.11 * s; ctx.drawImage(SP.accent, ox - S * 1.3, oy - S * 1.0, S * 2.6, S * 2.0);
+      ctx.globalAlpha = 0.16 * s * s; ctx.strokeStyle = '#9db8ff'; ctx.lineWidth = 1; ctx.beginPath();
+      for (var q0 = 0; q0 < segs.length; q0++) { var sg = segs[q0]; ctx.moveTo(ox + sg[0] * S, oy + sg[1] * S); ctx.lineTo(ox + sg[2] * S, oy + sg[3] * S); }
+      ctx.stroke();
+    }
+    for (var i = 0; i < N; i++) {
+      var p = parts[i];
+      var rr = p.r * breathe, ang = p.th + rot;
+      var gx = rr * Math.cos(ang), gy = rr * Math.sin(ang);
+      var x = ox + gx + (p.cx * S - gx) * s, y = oy + gy + (p.cy * S - gy) * s;
+      var tw = 0.72 + 0.28 * Math.sin(t * p.sp + p.ph);
+      var sz = p.size * (1 + 0.4 * (tw - 0.72));
+      if ((i % 5) === 0) draw(SP[p.col], x, y, sz * 12, 0.06);
+      draw(SP[p.col], x, y, sz * 3.6, p.a * tw * (1 + 0.25 * s));
+    }
+    if (s > 0.3 && !reduce) {
+      var pa = (s - 0.3) / 0.7;
+      for (var k = 0; k < pulses.length; k++) {
+        var q = pulses[k], len = segLen(q.i) || 0.01;
+        q.t += q.v * dt / len;
+        if (q.t > 1 || q.t < 0) { pulses[k] = newPulse(); continue; }
+        for (var tr = 0; tr < 7; tr++) {
+          var tt = q.t - (q.v > 0 ? 1 : -1) * tr * 0.03 / len; if (tt < 0 || tt > 1) continue;
+          var pp = pointOn(q.i, tt);
+          draw(tr ? SP.accent : SP.white, ox + pp[0] * S, oy + pp[1] * S, tr ? 10 - tr : 20, pa * q.a * (tr ? 0.35 / tr : 1));
+        }
       }
-    });
-  }, { threshold: 0.1 });
+    }
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.globalAlpha = 1;
+    if (!once && visible && !document.hidden) raf = requestAnimationFrame(frame);
+  }
+  function kick() { if (!raf && visible && !document.hidden && !reduce) { last = performance.now(); raf = requestAnimationFrame(frame); } }
 
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  build();
+  if (reduce) { frame(performance.now(), true); } else { kick(); }
+
+  var rt; window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(function () { build(); if (reduce) frame(performance.now(), true); }, 150); });
+  hero.addEventListener('pointermove', function (e) { var b = hero.getBoundingClientRect(); mouse.tx = ((e.clientX - b.left) / b.width - .5) * 2; mouse.ty = ((e.clientY - b.top) / b.height - .5) * 2; });
+  hero.addEventListener('pointerleave', function () { mouse.tx = 0; mouse.ty = 0; });
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (en) { visible = en[0].isIntersecting; kick(); }, { threshold: 0 }).observe(hero);
+  }
+  document.addEventListener('visibilitychange', kick);
+})();
+
+/* ---------- Page behaviour ---------- */
+(function () {
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+  var toggle = document.getElementById('navToggle');
+  var menu = document.getElementById('mobileMenu');
+  var heroVisible = true, menuOpen = false;
+
+  function syncNav() { nav.classList.toggle('on-dark', heroVisible && !menuOpen); }
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (en) { heroVisible = en[0].isIntersecting; syncNav(); },
+      { rootMargin: '-' + (nav.offsetHeight || 64) + 'px 0px 0px 0px', threshold: 0 }).observe(hero);
+  } else {
+    window.addEventListener('scroll', function () { heroVisible = window.scrollY < hero.offsetHeight - 64; syncNav(); }, { passive: true });
+  }
+
+  function setMenu(open) {
+    menuOpen = open;
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    menu.classList.toggle('open', open);
+    document.body.classList.toggle('menu-open', open);
+    syncNav();
+  }
+  toggle.addEventListener('click', function () { setMenu(toggle.getAttribute('aria-expanded') !== 'true'); });
+  menu.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
+  window.addEventListener('resize', function () { if (window.innerWidth > 860 && menuOpen) setMenu(false); });
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* Coverage grid cells */
+  var cg = document.getElementById('covgrid');
+  if (cg) {
+    var pattern = [9,9,9,9,9,5,9,9,2,9,9,9,5,9,9,9,9,9,2,9,9,9,5,9,9,9,9, 9,2,9,9,9,9,9,5,9,9,9,2,9,9,9,5,9,9,9,9,2,9,9,9,5,9,9];
+    for (var i = 0; i < pattern.length; i++) {
+      var r = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+      var col = i % 27, row = Math.floor(i / 27);
+      r.setAttribute('x', col * 42); r.setAttribute('y', row * 42); r.setAttribute('width', 34); r.setAttribute('height', 34);
+      r.setAttribute('fill-opacity', pattern[i] / 10); r.setAttribute('class', 'cell'); r.style.setProperty('--i', i);
+      cg.appendChild(r);
+    }
+  }
+
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.08, rootMargin: '0px 0px -5% 0px' });
+    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
+  }
+})();
 </script>
 </body>
 </html>
