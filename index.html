@@ -315,6 +315,80 @@
     .hero-modes { margin-top: 2rem; }
   }
 
+  .hero {
+    background: radial-gradient(ellipse at 80% 25%, #13132c 0, transparent 48%),
+      radial-gradient(ellipse at 65% 90%, #072126 0, transparent 45%), var(--space);
+  }
+  .hero-veil {
+    background: linear-gradient(90deg, rgba(6,7,11,.85), rgba(6,7,11,.4) 36%, transparent 67%),
+      linear-gradient(0deg, var(--space), transparent 24%, transparent 78%, rgba(6,7,11,.45));
+  }
+  .hero .eyebrow { color: #a4c9d9; letter-spacing: .16em; }
+  .hero h1 { letter-spacing: -.055em; }
+  .hero-meta span::before { border-radius: 1px; background: #88e4e8; box-shadow: 0 0 12px #88e4e866; }
+  .hero-readout .dot { border-radius: 1px; background: #88e4e8; box-shadow: 0 0 12px #88e4e8; }
+  .hero-foot, .mode-hint { color: #a0aebe; }
+  .hero-readout { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; letter-spacing: .06em; }
+  .hero-modes { gap: .75rem; }
+  .modes { border-radius: 12px; background: rgba(8,16,29,.65); }
+  .mode-btn { border-radius: 8px; }
+  .mode-btn[aria-pressed="true"] { background: #d9f6f6; }
+  .motion-toggle {
+    display: inline-flex; align-items: center; gap: .5rem; padding: .65rem .85rem;
+    border: 1px solid rgba(255,255,255,.25); border-radius: 10px; background: rgba(8,16,29,.6);
+    color: #d7e8ee; font: inherit; font-size: .78rem; cursor: pointer;
+  }
+  .motion-toggle:hover { border-color: #88e4e8; }
+  .motion-toggle svg { width: 12px; height: 12px; }
+  .probe { width: 32px; height: 32px; margin: -16px 0 0 -16px; border-radius: 4px; border-color: #88e4e866; }
+  .btn::before {
+    content: ''; position: absolute; inset: auto 1.1rem 5px; height: 5px;
+    border-left: 1px solid currentColor; border-bottom: 1px solid currentColor;
+    opacity: .45; transform: scaleX(0); transform-origin: left; transition: transform .45s var(--ease);
+  }
+  .btn:hover::before, .btn:focus-visible::before { transform: scaleX(1); }
+  .cap { isolation: isolate; }
+  .cap::after {
+    content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+    background: linear-gradient(90deg, var(--fig-line) 1px, transparent 1px),
+      linear-gradient(var(--fig-line) 1px, transparent 1px);
+    background-size: 24px 24px;
+    mask-image: radial-gradient(180px circle at var(--px, 50%) var(--py, 50%), #000, transparent);
+    opacity: 0; transition: opacity .4s;
+  }
+  .cap:hover::after { opacity: .6; }
+  .cap-num::after { border-radius: 1px; }
+  .figure-frame { border: 1px solid var(--rule); }
+  .figure-frame::after {
+    content: ''; position: absolute; inset: 12px; pointer-events: none; opacity: .45;
+    background: linear-gradient(var(--accent), var(--accent)) top left / 18px 1px no-repeat,
+      linear-gradient(var(--accent), var(--accent)) top left / 1px 18px no-repeat,
+      linear-gradient(var(--accent), var(--accent)) bottom right / 18px 1px no-repeat,
+      linear-gradient(var(--accent), var(--accent)) bottom right / 1px 18px no-repeat;
+  }
+  .pixel-curtain { position: absolute; inset: 0; display: grid; grid-template-columns: repeat(12, 1fr); grid-template-rows: repeat(4, 1fr); pointer-events: none; }
+  .pixel-tile { background: var(--fig-bg); border: 1px solid var(--fig-grid); }
+  .figure.in .pixel-tile { animation: pixel-clear .75s var(--ease) both; animation-delay: calc(.08s + var(--tile) * 14ms); }
+  @keyframes pixel-clear { 0% { opacity: 1; transform: scale(1); } 55% { opacity: .7; } 100% { opacity: 0; transform: scale(.12); } }
+  html[data-motion="paused"] :is(.link-pulse, .node-dot, .wcursor, .led, .mac-dot, .arm-upper, .fan, .wave-arc, .dot, .hero-hint i) { animation-play-state: paused !important; }
+  html[data-motion="paused"] .pixel-curtain { display: none; }
+  html[data-motion="paused"] .statement .w { opacity: 1 !important; }
+  html[data-page-hidden="true"] *, .figure:not(.is-visible) :is(.link-pulse, .node-dot, .wcursor, .led, .mac-dot, .arm-upper, .fan, .wave-arc) { animation-play-state: paused !important; }
+  .hero-modes[hidden] { display: none; }
+  @media (max-width: 980px) {
+    .hero { padding-bottom: clamp(310px, 60vw, 440px); }
+    .hero-content { max-width: 43rem; }
+    .hero-veil { background: linear-gradient(180deg, rgba(6,7,11,.8), rgba(6,7,11,.6) 40%, transparent 72%, var(--space)); }
+    .hero-modes { gap: .6rem; }
+    .mode-hint { display: none; }
+    .mode-btn { padding: .55rem .75rem; font-size: .76rem; }
+    .hero-foot { bottom: 1.4rem; font-size: .65rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .pixel-curtain, .probe { display: none; }
+    .cap::after { display: none; }
+  }
+
   /* ---------- Figures ---------- */
   .figure { margin: clamp(2rem, 4vw, 3.5rem) 0; }
   .figure-frame { background: var(--fig-bg); border-radius: var(--radius); overflow: hidden; aspect-ratio: 16 / 8; position: relative; transition: background .4s ease; }
@@ -542,7 +616,7 @@
     </div>
   </div>
 </header>
-<div class="mobile-menu" id="mobileMenu">
+<div class="mobile-menu" id="mobileMenu" inert>
   <a href="#capabilities">Capabilities</a>
   <a href="#deployment">Deployment</a>
   <a href="#approach">Approach</a>
@@ -578,7 +652,12 @@
           <button class="mode-btn" data-mode="0" aria-pressed="true">Galaxy</button>
           <button class="mode-btn" data-mode="1" aria-pressed="false">Wafer</button>
           <button class="mode-btn" data-mode="2" aria-pressed="false">Die stack</button>
+          <button class="mode-btn" data-mode="3" aria-pressed="false">Neural field</button>
         </div>
+        <button class="motion-toggle" id="motionToggle" type="button" aria-pressed="false" aria-label="Pause ambient motion">
+          <svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M2 1h3v10H2zM7 1h3v10H7z"/></svg>
+          <span>Pause motion</span>
+        </button>
         <span class="mode-hint">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5 5 9l4 4M15 5l4 4-4 4"/><path d="M5 9h14"/></svg>
           Drag to orbit
@@ -1366,20 +1445,25 @@
   if (!canvas || !canvas.getContext) return;
 
   var ctx = canvas.getContext('2d', { alpha: true });
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!ctx) { hero.querySelector('.hero-modes').hidden = true; return; }
+  var motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var reduce = motionQuery.matches, paused = false, clock = 0;
+  var motionBtn = document.getElementById('motionToggle');
   var TAU = Math.PI * 2, DEG = 57.29578;
-  var LABELS = ['Spiral galaxy', 'Wafer · probe scan', 'Die stack · M1–M3'];
+  var LABELS = ['Pixel galaxy', 'Wafer · probe scan', 'Die stack · M1–M3', 'Neural field · signal lattice'];
 
   /* Each formation gets its own resting camera, so the die stack is first
      seen from an angle where the metal layers separate. */
   var HOME = [
     { yaw: -0.30, pitch: 0.24, drift: 0.055 },
     { yaw: -0.08, pitch: 0.13, drift: 0.030 },
-    { yaw: -0.40, pitch: 0.36, drift: 0.020 }
+    { yaw: -0.40, pitch: 0.36, drift: 0.020 },
+    { yaw: -0.18, pitch: 0.65, drift: 0.012 }
   ];
 
   /* ---------- sprite atlas: colour x size, blitted without scaling ---------- */
-  var COLORS = [[255,255,255], [154,188,255], [255,176,120], [124,160,255]];
+  var COLORS = [[230,249,255], [109,224,238], [195,163,255], [123,151,255]];
+  var PIXELS = COLORS.map(function (c) { return 'rgb(' + c.join(',') + ')'; });
   var SIZES = [3, 4, 5, 7, 9, 12, 16, 22, 30, 42];
   var ATLAS = COLORS.map(function (c) {
     return SIZES.map(function (d) {
@@ -1550,7 +1634,7 @@
   for (var wsi = 0; wsi < dieWire.s.length; wsi++) if (dieWire.s[wsi][6]) wireSegs.push(wsi);
 
   /* ---------- particles ---------- */
-  var N = 0, GAL, WAF, DIE, CUR, ATT, COL, WCOL, DCOL, GCOL, SPIKE;
+  var N = 0, GAL, WAF, DIE, FIELD, CUR, ATT, COL, WCOL, DCOL, GCOL, SPIKE;
   var BG = null, MBG = 0, CLU = [];
   var W = 0, H = 0, ox = 0, oy = 0, S = 0, DPR = 1, wide = true;
 
@@ -1571,7 +1655,7 @@
   function build() {
     var b = hero.getBoundingClientRect();
     W = Math.max(1, Math.round(b.width)); H = Math.max(1, Math.round(b.height));
-    DPR = Math.min(2, window.devicePixelRatio || 1);
+    DPR = Math.min(W > 980 ? 2 : 1.5, window.devicePixelRatio || 1);
     canvas.width = Math.round(W * DPR); canvas.height = Math.round(H * DPR);
     ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
     wide = W > 980;
@@ -1585,12 +1669,13 @@
     }
 
     buildBG();
-    var next = Math.max(1500, Math.min(wide ? 3600 : 2100, Math.round(W * H / (wide ? 400 : 480))));
+    var next = Math.max(wide ? 1500 : 900, Math.min(wide ? 3200 : 1500, Math.round(W * H / (wide ? 400 : 480))));
     drawN = next;
     if (next === N) return;
     N = next;
 
     GAL = new Float32Array(N * 3); WAF = new Float32Array(N * 3); DIE = new Float32Array(N * 3);
+    FIELD = new Float32Array(N * 3);
     CUR = new Float32Array(N * 3); ATT = new Float32Array(N * 4);
     COL = new Uint8Array(N); WCOL = new Uint8Array(N); DCOL = new Uint8Array(N);
     GCOL = new Uint8Array(N); SPIKE = new Uint8Array(N);
@@ -1641,6 +1726,9 @@
       }
       GAL[i3] = gr; GAL[i3 + 1] = gth; GAL[i3 + 2] = gz;
       GCOL[i] = gcol;
+      FIELD[i3] = (Math.floor(Math.random() * 48) / 47 - 0.5) * 2.2;
+      FIELD[i3 + 1] = (Math.floor(Math.random() * 32) / 31 - 0.5) * 1.55;
+      FIELD[i3 + 2] = Math.hypot(FIELD[i3], FIELD[i3 + 1]);
 
       var wcol;
       if (rnd < 0.80) { var wfi = wafFill.pick(); wafFill.point(wfi, tmp); wcol = wafFill.col(wfi); }
@@ -1689,7 +1777,8 @@
   var pulses = [], flashes = [], scanIdx = 0, scanAt = 0, tiles = [], tileAt = 0;
 
   function setMode(m, manual) {
-    if (m !== mode) bloom = 1;
+    if (m < 0 || m >= HOME.length) return;
+    if (m !== mode) bloom = reduce || paused ? 0 : 1;
     mode = m;
     if (manual) autoCycle = false;
     lastSwitch = performance.now();
@@ -1714,9 +1803,11 @@
 
   function frame(now, single) {
     raf = 0;
-    var t = (now - t0) / 1000;
+    var still = reduce || paused;
     var dt = Math.min(0.05, (now - last) / 1000 || 0.016);
     last = now;
+    if (!still) clock += dt;
+    var t = clock;
 
     /* keep frames near 60fps by thinning the field, never below 70% */
     if (!single && !pinned) {
@@ -1726,14 +1817,14 @@
       else if (ema < 14.5 && drawN < N) drawN = Math.min(N, drawN + Math.round(N * 0.015));
     }
 
-    if (!reduce) {
+    if (!still) {
       spinG += dt * 0.075; spinW += dt * 0.013;
-      if (bloom > 0) bloom = Math.max(0, bloom - dt * 1.4);
-      if (autoCycle && now - lastSwitch > 9500) setMode((mode + 1) % 3, false);
+      if (bloom > 0) bloom = Math.max(0, bloom - dt * 0.65);
+      if (autoCycle && now - lastSwitch > 12000) setMode((mode + 1) % HOME.length, false);
     }
 
     var home = HOME[mode];
-    if (!dragging) {
+    if (!dragging && !still) {
       yaw += vYaw * dt; pitch += vPitch * dt;
       var damp = Math.pow(0.0016, dt);
       vYaw *= damp; vPitch *= damp;
@@ -1746,14 +1837,17 @@
       }
     }
     pitch = Math.max(-1.3, Math.min(1.3, pitch));
-    mx += (tmx - mx) * 0.045; my += (tmy - my) * 0.045;
+    if (!still) { mx += (tmx - mx) * 0.045; my += (tmy - my) * 0.045; }
 
     var vyaw = yaw + (mode === 1 ? spinW : 0);
     var cyw = Math.cos(vyaw), syw = Math.sin(vyaw);
     var cpt = Math.cos(pitch), spt = Math.sin(pitch);
     var cx0 = ox + mx * 20, cy0 = oy + my * 14;
-    var ease = reduce ? 1 : (1 - Math.exp(-dt * 2.0));
+    var ease = still ? 1 : (1 - Math.exp(-dt * 2.0));
     var thin = drawN / N;
+    var scatter = still ? 0 : Math.sin(bloom * Math.PI) * 0.32;
+    var pointerActive = !still && wide && hero.classList.contains('has-pointer');
+    var pointerX = (tmx + 1) * W / 2, pointerY = (tmy + 1) * H / 2;
 
     ctx.clearRect(0, 0, W, H);
     ctx.globalCompositeOperation = 'lighter';
@@ -1826,17 +1920,41 @@
       strokeSet(wafEdge, 0.30 * fade * (1 - settle * 0.5), '#9dbcff', -1, 9);
     }
 
+    if (mode === 0 || mode === 3) {
+      ctx.lineWidth = 0.7; ctx.strokeStyle = PIXELS[1];
+      for (var ring = 0; ring < 3; ring++) {
+        var ra = S * (1.12 + ring * 0.14), rb = ra * (0.35 + ring * 0.09);
+        var angle = -0.3 + ring * 0.42 + Math.sin(t * 0.12) * 0.08;
+        ctx.globalAlpha = fade * (mode === 0 ? 0.16 : 0.08);
+        ctx.setLineDash(ring === 1 ? [2, 9] : []);
+        ctx.beginPath(); ctx.ellipse(cx0, cy0, ra, rb, angle, 0, TAU); ctx.stroke();
+        var orbit = t * (0.12 + ring * 0.035) + ring * 2.1;
+        var rx = Math.cos(orbit) * ra, ry = Math.sin(orbit) * rb;
+        ctx.globalAlpha = fade * 0.65; ctx.fillStyle = PIXELS[ring === 1 ? 2 : 1];
+        ctx.fillRect(cx0 + rx * Math.cos(angle) - ry * Math.sin(angle) - 2,
+          cy0 + rx * Math.sin(angle) + ry * Math.cos(angle) - 2, 4, 4);
+      }
+      ctx.setLineDash([]);
+    }
+
     /* positions relax toward the active formation, each particle at its own rate */
     for (var i = 0; i < N; i++) {
       var i3 = i * 3, i4 = i * 4, tx, ty, tz;
       if (mode === 0) {
-        var ga = GAL[i3 + 1] + spinG;
+        var ga = GAL[i3 + 1] + spinG * (0.6 + 0.35 / (0.3 + GAL[i3]));
         tx = GAL[i3] * Math.cos(ga); ty = GAL[i3] * Math.sin(ga); tz = GAL[i3 + 2];
       } else if (mode === 1) {
         tx = WAF[i3] * Math.cos(WAF[i3 + 1]); ty = WAF[i3] * Math.sin(WAF[i3 + 1]); tz = WAF[i3 + 2];
-      } else { tx = DIE[i3]; ty = DIE[i3 + 1]; tz = DIE[i3 + 2]; }
+      } else if (mode === 2) { tx = DIE[i3]; ty = DIE[i3 + 1]; tz = DIE[i3 + 2]; }
+      else {
+        tx = FIELD[i3]; ty = FIELD[i3 + 1];
+        tz = Math.sin(FIELD[i3 + 2] * 7 - t * 1.2) * 0.16 + Math.cos(tx * 4 + t * 0.5) * 0.07;
+      }
+      tx += Math.cos(ATT[i4 + 2]) * scatter;
+      ty += Math.sin(ATT[i4 + 2]) * scatter;
+      tz += Math.sin(ATT[i4 + 2] * 3) * scatter * 0.7;
 
-      var e = ease * ATT[i4 + 3]; if (e > 1) e = 1;
+      var e = still ? 1 : ease * ATT[i4 + 3]; if (e > 1) e = 1;
       var x = CUR[i3] += (tx - CUR[i3]) * e;
       var y = CUR[i3 + 1] += (ty - CUR[i3 + 1]) * e;
       var z = CUR[i3 + 2] += (tz - CUR[i3 + 2]) * e;
@@ -1846,12 +1964,20 @@
       var y1 = y * cpt - z1 * spt, z2 = y * spt + z1 * cpt;
       var pp = FOC / (FOC + z2);
       var sx = cx0 + x1 * pp * S, sy = cy0 + y1 * pp * S;
+      var proximity = 0;
+      if (pointerActive) {
+        var dxp = sx - pointerX, dyp = sy - pointerY;
+        proximity = Math.max(0, 1 - (dxp * dxp + dyp * dyp) / 14400);
+        sx += dxp * proximity * 0.28; sy += dyp * proximity * 0.28;
+      }
       if (sx < -50 || sx > W + 50 || sy < -50 || sy > H + 50) continue;
 
       var tw = 0.74 + 0.26 * Math.sin(t * (0.6 + ATT[i4 + 3]) + ATT[i4 + 2]);
+      if (mode === 3) tw = 0.55 + 0.45 * Math.pow(Math.max(0, Math.sin(FIELD[i3 + 2] * 7 - t * 1.2)), 3);
       var d = ATT[i4] * pp * 3.4 * tw;
       var a = ATT[i4 + 1] * tw * (0.45 + 0.55 * pp) * fade / (0.55 + 0.45 * thin);
-      var atl = ATLAS[mode === 0 ? GCOL[i] : mode === 1 ? WCOL[i] : DCOL[i]];
+      var color = mode === 0 ? GCOL[i] : mode === 1 ? WCOL[i] : mode === 2 ? DCOL[i] : (i % 3 ? 1 : 2);
+      var atl = ATLAS[color];
 
       if ((i % 12) === 0) {
         var ig = atl[bucket(d * 3.0)], hg = ig.width / 2;
@@ -1859,8 +1985,14 @@
         ctx.drawImage(ig, sx - hg, sy - hg);
       }
       var im = atl[bucket(d)], hh = im.width / 2;
-      ctx.globalAlpha = a > 1 ? 1 : a;
+      var pixel = mode !== 0 || i % 3 !== 0;
+      ctx.globalAlpha = Math.min(1, a * (pixel ? 0.28 : 0.75));
       ctx.drawImage(im, sx - hh, sy - hh);
+      if (pixel) {
+        var size = Math.max(1, Math.min(3.6, d * 0.25)) * (1 + proximity * 0.8);
+        ctx.globalAlpha = Math.min(1, a * (0.8 + proximity)); ctx.fillStyle = PIXELS[color];
+        ctx.fillRect(Math.round(sx - size / 2), Math.round(sy - size / 2), size, size);
+      }
 
       if (SPIKE[i] && d > 7) {
         var spl = d * 2.6;
@@ -1943,11 +2075,26 @@
       readout2.textContent = '· yaw ' + ((Math.round(yaw * DEG) % 360 + 360) % 360) + '° · tilt ' + Math.round(pitch * DEG) + '°';
     }
 
-    if (!single && visible && !document.hidden && !reduce) raf = requestAnimationFrame(frame);
+    if (!single && visible && !document.hidden && !reduce && !paused) raf = requestAnimationFrame(frame);
   }
 
-  function kick() { if (!raf && visible && !document.hidden && !reduce) { last = performance.now(); raf = requestAnimationFrame(frame); } }
-  function once() { last = performance.now(); frame(performance.now(), true); }
+  function kick() { if (!raf && visible && !document.hidden && !reduce && !paused) { last = performance.now(); raf = requestAnimationFrame(frame); } }
+  function once() { cancelAnimationFrame(raf); raf = 0; last = performance.now(); frame(performance.now(), true); }
+  function syncMotion() {
+    var stopped = reduce || paused;
+    document.documentElement.setAttribute('data-motion', stopped ? 'paused' : 'running');
+    motionBtn.setAttribute('aria-pressed', String(stopped));
+    motionBtn.setAttribute('aria-label', reduce ? 'Motion reduced by system preference' : stopped ? 'Resume ambient motion' : 'Pause ambient motion');
+    motionBtn.querySelector('span').textContent = reduce ? 'Motion reduced' : stopped ? 'Resume motion' : 'Pause motion';
+    motionBtn.querySelector('path').setAttribute('d', stopped ? 'M3 1l8 5-8 5z' : 'M2 1h3v10H2zM7 1h3v10H7z');
+    motionBtn.disabled = reduce;
+    cancelAnimationFrame(raf); raf = 0;
+    if (stopped) { bloom = 0; vYaw = vPitch = 0; }
+    else { lastSwitch = performance.now(); kick(); }
+    document.dispatchEvent(new Event('agx:motion'));
+  }
+  motionBtn.addEventListener('click', function () { paused = !paused; syncMotion(); });
+  motionQuery.addEventListener('change', function (e) { reduce = e.matches; syncMotion(); if (reduce) once(); });
 
   /* ---------- drag to orbit ---------- */
   var pid = null, lx = 0, ly = 0, lt = 0, touch = false;
@@ -1973,7 +2120,7 @@
     yaw += dx * ky;
     vYaw = 0.75 * vYaw + 0.25 * (dx * ky / dts);
     if (!touch) { pitch += dy * kp; vPitch = 0.75 * vPitch + 0.25 * (dy * kp / dts); }
-    if (reduce) once();
+    if (reduce || paused) once();
   });
   function endDrag(e) {
     if (pid !== null && e && e.pointerId !== pid) return;
@@ -1990,34 +2137,42 @@
   /* keyboard nudge for the formation buttons, arrow keys orbit */
   var btns = document.querySelectorAll('.mode-btn');
   for (var bi = 0; bi < btns.length; bi++) {
-    btns[bi].addEventListener('click', function () { setMode(+this.dataset.mode, true); kick(); if (reduce) once(); });
+    btns[bi].addEventListener('click', function () { setMode(+this.dataset.mode, true); kick(); if (reduce || paused) once(); });
     btns[bi].addEventListener('keydown', function (e) {
       var step = e.shiftKey ? 0.35 : 0.14;
-      if (e.key === 'ArrowLeft') { yaw -= step; lastInput = performance.now(); if (reduce) once(); }
-      else if (e.key === 'ArrowRight') { yaw += step; lastInput = performance.now(); if (reduce) once(); }
-      else if (e.key === 'ArrowUp') { pitch -= step; lastInput = performance.now(); if (reduce) once(); }
-      else if (e.key === 'ArrowDown') { pitch += step; lastInput = performance.now(); if (reduce) once(); }
+      if (e.key === 'ArrowLeft') { yaw -= step; lastInput = performance.now(); if (reduce || paused) once(); }
+      else if (e.key === 'ArrowRight') { yaw += step; lastInput = performance.now(); if (reduce || paused) once(); }
+      else if (e.key === 'ArrowUp') { pitch -= step; lastInput = performance.now(); if (reduce || paused) once(); }
+      else if (e.key === 'ArrowDown') { pitch += step; lastInput = performance.now(); if (reduce || paused) once(); }
       else return;
       e.preventDefault();
     });
   }
 
-  build(); setMode(0, false);
-  if (reduce) { pitch = HOME[0].pitch; for (var w = 0; w < 90; w++) frame(performance.now() + w * 16, true); }
-  else kick();
+  build(); setMode(0, false); syncMotion();
+  if (reduce) once();
 
   var rt;
-  window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(function () { build(); if (reduce) once(); }, 160); });
+  function resizeHero() { build(); if (reduce || paused) once(); }
+  window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(resizeHero, 160); });
+  if (document.fonts) document.fonts.ready.then(resizeHero);
   if ('IntersectionObserver' in window) {
-    new IntersectionObserver(function (en) { visible = en[0].isIntersecting; kick(); }, { threshold: 0 }).observe(hero);
+    new IntersectionObserver(function (en) {
+      visible = en[0].isIntersecting;
+      if (visible) { lastSwitch = performance.now(); kick(); }
+      else { cancelAnimationFrame(raf); raf = 0; }
+    }, { threshold: 0 }).observe(hero);
   }
-  document.addEventListener('visibilitychange', kick);
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden) { cancelAnimationFrame(raf); raf = 0; }
+    else { lastSwitch = performance.now(); kick(); }
+  });
 
   window.__agxHero = {
     fade: function (v) { fade = v; },
     mode: function () { return mode; },
     cam: function () { return [yaw, pitch]; },
-    stats: function () { return { N: N, drawN: drawN, ms: Math.round(ema * 10) / 10 }; },
+    stats: function () { return { N: N, drawN: drawN, ms: Math.round(ema * 10) / 10, running: !!raf, reduced: reduce, paused: paused, time: clock }; },
     pin: function (v) { pinned = !!v; if (pinned) drawN = N; }
   };
 })();
@@ -2032,7 +2187,10 @@
   var toggle = document.getElementById('navToggle');
   var menu = document.getElementById('mobileMenu');
   var bar = document.getElementById('progressBar');
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var pageMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var reduce = pageMotionQuery.matches;
+  pageMotionQuery.addEventListener('change', function (e) { reduce = e.matches; onScroll(); });
+  document.addEventListener('agx:motion', onScroll);
   var heroVisible = true, menuOpen = false;
 
   /* theme */
@@ -2062,6 +2220,7 @@
     toggle.setAttribute('aria-expanded', String(open));
     toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
     menu.classList.toggle('open', open);
+    menu.inert = !open;
     document.body.classList.toggle('menu-open', open);
     syncNav();
   }
@@ -2121,6 +2280,43 @@
     }
   }
 
+  document.querySelectorAll('.figure-frame').forEach(function (el) {
+    var curtain = document.createElement('div');
+    curtain.className = 'pixel-curtain'; curtain.setAttribute('aria-hidden', 'true');
+    for (var i = 0; i < 48; i++) {
+      var tile = document.createElement('span');
+      tile.className = 'pixel-tile';
+      tile.style.setProperty('--tile', (i % 12) * 2 + Math.floor(i / 12) * 3 + (i * 7 % 5));
+      curtain.appendChild(tile);
+    }
+    el.appendChild(curtain);
+  });
+  if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    document.querySelectorAll('.cap').forEach(function (el) {
+      var hoverFrame = 0, px = 0, py = 0;
+      el.addEventListener('pointermove', function (e) {
+        if (reduce || root.getAttribute('data-motion') === 'paused') return;
+        var box = el.getBoundingClientRect();
+        px = Math.round((e.clientX - box.left) / 24) * 24;
+        py = Math.round((e.clientY - box.top) / 24) * 24;
+        if (!hoverFrame) hoverFrame = requestAnimationFrame(function () {
+          hoverFrame = 0; el.style.setProperty('--px', px + 'px'); el.style.setProperty('--py', py + 'px');
+        });
+      }, { passive: true });
+    });
+  }
+  if ('IntersectionObserver' in window) {
+    var figureIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { e.target.classList.toggle('is-visible', e.isIntersecting); });
+    }, { rootMargin: '80px' });
+    document.querySelectorAll('.figure').forEach(function (el) { figureIO.observe(el); });
+  } else {
+    document.querySelectorAll('.figure').forEach(function (el) { el.classList.add('is-visible'); });
+  }
+  document.addEventListener('visibilitychange', function () {
+    root.setAttribute('data-page-hidden', String(document.hidden));
+  });
+
   /* staggered reveals */
   document.querySelectorAll('[data-stagger]').forEach(function (g) {
     Array.prototype.slice.call(g.children).forEach(function (c, i) {
@@ -2154,7 +2350,7 @@
         window.__agxHero.fade(1 - out * 0.85);
       }
 
-      if (lit && litWords.length && !reduce) {
+      if (lit && litWords.length && !reduce && root.getAttribute('data-motion') !== 'paused') {
         var r = lit.getBoundingClientRect();
         var span = r.height + window.innerHeight * 0.5;
         var prog = (window.innerHeight * 0.85 - r.top) / span;
