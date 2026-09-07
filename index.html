@@ -603,6 +603,7 @@
         <a href="#approach">Approach</a>
         <a href="#process">Process</a>
         <a href="#tooling">Tooling</a>
+        <a href="#resources">Resources</a>
         <a href="#contact">Contact</a>
       </nav>
       <button class="icon-btn" id="themeToggle" aria-label="Switch colour theme" title="Switch colour theme">
@@ -622,6 +623,7 @@
   <a href="#approach">Approach</a>
   <a href="#process">Process</a>
   <a href="#tooling">Tooling</a>
+  <a href="#resources">Resources</a>
   <a href="#contact">Contact</a>
   <a class="btn" href="mailto:arqonixgen@gmail.com">Start a conversation</a>
 </div>
@@ -1361,6 +1363,344 @@
   </div>
 </section>
 
+<!-- ---------- Resources ---------- -->
+<style>
+  #resources .res-group { margin-top: 3.5rem; }
+  #resources .res-group > h3 {
+    font-size: .78rem; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--ink-3); font-weight: 600; margin: 0 0 1.5rem;
+    padding-bottom: .75rem; border-bottom: 1px solid var(--rule);
+  }
+  #resources .res-grid { display: grid; gap: 1.5rem; grid-template-columns: 1fr; }
+  @media (min-width: 620px) { #resources .res-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1040px) { #resources .res-grid { grid-template-columns: repeat(3, 1fr); } }
+  #resources .res {
+    display: flex; flex-direction: column; text-decoration: none; color: inherit;
+    border: 1px solid var(--rule); border-radius: 4px; overflow: hidden;
+    background: var(--bg); transition: border-color .3s, transform .3s;
+  }
+  #resources .res:hover, #resources .res:focus-visible {
+    border-color: var(--accent); transform: translateY(-3px);
+  }
+  #resources .res-fig {
+    background: var(--fig-bg); border-bottom: 1px solid var(--rule);
+    padding: .75rem; display: block;
+  }
+  #resources .res-art { display: block; width: 100%; height: auto; color: var(--ink-2); }
+  #resources .res-body { padding: 1.15rem 1.25rem 1.25rem; display: flex; flex-direction: column; flex: 1; }
+  #resources .res-name { display: flex; align-items: baseline; gap: .6rem; margin-bottom: .5rem; }
+  #resources .res-num { font-size: .72rem; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+  #resources .res-name b { font-size: 1rem; font-weight: 600; color: var(--ink); line-height: 1.3; }
+  #resources .res p { margin: 0 0 1rem; font-size: .9rem; line-height: 1.55; color: var(--ink-2); }
+  #resources .res-go {
+    margin-top: auto; font-size: .78rem; letter-spacing: .06em; text-transform: uppercase;
+    font-weight: 600; color: var(--accent); display: inline-flex; align-items: center; gap: .4rem;
+  }
+  #resources .res:hover .res-go span { transform: translateX(3px); }
+  #resources .res-go span { transition: transform .3s; }
+
+  /* Thumbnail primitives */
+  #resources .res-art .hair  { stroke: currentColor; stroke-width: .7; opacity: .3; }
+  #resources .res-art .axis  { stroke: currentColor; stroke-width: 1; opacity: .45; fill: none; }
+  #resources .res-art .ln    { stroke: currentColor; stroke-width: 1.8; fill: none;
+                               stroke-linecap: round; stroke-linejoin: round; }
+  #resources .res-art .ln.acc, #resources .res-art .cx.acc { stroke: var(--accent); }
+  #resources .res-art .ln.dash { stroke-dasharray: 4 3; opacity: .7; }
+  #resources .res-art .dot   { fill: currentColor; opacity: .75; }
+  #resources .res-art .dot.acc { fill: var(--accent); opacity: 1; }
+  #resources .res-art .sq    { fill: none; stroke: currentColor; stroke-width: 1.4; opacity: .75; }
+  #resources .res-art .cell  { fill: currentColor; }
+  #resources .res-art .bx    { fill: none; stroke: currentColor; stroke-width: 1.4; opacity: .8; }
+  #resources .res-art .bx.acc { stroke: var(--accent); opacity: 1; }
+  #resources .res-art .pl    { fill: none; stroke: currentColor; stroke-width: 1.2; opacity: .6; }
+  #resources .res-art .pl.acc { stroke: var(--accent); opacity: 1; stroke-width: 1.6; }
+  #resources .res-art .kern  { fill: none; stroke: var(--accent); stroke-width: 1.8; }
+  #resources .res-art .ring  { fill: none; stroke: currentColor; stroke-width: 1; opacity: .45; }
+  #resources .res-art .ring.acc { stroke: var(--accent); opacity: .8; }
+  #resources .res-art .cx    { stroke-width: 2; stroke-linecap: round; }
+  #resources .res-art .noise { fill: currentColor; opacity: .35; }
+  #resources .res-art .grid  { fill: none; stroke: currentColor; stroke-width: .6; opacity: .3; }
+
+  @media (prefers-reduced-motion: reduce) {
+    #resources .res, #resources .res-go span { transition: none; }
+    #resources .res:hover, #resources .res:focus-visible { transform: none; }
+  }
+</style>
+
+<section id="resources" aria-labelledby="res-h">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow reveal">Resources</p>
+        <h2 id="res-h" class="reveal">28 sites to learn machine learning visually</h2>
+      </div>
+      <p class="lede reveal" style="font-size:1.15rem;color:var(--ink-2)">Every link below lets you see and interact with a concept rather than only read about it. Pick the one idea you are stuck on, open its site, and spend half an hour playing with it.</p>
+    </div>
+
+    <div class="res-group reveal">
+      <h3>Neural network fundamentals</h3>
+      <div class="res-grid" data-stagger>
+        <a class="res reveal" href="https://playground.tensorflow.org/" target="_blank" rel="noopener noreferrer">
+          <div class="res-fig"><svg class="res-art" viewBox="0 0 160 90" role="img" aria-hidden="true" preserveAspectRatio="xMidYMid meet"><line class="hair" x1="28" y1="28.0" x2="64" y2="24.6"/><line class="hair" x1="28" y1="28.0" x2="64" y2="38.2"/><line class="hair" x1="28" y1="28.0" x2="64" y2="51.8"/><line class="hair" x1="28" y1="28.0" x2="64" y2="65.4"/><line class="hair" x1="28" y1="45.0" x2="64" y2="24.6"/><line class="hair" x1="28" y1="45.0" x2="64" y2="38.2"/><line class="hair" x1="28" y1="45.0" x2="64" y2="51.8"/><line class="hair" x1="28" y1="45.0" x2="64" y2="65.4"/><line class="hair" x1="28" y1="62.0" x2="64" y2="24.6"/><line class="hair" x1="28" y1="62.0" x2="64" y2="38.2"/><line class="hair" x1="28" y1="62.0" x2="64" y2="51.8"/><line class="hair" x1="28" y1="62.0" x2="64" y2="65.4"/><line class="hair" x1="64" y1="24.6" x2="100" y2="24.6"/><line class="hair" x1="64" y1="24.6" x2="100" y2="38.2"/><line class="hair" x1="64" y1="24.6" x2="100" y2="51.8"/><line class="hair" x1="64" y1="24.6" x2="100" y2="65.4"/><line class="hair" x1="64" y1="38.2" x2="100" y2="24.6"/><line class="hair" x1="64" y1="38.2" x2="100" y2="38.2"/><line class="hair" x1="64" y1="38.2" x2="100" y2="51.8"/><line class="hair" x1="64" y1="38.2" x2="100" y2="65.4"/><line class="hair" x1="64" y1="51.8" x2="100" y2="24.6"/><line class="hair" x1="64" y1="51.8" x2="100" y2="38.2"/><line class="hair" x1="64" y1="51.8" x2="100" y2="51.8"/><line class="hair" x1="64" y1="51.8" x2="100" y2="65.4"/><line class="hair" x1="64" y1="65.4" x2="100" y2="24.6"/><line class="hair" x1="64" y1="65.4" x2="100" y2="38.2"/><line class="hair" x1="64" y1="65.4" x2="100" y2="51.8"/><line class="hair" x1="64" y1="65.4" x2="100" y2="65.4"/><line class="hair" x1="100" y1="24.6" x2="136" y2="33.7"/><line class="hair" x1="100" y1="24.6" x2="136" y2="56.3"/><line class="hair" x1="100" y1="38.2" x2="136" y2="33.7"/><line class="hair" x1="100" y1="38.2" x2="136" y2="56.3"/><line class="hair" x1="100" y1="51.8" x2="136" y2="33.7"/><line class="hair" x1="100" y1="51.8" x2="136" y2="56.3"/><line class="hair" x1="100" y1="65.4" x2="136" y2="33.7"/><line class="hair" x1="100" y1="65.4" x2="136" y2="56.3"/><circle class="dot acc" cx="28" cy="28.0" r="3.4"/><circle class="dot acc" cx="28" cy="45.0" r="3.4"/><circle class="dot acc" cx="28" cy="62.0" r="3.4"/><circle class="dot" cx="64" cy="24.6" r="3.4"/><circle class="dot" cx="64" cy="38.2" r="3.4"/><circle class="dot" cx="64" cy="51.8" r="3.4"/><circle class="dot" cx="64" cy="65.4" r="3.4"/><circle class="dot" cx="100" cy="24.6" r="3.4"/><circle class="dot" cx="100" cy="38.2" r="3.4"/><circle class="dot" cx="100" cy="51.8" r="3.4"/><circle class="dot" cx="100" cy="65.4" r="3.4"/><circle class="dot acc" cx="136" cy="33.7" r="3.4"/><circle class="dot acc" cx="136" cy="56.3" r="3.4"/></svg></div>
+          <div class="res-body">
+            <div class="res-name"><span class="res-num">01</span><b>TensorFlow Playground</b></div>
+            <p>Browser sandbox for a small neural net. Add layers, swap activations, move the learning rate, and watch the decision boundary redraw as it trains.</p>
+            <span class="res-go">Open <span aria-hidden="true">&rarr;</span></span>
+          </div>
+        </a>
+        <a class="res reveal" href="https://ml-visualized.com/" target="_blank" rel="noopener noreferrer">
+          <div class="res-fig"><svg class="res-art" viewBox="0 0 160 90" role="img" aria-hidden="true" preserveAspectRatio="xMidYMid meet"><path class="ln acc" d="M14 22 C 42 26, 46 62, 74 66 S 116 40, 146 34"/><circle class="dot" cx="22" cy="23" r="2.6"/><circle class="dot" cx="52" cy="45" r="2.6"/><circle class="dot" cx="74" cy="66" r="2.6"/><circle class="dot" cx="104" cy="55" r="2.6"/><circle class="dot" cx="132" cy="39" r="2.6"/><line class="axis" x1="12" y1="78" x2="148" y2="78"/></svg></div>
+          <div class="res-body">
+            <div class="res-name"><span class="res-num">02</span><b>ML Visualized</b></div>
+            <p>A machine learning textbook where the algorithms animate — gradient descent, backpropagation, and diffusion models with interactive controls.</p>
+            <span class="res-go">Open <span aria-hidden="true">&rarr;</span></span>
+          </div>
+        </a>
+        <a class="res reveal" href="https://ml-visualiser.vercel.app/" target="_blank" rel="noopener noreferrer">
+          <div class="res-fig"><svg class="res-art" viewBox="0 0 160 90" role="img" aria-hidden="true" preserveAspectRatio="xMidYMid meet"><line class="hair" x1="28" y1="28.0" x2="64" y2="24.6"/><line class="hair" x1="28" y1="28.0" x2="64" y2="38.2"/><line class="hair" x1="28" y1="28.0" x2="64" y2="51.8"/><line class="hair" x1="28" y1="28.0" x2="64" y2="65.4"/><line class="hair" x1="28" y1="45.0" x2="64" y2="24.6"/><line class="hair" x1="28" y1="45.0" x2="64" y2="38.2"/><line class="hair" x1="28" y1="45.0" x2="64" y2="51.8"/><line class="hair" x1="28" y1="45.0" x2="64" y2="65.4"/><line class="hair" x1="28" y1="62.0" x2="64" y2="24.6"/><line class="hair" x1="28" y1="62.0" x2="64" y2="38.2"/><line class="hair" x1="28" y1="62.0" x2="64" y2="51.8"/><line class="hair" x1="28" y1="62.0" x2="64" y2="65.4"/><line class="hair" x1="64" y1="24.6" x2="100" y2="24.6"/><line class="hair" x1="64" y1="24.6" x2="100" y2="38.2"/><line class="hair" x1="64" y1="24.6" x2="100" y2="51.8"/><line class="hair" x1="64" y1="24.6" x2="100" y2="65.4"/><line class="hair" x1="64" y1="38.2" x2="100" y2="24.6"/><line class="hair" x1="64" y1="38.2" x2="100" y2="38.2"/><line class="hair" x1="64" y1="38.2" x2="100" y2="51.8"/><line class="hair" x1="64" y1="38.2" x2="100" y2="65.4"/><line class="hair" x1="64" y1="51.8" x2="100" y2="24.6"/><line class="hair" x1="64" y1="51.8" x2="100" y2="38.2"/><line class="hair" x1="64" y1="51.8" x2="100" y2="51.8"/><line class="hair" x1="64" y1="51.8" x2="100" y2="65.4"/><line class="hair" x1="64" y1="65.4" x2="100" y2="24.6"/><line class="hair" x1="64" y1="65.4" x2="100" y2="38.2"/><line class="hair" x1="64" y1="65.4" x2="100" y2="51.8"/><line class="hair" x1="64" y1="65.4" x2="100" y2="65.4"/><line class="hair" x1="100" y1="24.6" x2="136" y2="33.7"/><line class="hair" x1="100" y1="24.6" x2="136" y2="56.3"/><line class="hair" x1="100" y1="38.2" x2="136" y2="33.7"/><line class="hair" x1="100" y1="38.2" x2="136" y2="56.3"/><line class="hair" x1="100" y1="51.8" x2="136" y2="33.7"/><line class="hair" x1="100" y1="51.8" x2="136" y2="56.3"/><line class="hair" x1="100" y1="65.4" x2="136" y2="33.7"/><line class="hair" x1="100" y1="65.4" x2="136" y2="56.3"/><circle class="dot acc" cx="28" cy="28.0" r="3.4"/><circle class="dot acc" cx="28" cy="45.0" r="3.4"/><circle class="dot acc" cx="28" cy="62.0" r="3.4"/><circle class="dot" cx="64" cy="24.6" r="3.4"/><circle class="dot" cx="64" cy="38.2" r="3.4"/><circle class="dot" cx="64" cy="51.8" r="3.4"/><circle class="dot" cx="64" cy="65.4" r="3.4"/><circle class="dot" cx="100" cy="24.6" r="3.4"/><circle class="dot" cx="100" cy="38.2" r="3.4"/><circle class="dot" cx="100" cy="51.8" r="3.4"/><circle class="dot" cx="100" cy="65.4" r="3.4"/><circle class="dot acc" cx="136" cy="33.7" r="3.4"/><circle class="dot acc" cx="136" cy="56.3" r="3.4"/></svg></div>
+          <div class="res-body">
+            <div class="res-name"><span class="res-num">03</span><b>ML Visualiser</b></div>
+            <p>Watch signals propagate through a network architecture, with interactive linear regression, classification, and CNN views.</p>
+            <span class="res-go">Open <span aria-hidden="true">&rarr;</span></span>
+          </div>
+        </a>
+        <a class="res reveal" href="https://playground.tensorflow.org/#activation=tanh&amp;dataset=spiral" target="_blank" rel="noopener noreferrer">
+          <div class="res-fig"><svg class="res-art" viewBox="0 0 160 90" role="img" aria-hidden="true" preserveAspectRatio="xMidYMid meet"><path class="ln acc" d="M24 74 C 56 62, 62 26, 136 18"/><circle class="dot" cx="36" cy="30" r="3"/><circle class="dot" cx="52" cy="24" r="3"/><circle class="dot" cx="46" cy="42" r="3"/><circle class="dot" cx="66" cy="20" r="3"/><circle class="dot" cx="30" cy="48" r="3"/><circle class="dot" cx="60" cy="36" r="3"/><rect class="sq" x="89.4" y="59.4" width="5.2" height="5.2"/><rect class="sq" x="107.4" y="45.4" width="5.2" height="5.2"/><rect class="sq" x="123.4" y="57.4" width="5.2" height="5.2"/><rect class="sq" x="97.4" y="71.4" width="5.2" height="5.2"/><rect class="sq" x="119.4" y="35.4" width="5.2" height="5.2"/><rect class="sq" x="81.4" y="43.4" width="5.2" height="5.2"/></svg></div>
+          <div class="res-body">
+            <div class="res-name"><span class="res-num">04</span><b>TF Playground — spiral dataset</b></div>
+            <p>The same sandbox preloaded with the hardest built-in classification problem. Trying to solve it is the quickest way to feel why depth helps.</p>
+            <span class="res-go">Open <span aria-hidden="true">&rarr;</span></span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="res-group reveal">
+      <h3>LLMs and transformers</h3>
+      <div class="res-grid" data-stagger>
+        <a class="res reveal" href="https://bbycroft.net/llm" target="_blank" rel="noopener noreferrer">
+          <div class="res-fig"><svg class="res-art" viewBox="0 0 160 90" role="img" aria-hidden="true" preserveAspectRatio="xMidYMid meet"><path class="pl" d="M56 20 L104 11 L134 24 L86 33 Z"/><path class="pl" d="M56 31 L104 22 L134 35 L86 44 Z"/><path class="pl acc" d="M56 42 L104 33 L134 46 L86 55 Z"/><path class="pl" d="M56 53 L104 44 L134 57 L86 66 Z"/><path class="pl" d="M56 64 L104 55 L134 68 L86 77 Z"/><line class="hair" x1="26" y1="52" x2="54" y2="46"/><circle class="dot acc" cx="22" cy="53" r="3"/></svg></div>
+          <div class="res-body">
+            <div class="res-name"><span class="res-num">05</span><b>LLM Visualization</b></div>
+            <p>A GPT model rendered in 3D. Follow a single token through embeddings, attention layers, and MLP blocks at your own pace.</p>
+            <span class="res-go">Open <span aria-hidden="true">&rarr;</span></span>
+          </div>
+        </a>
+        <a class="res reveal" href="https://poloclub.github.io/transformer-explainer/" target="_blank" rel="noopener noreferrer">
+          <div class="res-fig"><svg class="res-art" viewBox="0 0 160 90" role="img" aria-hidden="true" preserveAspectRatio="xMidYMid meet"><rect class="cell" x="38" y="16" width="12" height="10" opacity="0.15"/><rect class="cell" x="52" y="16" width="12" height="10" opacity="0.80"/><rect class="cell" x="66" y="16" width="12" height="10" opacity="0.30"/><rect class="cell" x="80" y="16" width="12" height="10" opacity="0.10"/><rect class="cell" x="94" y="16" width="12" height="10" opacity="0.45"/><rect class="cell" x="108" y="16" width="12" height="10" opacity="0.20"/><rect class="cell" x="38" y="28" width="12" height="10" opacity="0.60"/><rect class="cell" x="52" y="28" width="12" height="10" opacity="0.20"/><rect class="cell" x="66" y="28" width="12" height="10" opacity="0.15"/><rect class="cell" x="80" y="28" width="12" height="10" opacity="0.75"/><rect class="cell" x="94" y="28" width="12" height="10" opacity="0.25"/><rect class="cell" x="108" y="28" width="12" height="10" opacity="0.10"/><rect class="cell" x="38" y="40" width="12" height="10" opacity="0.10"/><rect class="cell" x="52" y="40" width="12" height="10" opacity="0.35"/><rect class="cell" x="66" y="40" width="12" height="10" opacity="0.90"/><rect class="cell" x="80" y="40" width="12" height="10" opacity="0.20"/><rect class="cell" x="94" y="40" width="12" height="10" opacity="0.15"/><rect class="cell" x="108" y="40" width="12" height="10" opacity="0.50"/><rect class="cell" x="38" y="52" width="12" height="10" opacity="0.40"/><rect class="cell" x="52" y="52" width="12" height="10" opacity="0.15"/><rect class="cell" x="66" y="52" width="12" height="10" opacity="0.25"/><rect class="cell" x="80" y="52" width="12" height="10" opacity="0.30"/><rect class="cell" x="94" y="52" width="12" height="10" opacity="0.85"/><rect class="cell" x="108" y="52" width="12" height="10" opacity="0.20"/><rect class="cell" x="38" y="64" width="12" height="10" opacity="0.20"/><rect class="cell" x="52" y="64" width="12" height="10" opacity="0.60"/><rect class="cell" x="66" y="64" width="12" height="10" opacity="0.10"/><rect class="cell" x="80" y="64" width="12" height="10" opacity="0.45"/><rect class="cell" x="94" y="64" width="12" height="10" opacity="0.20"/><rect class="cell" x="108" y="64" width="12" height="10" opacity="0.70"/></svg></div>
+          <div class="res-body">
+            <div class="res-name"><span class="res-num">06</span><b>Transformer Explainer</b></div>
+            <p>Type a prompt into a live GPT-2 and see tokenization, attention weights, and next-token prediction. Hover a matrix to see the arithmetic.</p>
+            <span class="res-go">Open <span aria-hidden="true">&rarr;</span></span>
+          </div>
+        </a>
+        <a class="res reveal" href="https://jalammar.github.io/illustrated-transformer/" target="_blank" rel="noopener noreferrer">
+          <div class="res-fig"><svg class="res-art" viewBox="0 0 160 90" role="img" aria-hidden="true" preserveAspectRatio="xMidYMid meet"><rect class="bx" x="44" y="16" width="72" height="16" rx="2"/><line class="hair" x1="24" y1="24" x2="42" y2="24"/><rect class="bx acc" x="44" y="38" width="72" height="16" rx="2"/><line class="hair" x1="24" y1="46" x2="42" y2="46"/><rect class="bx" x="44" y="60" width="72" height="16" rx="2"/><line class="hair" x1="24" y1="68" x2="42" y2="68"/><path class="ln" d="M116 24 h12 v42 h-12"/></svg></div>
+          <div class="res-body">
+            <div class="res-name"><span class="res-num">07</span><b>The Illustrated Transformer</b></div>
+            <p>Jay Alammar's diagram-led walkthrough of the architecture — the standard companion piece to the original attention paper.</p>
+            <span class="res-go">Open <span aria-hidden="true">&rarr;</span></span>
+          </div>
+        </a>
+        <a class="res reveal" href="https://jalammar.github.io/illustrated-gpt2/" target="_blank" rel="noopener noreferrer">
+          <div class="res-fig"><svg class="res-art" viewBox="0 0 160 90" role="img" aria-hidden="true" preserveAspectRatio="xMidYMid meet"><rect class="bx" x="44" y="16" width="72" height="16" rx="2"/><line class="hair" x1="24" y1="24" x2="42" y2="24"/><rect class="bx acc" x="44" y="38" width="72" height="16" rx="2"/><line class="hair" x1="24" y1="46" x2="42" y2="46"/><rect class="bx" x="44" y="60" width="72" height="16" rx="2"/><line class="hair" x1="24" y1="68" x2="42" y2="68"/><path class="ln" d="M116 24 h12 v42 h-12"/></svg></div>
+          <div class="res-body">
+            <div class="res-name"><span class="res-num">08</span><b>The Illustrated GPT-2</b></div>
+            <p>The follow-up post: how a decoder-only model actually generates text, one step at a time. Read it after the transformer piece.</p>
+            <span class="res-go">Open <span aria-hidden="true">&rarr;</span></span>
+          </div>
+        </a>
+        <a class="res reveal" href="https://attentionviz.com/" target="_blank" rel="noopener noreferrer">
+          <div class="res-fig"><svg class="res-art" viewBox="0 0 160 90" role="img" aria-hidden="true" preserveAspectRatio="xMidYMid meet"><rect class="cell" x="38" y="16" width="12" height="10" opacity="0.15"/><rect class="cell" x="52" y="16" width="12" height="10" opacity="0.80"/><rect class="cell" x="66" y="16" width="12" height="10" opacity="0.30"/><rect class="cell" x="80" y="16" width="12" height="10" opacity="0.10"/><rect class="cell" x="94" y="16" width="12" height="10" opacity="0.45"/><rect class="cell" x="108" y="16" width="12" height="10" opacity="0.20"/><rect class="cell" x="38" y="28" width="12" height="10" opacity="0.60"/><rect class="cell" x="52" y="28" width="12" height="10" opacity="0.20"/><rect class="cell" x="66" y="28" width="12" height="10" opacity="0.15"/><rect class="cell" x="80" y="28" width="12" height="10" opacity="0.75"/><rect class="cell" x="94" y="28" width="12" height="10" opacity="0.25"/><rect class="cell" x="108" y="28" width="12" height="10" opacity="0.10"/><rect class="cell" x="38" y="40" width="12" height="10" opacity="0.10"/><rect class="cell" x="52" y="40" width="12" height="10" opacity="0.35"/><rect class="cell" x="66" y="40" width="12" height="10" opacity="0.90"/><rect class="cell" x="80" y="40" width="12" height="10" opacity="0.20"/><rect class="cell" x="94" y="40" width="12" height="10" opacity="0.15"/><rect class="cell" x="108" y="40" width="12" height="10" opacity="0.50"/><rect class="cell" x="38" y="52" width="12" height="10" opacity="0.40"/><rect class="cell" x="52" y="52" width="12" height="10" opacity="0.15"/><rect class="cell" x="66" y="52" width="12" height="10" opacity="0.25"/><rect class="cell" x="80" y="52" width="12" height="10" opacity="0.30"/><rect class="cell" x="94" y="52" width="12" height="10" opacity="0.85"/><rect class="cell" x="108" y="52" width="12" height="10" opacity="0.20"/><rect class="cell" x="38" y="64" width="12" height="10" opacity="0.20"/><rect class="cell" x="52" y="64" width="12" height="10" opacity="0.60"/><rect class="cell" x="66" y="64" width="12" height="10" opacity="0.10"/><rect class="cell" x="80" y="64" width="12" height="10" opacity="0.45"/><rect class="cell" x="94" y="64" width="12" height="10" opacity="0.20"/><rect class="cell" x="108" y="64" width="12" height="10" opacity="0.70"/></svg></div>
+          <div class="res-body">
+            <div class="res-name"><span class="res-num">09</span><b>AttentionViz</b></div>
+            <p>Attention patterns from real transformer models across many inputs, showing how individual heads specialise on syntax or meaning.</p>
+            <span class="res-go">Open <span aria-hidden="true">&rarr;</span></span>
+          </div>
+        </a>
+        <a class="res reveal" href="https://github.com/jessevig/bertviz" target="_blank" rel="noopener noreferrer">
+          <div class="res-fig"><svg class="res-art" viewBox="0 0 160 90" role="img" aria-hidden="true" preserveAspectRatio="xMidYMid meet"><rect class="cell" x="38" y="16" width="12" height="10" opacity="0.15"/><rect class="cell" x="52" y="16" width="12" height="10" opacity="0.80"/><rect class="cell" x="66" y="16" width="12" height="10" opacity="0.30"/><rect class="cell" x="80" y="16" width="12" height="10" opacity="0.10"/><rect class="cell" x="94" y="16" width="12" height="10" opacity="0.45"/><rect class="cell" x="108" y="16" width="12" height="10" opacity="0.20"/><rect class="cell" x="38" y="28" width="12" height="10" opacity="0.60"/><rect class="cell" x="52" y="28" width="12" height="10" opacity="0.20"/><rect class="cell" x="66" y="28" width="12" height="10" opacity="0.15"/><rect class="cell" x="80" y="28" width="12" height="10" opacity="0.75"/><rect class="cell" x="94" y="28" width="12" height="10" opacity="0.25"/><rect class="cell" x="108" y="28" width="12" height="10" opacity="0.10"/><rect class="cell" x="38" y="40" width="12" height="10" opacity="0.10"/><rect class="cell" x="52" y="40" width="12" height="10" opacity="0.35"/><rect class="cell" x="66" y="40" width="12" height="10" opacity="0.90"/><rect class="cell" x="80" y="40" width="12" height="10" opacity="0.20"/><rect class="cell" x="94" y="40" width="12" height="10" opacity="0.15"/><rect class="cell" x="108" y="40" width="12" height="10" opacity="0.50"/><rect class="cell" x="38" y="52" width="12" height="10" opacity="0.40"/><rect class="cell" x="52" y="52" width="12" height="10" opacity="0.15"/><rect class="cell" x="66" y="52" width="12" height="10" opacity="0.25"/><rect class="cell" x="80" y="52" width="12" height="10" opacity="0.30"/><rect class="cell" x="94" y="52" width="12" height="10" opacity="0.85"/><rect class="cell" x="108" y="52" width="12" height="10" opacity="0.20"/><rect class="cell" x="38" y="64" width="12" height="10" opacity="0.20"/><rect class="cell" x="52" y="64" width="12" height="10" opacity="0.60"/><rect class="cell" x="66" y="64" width="12" height="10" opacity="0.10"/><rect class="cell" x="80" y="64" width="12" height="10" opacity="0.45"/><rect class="cell" x="94" y="64" width="12" height="10" opacity="0.20"/><rect class="cell" x="108" y="64" width="12" height="10" opacity="0.70"/></svg></div>
+          <div class="res-body">
+            <div class="res-name"><span class="res-num">10</span><b>BertViz</b></div>
+            <p>A notebook-based attention viewer for BERT, GPT-2, and friends. Paste any sentence and inspect the heads that fire on it.</p>
+            <span class="res-go">Open <span aria-hidden="true">&rarr;</span></span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="res-group reveal">
+      <h3>CNNs and computer vision</h3>
+      <div class="res-grid" data-stagger>
+        <a class="res reveal" href="https://poloclub.github.io/cnn-explainer/" target="_blank" rel="noopener noreferrer">
+          <div class="res-fig"><svg class="res-art" viewBox="0 0 160 90" role="img" aria-hidden="true" preserveAspectRatio="xMidYMid meet"><rect class="cell" x="20" y="16" width="10" height="10" opacity="0.12"/><rect class="cell" x="31" y="16" width="10" height="10" opacity="0.12"/><rect class="cell" x="42" y="16" width="10" height="10" opacity="0.12"/><rect class="cell" x="53" y="16" width="10" height="10" opacity="0.12"/><rect class="cell" x="64" y="16" width="10" height="10" opacity="0.12"/><rect class="cell" x="75" y="16" width="10" height="10" opacity="0.12"/><rect class="cell" x="20" y="27" width="10" height="10" opacity="0.12"/><rect class="cell" x="31" y="27" width="10" height="10" opacity="0.24"/><rect class="cell" x="42" y="27" width="10" height="10" opacity="0.36"/><rect class="cell" x="53" y="27" width="10" height="10" opacity="0.48"/><rect class="cell" x="64" y="27" width="10" height="10" opacity="0.12"/><rect class="cell" x="75" y="27" width="10" height="10" opacity="0.24"/><rect class="cell" x="20" y="38" width="10" height="10" opacity="0.12"/><rect class="cell" x="31" y="38" width="10" height="10" opacity="0.36"/><rect class="cell" x="42" y="38" width="10" height="10" opacity="0.12"/><rect class="cell" x="53" y="38" width="10" height="10" opacity="0.36"/><rect class="cell" x="64" y="38" width="10" height="10" opacity="0.12"/><rect class="cell" x="75" y="38" width="10" height="10" opacity="0.36"/><rect class="cell" x="20" y="49" width="10" height="10" opacity="0.12"/><rect class="cell" x="31" y="49" width="10" height="10" opacity="0.48"/><rect class="cell" x="42" y="49" width="10" height="10" opacity="0.36"/><rect class="cell" x="53" y="49" width="10" height="10" opacity="0.24"/><rect class="cell" x="64" y="49" width="10" height="10" opacity="0.12"/><rect class="cell" x="75" y="49" width="10" height="10" opacity="0.48"/><rect class="cell" x="20" y="60" width="10" height="10" opacity="0.12"/><rect class="cell" x="31" y="60" width="10" height="10" opacity="0.12"/><rect class="cell" x="42" y="60" width="10" height="10" opacity="0.12"/><rect class="cell" x="53" y="60" width="10" height="10" opacity="0.12"/><rect class="cell" x="64" y="60" width="10" height="10" opacity="0.12"/><rect class="cell" x="75" y="60" width="10" height="10" opacity="0.12"/><rect class="cell" x="20" y="71" width="10" height="10" opacity="0.12"/><rect class="cell" x="31" y="71" width="10" height="10" opacity="0.24"/><rect class="cell" x="42" y="71" width="10" height="10" opacity="0.36"/><rect class="cell" x="53" y="71" width="10" height="10" opacity="0.48"/><rect class="cell" x="64" y="71" width="10" height="10" opacity="0.12"/><rect class="cell" x="75" y="71" width="10" height="10" opacity="0.24"/><rect class="kern" x="42" y="27" width="32" height="32"/><path class="ln acc" d="M78 43 h14"/><rect class="bx acc" x="96" y="30" width="26" height="26" rx="2"/></svg></div>
+          <div class="res-body">
+            <div class="res-name"><span class="res-num">11</span><b>CNN Explainer</b></div>
+            <p>A live image classifier you can click into layer by layer to inspect feature maps, filters, and activations.</p>
+            <span class="res-go">Open <span aria-hidden="true">&rarr;</span></span>
+          </div>
+        </a>
+        <a class="res reveal" href="https://convnetplayground.fastforwardlabs.com/" target="_blank" rel="noopener noreferrer">
+          <div class="res-fig"><svg class="res-art" viewBox="0 0 160 90" role="img" aria-hidden="true" preserveAspectRatio="xMidYMid meet"><rect class="cell" x="28" y="16" width="24" height="16" rx="1.5" opacity="0.70"/><rect class="cell" x="56" y="16" width="24" height="16" rx="1.5" opacity="0.20"/><rect class="cell" x="84" y="16" width="24" height="16" rx="1.5" opacity="0.45"/><rect class="cell" x="112" y="16" width="24" height="16" rx="1.5" opacity="0.90"/><rect class="cell" x="28" y="36" width="24" height="16" rx="1.5" opacity="0.15"/><rect class="cell" x="56" y="36" width="24" height="16" rx="1.5" opacity="0.55"/><rect class="cell" x="84" y="36" width="24" height="16" rx="1.5" opacity="0.30"/><rect class="cell" x="112" y="36" width="24" height="16" rx="1.5" opacity="0.80"/><rect class="cell" x="28" y="56" width="24" height="16" rx="1.5" opacity="0.25"/><rect class="cell" x="56" y="56" width="24" height="16" rx="1.5" opacity="0.60"/><rect class="cell" x="84" y="56" width="24" height="16" rx="1.5" opacity="0.40"/><rect class="cell" x="112" y="56" width="24" height="16" rx="1.5" opacity="0.12"/></svg></div>
+          <div class="res-body">
+            <div class="res-name"><span class="res-num">12</span><b>ConvNet Playground</b></div>
+            <p>Compare how VGG, ResNet, and MobileNet extract features from the same images, and see which neurons respond to which patterns.</p>
+            <span class="res-go">Open <span aria-hidden="true">&rarr;</span></span>
+          </div>
+        </a>
+        <a class="res reveal" href="https://setosa.io/ev/image-kernels/" target="_blank" rel="noopener noreferrer">
+          <div class="res-fig"><svg class="res-art" viewBox="0 0 160 90" role="img" aria-hidden="true" preserveAspectRatio="xMidYMid meet"><rect class="cell" x="20" y="16" width="10" height="10" opacity="0.12"/><rect class="cell" x="31" y="16" width="10" height="10" opacity="0.12"/><rect class="cell" x="42" y="16" width="10" height="10" opacity="0.12"/><rect class="cell" x="53" y="16" width="10" height="10" opacity="0.12"/><rect class="cell" x="64" y="16" width="10" height="10" opacity="0.12"/><rect class="cell" x="75" y="16" width="10" height="10" opacity="0.12"/><rect class="cell" x="20" y="27" width="10" height="10" opacity="0.12"/><rect class="cell" x="31" y="27" width="10" height="10" opacity="0.24"/><rect class="cell" x="42" y="27" width="10" height="10" opacity="0.36"/><rect class="cell" x="53" y="27" width="10" height="10" opacity="0.48"/><rect class="cell" x="64" y="27" width="10" height="10" opacity="0.12"/><rect class="cell" x="75" y="27" width="10" height="10" opacity="0.24"/><rect class="cell" x="20" y="38" width="10" height="10" opacity="0.12"/><rect class="cell" x="31" y="38" width="10" height="10" opacity="0.36"/><rect class="cell" x="42" y="38" width="10" height="10" opacity="0.12"/><rect class="cell" x="53" y="38" width="10" height="10" opacity="0.36"/><rect class="cell" x="64" y="38" width="10" height="10" opacity="0.12"/><rect class="cell" x="75" y="38" width="10" height="10" opacity="0.36"/><rect class="cell" x="20" y="49" width="10" height="10" opacity="0.12"/><rect class="cell" x="31" y="49" width="10" height="10" opacity="0.48"/><rect class="cell" x="42" y="49" width="10" height="10" opacity="0.36"/><rect class="cell" x="53" y="49" width="10" height="10" opacity="0.24"/><rect class="cell" x="64" y="49" width="10" height="10" opacity="0.12"/><rect class="cell" x="75" y="49" width="10" height="10" opacity="0.48"/><rect class="cell" x="20" y="60" width="10" height="10" opacity="0.12"/><rect class="cell" x="31" y="60" width="10" height="10" opacity="0.12"/><rect class="cell" x="42" y="60" width="10" height="10" opacity="0.12"/><rect class="cell" x="53" y="60" width="10" height="10" opacity="0.12"/><rect class="cell" x="64" y="60" width="10" height="10" opacity="0.12"/><rect class="cell" x="75" y="60" width="10" height="10" opacity="0.12"/><rect class="cell" x="20" y="71" width="10" height="10" opacity="0.12"/><rect class="cell" x="31" y="71" width="10" height="10" opacity="0.24"/><rect class="cell" x="42" y="71" width="10" height="10" opacity="0.36"/><rect class="cell" x="53" y="71" width="10" height="10" opacity="0.48"/><rect class="cell" x="64" y="71" width="10" height="10" opacity="0.12"/><rect class="cell" x="75" y="71" width="10" height="10" opacity="0.24"/><rect class="kern" x="42" y="27" width="32" height="32"/><path class="ln acc" d="M78 43 h14"/><rect class="bx acc" x="96" y="30" width="26" height="26" rx="2"/></svg></div>
+          <div class="res-body">
+            <div class="res-name"><span class="res-num">13</span><b>Image Kernels Explained</b></div>
+            <p>Convolution made concrete: drag kernels over an image and watch edge detection, blurring, and sharpening happen in the browser.</p>
+            <span class="res-go">Open <span aria-hidden="true">&rarr;</span></span>
+          </div>
+        </a>
+        <a class="res reveal" href="https://tensorspace.org/" target="_blank" rel="noopener noreferrer">
+          <div class="res-fig"><svg class="res-art" viewBox="0 0 160 90" role="img" aria-hidden="true" preserveAspectRatio="xMidYMid meet"><path class="pl" d="M56 20 L104 11 L134 24 L86 33 Z"/><path class="pl" d="M56 31 L104 22 L134 35 L86 44 Z"/><path class="pl acc" d="M56 42 L104 33 L134 46 L86 55 Z"/><path class="pl" d="M56 53 L104 44 L134 57 L86 66 Z"/><path class="pl" d="M56 64 L104 55 L134 68 L86 77 Z"/><line class="hair" x1="26" y1="52" x2="54" y2="46"/><circle class="dot acc" cx="22" cy="53" r="3"/></svg></div>
+          <div class="res-body">
+            <div class="res-name"><span class="res-num">14</span><b>TensorSpace.js</b></div>
+            <p>Pretrained models such as LeNet, AlexNet, and YOLO drawn in 3D, so you can rotate the stack and follow an input through every layer.</p>
+            <span class="res-go">Open <span aria-hidden="true">&rarr;</span></span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="res-group reveal">
+      <h3>Statistics and the maths behind ML</h3>
+      <div class="res-grid" data-stagger>
+        <a class="res reveal" href="https://seeing-theory.brown.edu/" target="_blank" rel="noopener noreferrer">
+          <div class="res-fig"><svg class="res-art" viewBox="0 0 160 90" role="img" aria-hidden="true" preserveAspectRatio="xMidYMid meet"><rect class="cell" x="18" y="66" width="10" height="6" opacity="0.28"/><rect class="cell" x="30" y="60" width="10" height="12" opacity="0.28"/><rect class="cell" x="42" y="50" width="10" height="22" opacity="0.28"/><rect class="cell" x="54" y="38" width="10" height="34" opacity="0.28"/><rect class="cell" x="66" y="28" width="10" height="44" opacity="0.28"/><rect class="cell" x="78" y="24" width="10" height="48" opacity="0.28"/><rect class="cell" x="90" y="30" width="10" height="42" opacity="0.28"/><rect class="cell" x="102" y="40" width="10" height="32" opacity="0.28"/><rect class="cell" x="114" y="52" width="10" height="20" opacity="0.28"/><rect class="cell" x="126" y="62" width="10" height="10" opacity="0.28"/><rect class="cell" x="138" y="67" width="10" height="5" opacity="0.28"/><path class="ln acc" d="M18 70 C 46 70, 52 22, 80 22 S 114 70, 142 70"/><line class="axis" x1="14" y1="72" x2="146" y2="72"/></svg></div>
+          <div class="res-body">
+            <div class="res-name"><span class="res-num">15</span><b>Seeing Theory</b></div>
+            <p>Brown University's animated course in probability and statistics — Bayesian inference, regression, and distributions, all interactive.</p>
+            <span class="res-go">Open <span aria-hidden="true">&rarr;</span></span>
+          </div>
+        </a>
+        <a class="res reveal" href="https://setosa.io/ev/" target="_blank" rel="noopener noreferrer">
+          <div class="res-fig"><svg class="res-art" viewBox="0 0 160 90" role="img" aria-hidden="true" preserveAspectRatio="xMidYMid meet"><path class="axis" d="M22 74 L138 74 M22 74 L22 16 M22 74 L52 88"/><circle class="dot acc" cx="48" cy="34" r="2.8"/><circle class="dot acc" cx="56" cy="28" r="2.8"/><circle class="dot acc" cx="52" cy="40" r="2.8"/><circle class="dot acc" cx="62" cy="36" r="2.8"/><circle class="dot acc" cx="44" cy="30" r="2.8"/><circle class="dot" cx="92" cy="56" r="2.8"/><circle class="dot" cx="100" cy="50" r="2.8"/><circle class="dot" cx="96" cy="62" r="2.8"/><circle class="dot" cx="106" cy="58" r="2.8"/><circle class="dot" cx="88" cy="52" r="2.8"/><circle class="dot" cx="118" cy="26" r="2.8"/><circle class="dot" cx="126" cy="32" r="2.8"/><circle class="dot" cx="122" cy="20" r="2.8"/></svg></div>
+          <div class="res-body">
+            <div class="res-name"><span class="res-num">16</span><b>Setosa Visual Explanations</b></div>
+            <p>Small, self-contained demos for PCA, eigenvectors, Markov chains, and conditional probability.</p>
+            <span class="res-go">Open <span aria-hidden="true">&rarr;</span></span>
+          </div>
+        </a>
+        <a class="res reveal" href="https://distill.pub/" target="_blank" rel="noopener noreferrer">
+          <div class="res-fig"><svg class="res-art" viewBox="0 0 160 90" role="img" aria-hidden="true" preserveAspectRatio="xMidYMid meet"><rect class="bx" x="34" y="12" width="92" height="66" rx="3"/><rect class="cell" x="44" y="22" width="72" height="22" rx="2" opacity="0.3"/><path class="ln acc" d="M48 40 C 62 24, 74 42, 88 30 S 108 26, 112 34"/><line class="hair" x1="44" y1="52" x2="116" y2="52"/><line class="hair" x1="44" y1="60" x2="104" y2="60"/><line class="hair" x1="44" y1="68" x2="110" y2="68"/></svg></div>
+          <div class="res-body">
+            <div class="res-name"><span class="res-num">17</span><b>Distill.pub</b></div>
+            <p>Research articles built around interactive figures, covering feature visualisation, what networks see, and AutoML.</p>
+            <span class="res-go">Open <span aria-hidden="true">&rarr;</span></span>
+          </div>
+        </a>
+        <a class="res reveal" href="https://www.benfrederickson.com/numerical-optimization/" target="_blank" rel="noopener noreferrer">
+          <div class="res-fig"><svg class="res-art" viewBox="0 0 160 90" role="img" aria-hidden="true" preserveAspectRatio="xMidYMid meet"><ellipse class="ring" cx="98" cy="46" rx="36" ry="22.3"/><ellipse class="ring" cx="98" cy="46" rx="27" ry="16.7"/><ellipse class="ring" cx="98" cy="46" rx="19" ry="11.8"/><ellipse class="ring" cx="98" cy="46" rx="11" ry="6.8"/><ellipse class="ring" cx="98" cy="46" rx="5" ry="3.1"/><path class="ln acc" d="M20 20 L42 36 L62 30 L78 44 L90 40 L98 46"/><circle class="dot acc" cx="20" cy="20" r="2.4"/><circle class="dot acc" cx="42" cy="36" r="2.4"/><circle class="dot acc" cx="62" cy="30" r="2.4"/><circle class="dot acc" cx="78" cy="44" r="2.4"/><circle class="dot acc" cx="98" cy="46" r="2.4"/></svg></div>
+          <div class="res-body">
+            <div class="res-name"><span class="res-num">18</span><b>Numerical optimization, visualised</b></div>
+            <p>Gradient descent traced across a loss landscape, with SGD, momentum, and Adam side by side so the differences are visible.</p>
+            <span class="res-go">Open <span aria-hidden="true">&rarr;</span></span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="res-group reveal">
+      <h3>Classical ML algorithms</h3>
+      <div class="res-grid" data-stagger>
+        <a class="res reveal" href="https://ml-playground.com/" target="_blank" rel="noopener noreferrer">
+          <div class="res-fig"><svg class="res-art" viewBox="0 0 160 90" role="img" aria-hidden="true" preserveAspectRatio="xMidYMid meet"><path class="ln acc" d="M24 74 C 56 62, 62 26, 136 18"/><circle class="dot" cx="36" cy="30" r="3"/><circle class="dot" cx="52" cy="24" r="3"/><circle class="dot" cx="46" cy="42" r="3"/><circle class="dot" cx="66" cy="20" r="3"/><circle class="dot" cx="30" cy="48" r="3"/><circle class="dot" cx="60" cy="36" r="3"/><rect class="sq" x="89.4" y="59.4" width="5.2" height="5.2"/><rect class="sq" x="107.4" y="45.4" width="5.2" height="5.2"/><rect class="sq" x="123.4" y="57.4" width="5.2" height="5.2"/><rect class="sq" x="97.4" y="71.4" width="5.2" height="5.2"/><rect class="sq" x="119.4" y="35.4" width="5.2" height="5.2"/><rect class="sq" x="81.4" y="43.4" width="5.2" height="5.2"/></svg></div>
+          <div class="res-body">
+            <div class="res-name"><span class="res-num">19</span><b>ML Playground</b></div>
+            <p>Place your own training points, then watch KNN, SVM, decision trees, perceptrons, and neural nets each draw a decision boundary over them.</p>
+            <span class="res-go">Open <span aria-hidden="true">&rarr;</span></span>
+          </div>
+        </a>
+        <a class="res reveal" href="http://www.r2d3.us/visual-intro-to-machine-learning-part-1/" target="_blank" rel="noopener noreferrer">
+          <div class="res-fig"><svg class="res-art" viewBox="0 0 160 90" role="img" aria-hidden="true" preserveAspectRatio="xMidYMid meet"><line class="hair" x1="80" y1="18" x2="48" y2="44"/><line class="hair" x1="80" y1="18" x2="112" y2="44"/><line class="hair" x1="48" y1="44" x2="30" y2="70"/><line class="hair" x1="48" y1="44" x2="66" y2="70"/><line class="hair" x1="112" y1="44" x2="96" y2="70"/><line class="hair" x1="112" y1="44" x2="130" y2="70"/><circle class="dot acc" cx="80" cy="18" r="4.4"/><circle class="dot" cx="48" cy="44" r="3.8"/><circle class="dot" cx="112" cy="44" r="3.8"/><rect class="sq" x="26.6" y="66.6" width="6.8" height="6.8"/><rect class="sq" x="62.6" y="66.6" width="6.8" height="6.8"/><rect class="sq" x="92.6" y="66.6" width="6.8" height="6.8"/><rect class="sq" x="126.6" y="66.6" width="6.8" height="6.8"/></svg></div>
+          <div class="res-body">
+            <div class="res-name"><span class="res-num">20</span><b>A Visual Introduction to ML</b></div>
+            <p>R2D3's scrolling story of a decision tree learning to tell San Francisco homes from New York ones. The best first thing to read.</p>
+            <span class="res-go">Open <span aria-hidden="true">&rarr;</span></span>
+          </div>
+        </a>
+        <a class="res reveal" href="http://www.r2d3.us/visual-intro-to-machine-learning-part-2/" target="_blank" rel="noopener noreferrer">
+          <div class="res-fig"><svg class="res-art" viewBox="0 0 160 90" role="img" aria-hidden="true" preserveAspectRatio="xMidYMid meet"><line class="hair" x1="80" y1="18" x2="48" y2="44"/><line class="hair" x1="80" y1="18" x2="112" y2="44"/><line class="hair" x1="48" y1="44" x2="30" y2="70"/><line class="hair" x1="48" y1="44" x2="66" y2="70"/><line class="hair" x1="112" y1="44" x2="96" y2="70"/><line class="hair" x1="112" y1="44" x2="130" y2="70"/><circle class="dot acc" cx="80" cy="18" r="4.4"/><circle class="dot" cx="48" cy="44" r="3.8"/><circle class="dot" cx="112" cy="44" r="3.8"/><rect class="sq" x="26.6" y="66.6" width="6.8" height="6.8"/><rect class="sq" x="62.6" y="66.6" width="6.8" height="6.8"/><rect class="sq" x="92.6" y="66.6" width="6.8" height="6.8"/><rect class="sq" x="126.6" y="66.6" width="6.8" height="6.8"/></svg></div>
+          <div class="res-body">
+            <div class="res-name"><span class="res-num">21</span><b>Bias and variance, visually</b></div>
+            <p>Part two of the same series: why a deeper tree overfits, shown happening rather than asserted.</p>
+            <span class="res-go">Open <span aria-hidden="true">&rarr;</span></span>
+          </div>
+        </a>
+        <a class="res reveal" href="https://www.naftaliharris.com/blog/visualizing-k-means-clustering/" target="_blank" rel="noopener noreferrer">
+          <div class="res-fig"><svg class="res-art" viewBox="0 0 160 90" role="img" aria-hidden="true" preserveAspectRatio="xMidYMid meet"><circle class="dot" cx="26" cy="20" r="2.6"/><circle class="dot" cx="40" cy="17" r="2.6"/><circle class="dot" cx="44" cy="31" r="2.6"/><circle class="dot" cx="30" cy="34" r="2.6"/><circle class="dot" cx="36" cy="26" r="2.6"/><circle class="dot" cx="23" cy="28" r="2.6"/><path class="cx acc" d="M29 26 h10 M34 21 v10"/><circle class="dot" cx="109" cy="37" r="2.6"/><circle class="dot" cx="121" cy="25" r="2.6"/><circle class="dot" cx="125" cy="36" r="2.6"/><circle class="dot" cx="113" cy="23" r="2.6"/><circle class="dot" cx="117" cy="33" r="2.6"/><circle class="dot" cx="127" cy="30" r="2.6"/><path class="cx acc" d="M111 32 h10 M116 27 v10"/><circle class="dot" cx="63" cy="63" r="2.6"/><circle class="dot" cx="79" cy="60" r="2.6"/><circle class="dot" cx="82" cy="69" r="2.6"/><circle class="dot" cx="67" cy="72" r="2.6"/><circle class="dot" cx="72" cy="66" r="2.6"/><circle class="dot" cx="60" cy="67" r="2.6"/><path class="cx acc" d="M67 66 h10 M72 61 v10"/></svg></div>
+          <div class="res-body">
+            <div class="res-name"><span class="res-num">22</span><b>Visualizing K-Means Clustering</b></div>
+            <p>Drop your own centroids and step the algorithm to convergence. Overlapping clusters make for instructive failures.</p>
+            <span class="res-go">Open <span aria-hidden="true">&rarr;</span></span>
+          </div>
+        </a>
+        <a class="res reveal" href="https://www.naftaliharris.com/blog/visualizing-dbscan-clustering/" target="_blank" rel="noopener noreferrer">
+          <div class="res-fig"><svg class="res-art" viewBox="0 0 160 90" role="img" aria-hidden="true" preserveAspectRatio="xMidYMid meet"><path class="ring acc" d="M28 56 C 24 30, 60 20, 74 34 C 88 48, 66 74, 42 70 Z"/><path class="ring acc" d="M96 60 C 92 40, 126 34, 132 50 C 138 66, 108 76, 96 60 Z"/><circle class="dot" cx="38" cy="52" r="2.5"/><circle class="dot" cx="48" cy="42" r="2.5"/><circle class="dot" cx="58" cy="36" r="2.5"/><circle class="dot" cx="52" cy="58" r="2.5"/><circle class="dot" cx="62" cy="50" r="2.5"/><circle class="dot" cx="44" cy="62" r="2.5"/><circle class="dot" cx="106" cy="54" r="2.5"/><circle class="dot" cx="116" cy="48" r="2.5"/><circle class="dot" cx="124" cy="56" r="2.5"/><circle class="dot" cx="110" cy="64" r="2.5"/><circle class="dot" cx="120" cy="62" r="2.5"/><circle class="noise" cx="86" cy="20" r="2"/><circle class="noise" cx="148" cy="24" r="2"/><circle class="noise" cx="18" cy="22" r="2"/><circle class="noise" cx="82" cy="80" r="2"/></svg></div>
+          <div class="res-body">
+            <div class="res-name"><span class="res-num">23</span><b>Visualizing DBSCAN Clustering</b></div>
+            <p>Density-based clustering, stepped through — and a clear look at the odd cluster shapes K-means cannot handle.</p>
+            <span class="res-go">Open <span aria-hidden="true">&rarr;</span></span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="res-group reveal">
+      <h3>Generative and advanced models</h3>
+      <div class="res-grid" data-stagger>
+        <a class="res reveal" href="https://poloclub.github.io/ganlab/" target="_blank" rel="noopener noreferrer">
+          <div class="res-fig"><svg class="res-art" viewBox="0 0 160 90" role="img" aria-hidden="true" preserveAspectRatio="xMidYMid meet"><path class="ln acc" d="M16 62 C 44 20, 58 70, 82 40 S 118 30, 144 36"/><path class="ln dash" d="M16 28 C 44 68, 58 22, 82 52 S 118 60, 144 50"/><line class="axis" x1="14" y1="76" x2="146" y2="76"/><line class="axis" x1="14" y1="76" x2="14" y2="14"/></svg></div>
+          <div class="res-body">
+            <div class="res-name"><span class="res-num">24</span><b>GAN Lab</b></div>
+            <p>Train a generative adversarial network in the browser and watch the generator and discriminator compete, with live loss curves.</p>
+            <span class="res-go">Open <span aria-hidden="true">&rarr;</span></span>
+          </div>
+        </a>
+        <a class="res reveal" href="https://poloclub.github.io/diffusion-explainer/" target="_blank" rel="noopener noreferrer">
+          <div class="res-fig"><svg class="res-art" viewBox="0 0 160 90" role="img" aria-hidden="true" preserveAspectRatio="xMidYMid meet"><circle class="noise" cx="51" cy="17" r="1.5"/><circle class="noise" cx="40" cy="69" r="1.5"/><circle class="noise" cx="26" cy="56" r="1.5"/><circle class="noise" cx="54" cy="44" r="1.5"/><circle class="noise" cx="50" cy="71" r="1.5"/><circle class="noise" cx="46" cy="40" r="1.5"/><circle class="noise" cx="61" cy="29" r="1.5"/><circle class="noise" cx="50" cy="46" r="1.5"/><circle class="noise" cx="21" cy="35" r="1.5"/><circle class="noise" cx="20" cy="55" r="1.5"/><circle class="noise" cx="41" cy="41" r="1.5"/><circle class="noise" cx="42" cy="47" r="1.5"/><circle class="noise" cx="52" cy="19" r="1.5"/><circle class="noise" cx="21" cy="44" r="1.5"/><circle class="noise" cx="58" cy="21" r="1.5"/><circle class="noise" cx="53" cy="33" r="1.5"/><circle class="noise" cx="49" cy="30" r="1.5"/><circle class="noise" cx="18" cy="47" r="1.5"/><circle class="noise" cx="59" cy="59" r="1.5"/><circle class="noise" cx="53" cy="36" r="1.5"/><circle class="noise" cx="41" cy="71" r="1.5"/><circle class="noise" cx="19" cy="17" r="1.5"/><circle class="noise" cx="22" cy="34" r="1.5"/><circle class="noise" cx="52" cy="54" r="1.5"/><circle class="noise" cx="59" cy="72" r="1.5"/><circle class="noise" cx="43" cy="33" r="1.5"/><circle class="noise" cx="44" cy="48" r="1.5"/><circle class="noise" cx="22" cy="61" r="1.5"/><circle class="noise" cx="29" cy="52" r="1.5"/><circle class="noise" cx="41" cy="17" r="1.5"/><circle class="noise" cx="25" cy="71" r="1.5"/><circle class="noise" cx="25" cy="65" r="1.5"/><circle class="noise" cx="33" cy="43" r="1.5"/><circle class="noise" cx="41" cy="47" r="1.5"/><circle class="noise" cx="27" cy="44" r="1.5"/><circle class="noise" cx="36" cy="62" r="1.5"/><circle class="noise" cx="21" cy="16" r="1.5"/><circle class="noise" cx="20" cy="71" r="1.5"/><circle class="noise" cx="40" cy="25" r="1.5"/><circle class="noise" cx="17" cy="40" r="1.5"/><circle class="noise" cx="60" cy="51" r="1.5"/><circle class="noise" cx="33" cy="59" r="1.5"/><circle class="noise" cx="58" cy="27" r="1.5"/><circle class="noise" cx="37" cy="49" r="1.5"/><circle class="noise" cx="27" cy="47" r="1.5"/><circle class="noise" cx="30" cy="29" r="1.5"/><path class="ln" d="M70 45 h14"/><rect class="bx acc" x="92" y="22" width="46" height="46" rx="3"/><path class="ln acc" d="M98 60 l12 -16 l10 12 l8 -10 l6 14 Z"/></svg></div>
+          <div class="res-body">
+            <div class="res-name"><span class="res-num">25</span><b>Diffusion Explainer</b></div>
+            <p>Stable Diffusion turning noise into an image, one denoising step at a time, with the prompt and guidance scale under your control.</p>
+            <span class="res-go">Open <span aria-hidden="true">&rarr;</span></span>
+          </div>
+        </a>
+        <a class="res reveal" href="https://projector.tensorflow.org/" target="_blank" rel="noopener noreferrer">
+          <div class="res-fig"><svg class="res-art" viewBox="0 0 160 90" role="img" aria-hidden="true" preserveAspectRatio="xMidYMid meet"><path class="axis" d="M22 74 L138 74 M22 74 L22 16 M22 74 L52 88"/><circle class="dot acc" cx="48" cy="34" r="2.8"/><circle class="dot acc" cx="56" cy="28" r="2.8"/><circle class="dot acc" cx="52" cy="40" r="2.8"/><circle class="dot acc" cx="62" cy="36" r="2.8"/><circle class="dot acc" cx="44" cy="30" r="2.8"/><circle class="dot" cx="92" cy="56" r="2.8"/><circle class="dot" cx="100" cy="50" r="2.8"/><circle class="dot" cx="96" cy="62" r="2.8"/><circle class="dot" cx="106" cy="58" r="2.8"/><circle class="dot" cx="88" cy="52" r="2.8"/><circle class="dot" cx="118" cy="26" r="2.8"/><circle class="dot" cx="126" cy="32" r="2.8"/><circle class="dot" cx="122" cy="20" r="2.8"/></svg></div>
+          <div class="res-body">
+            <div class="res-name"><span class="res-num">26</span><b>Embedding Projector</b></div>
+            <p>High-dimensional embeddings projected into 3D. Load Word2Vec or GloVe vectors and search, rotate, and zoom through the clusters.</p>
+            <span class="res-go">Open <span aria-hidden="true">&rarr;</span></span>
+          </div>
+        </a>
+        <a class="res reveal" href="https://cs.stanford.edu/people/karpathy/reinforcejs/gridworld_td.html" target="_blank" rel="noopener noreferrer">
+          <div class="res-fig"><svg class="res-art" viewBox="0 0 160 90" role="img" aria-hidden="true" preserveAspectRatio="xMidYMid meet"><rect class="grid" x="24" y="10" width="16" height="15"/><rect class="grid" x="40" y="10" width="16" height="15"/><rect class="grid" x="56" y="10" width="16" height="15"/><rect class="grid" x="72" y="10" width="16" height="15"/><rect class="grid" x="88" y="10" width="16" height="15"/><rect class="grid" x="104" y="10" width="16" height="15"/><rect class="grid" x="120" y="10" width="16" height="15"/><rect class="grid" x="24" y="25" width="16" height="15"/><rect class="grid" x="40" y="25" width="16" height="15"/><rect class="grid" x="56" y="25" width="16" height="15"/><rect class="grid" x="72" y="25" width="16" height="15"/><rect class="grid" x="88" y="25" width="16" height="15"/><rect class="grid" x="104" y="25" width="16" height="15"/><rect class="grid" x="120" y="25" width="16" height="15"/><rect class="grid" x="24" y="40" width="16" height="15"/><rect class="grid" x="40" y="40" width="16" height="15"/><rect class="grid" x="56" y="40" width="16" height="15"/><rect class="grid" x="72" y="40" width="16" height="15"/><rect class="grid" x="88" y="40" width="16" height="15"/><rect class="grid" x="104" y="40" width="16" height="15"/><rect class="grid" x="120" y="40" width="16" height="15"/><rect class="grid" x="24" y="55" width="16" height="15"/><rect class="grid" x="40" y="55" width="16" height="15"/><rect class="grid" x="56" y="55" width="16" height="15"/><rect class="grid" x="72" y="55" width="16" height="15"/><rect class="grid" x="88" y="55" width="16" height="15"/><rect class="grid" x="104" y="55" width="16" height="15"/><rect class="grid" x="120" y="55" width="16" height="15"/><rect class="grid" x="24" y="70" width="16" height="15"/><rect class="grid" x="40" y="70" width="16" height="15"/><rect class="grid" x="56" y="70" width="16" height="15"/><rect class="grid" x="72" y="70" width="16" height="15"/><rect class="grid" x="88" y="70" width="16" height="15"/><rect class="grid" x="104" y="70" width="16" height="15"/><rect class="grid" x="120" y="70" width="16" height="15"/><rect class="cell" x="72" y="25" width="16" height="15" opacity="0.35"/><rect class="cell" x="88" y="55" width="16" height="15" opacity="0.35"/><path class="ln acc" d="M32 17 V47 H72 V62 H120 V32"/><circle class="dot acc" cx="32" cy="17" r="3.4"/><path class="cx acc" d="M115 32 h10 M120 27 v10"/></svg></div>
+          <div class="res-body">
+            <div class="res-name"><span class="res-num">27</span><b>REINFORCEjs gridworld</b></div>
+            <p>Andrej Karpathy's reinforcement learning demos: an agent learning to cross a gridworld under Q-learning, SARSA, or policy gradients.</p>
+            <span class="res-go">Open <span aria-hidden="true">&rarr;</span></span>
+          </div>
+        </a>
+        <a class="res reveal" href="https://netron.app/" target="_blank" rel="noopener noreferrer">
+          <div class="res-fig"><svg class="res-art" viewBox="0 0 160 90" role="img" aria-hidden="true" preserveAspectRatio="xMidYMid meet"><line class="hair" x1="80" y1="14" x2="48" y2="36"/><line class="hair" x1="80" y1="14" x2="112" y2="36"/><line class="hair" x1="48" y1="36" x2="48" y2="58"/><line class="hair" x1="112" y1="36" x2="112" y2="58"/><line class="hair" x1="48" y1="58" x2="80" y2="78"/><line class="hair" x1="112" y1="58" x2="80" y2="78"/><line class="hair" x1="48" y1="36" x2="112" y2="58"/><rect class="bx acc" x="65" y="8" width="30" height="12" rx="2"/><rect class="bx" x="33" y="30" width="30" height="12" rx="2"/><rect class="bx" x="97" y="30" width="30" height="12" rx="2"/><rect class="bx" x="33" y="52" width="30" height="12" rx="2"/><rect class="bx" x="97" y="52" width="30" height="12" rx="2"/><rect class="bx acc" x="65" y="72" width="30" height="12" rx="2"/></svg></div>
+          <div class="res-body">
+            <div class="res-name"><span class="res-num">28</span><b>Netron</b></div>
+            <p>Open an .onnx, .h5, .pth, or .tflite file and read the whole architecture as an interactive graph. Useful for any model you did not write.</p>
+            <span class="res-go">Open <span aria-hidden="true">&rarr;</span></span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <p class="table-note">Reading list compiled from a public roundup shared by @rishitlalan_16. Descriptions and diagrams here are our own; each site belongs to its respective author.</p>
+  </div>
+</section>
+
 <!-- ---------- Contact ---------- -->
 <section id="contact" aria-labelledby="contact-h">
   <div class="wrap contact-grid">
@@ -1409,6 +1749,7 @@
           <li><a href="#approach">Approach</a></li>
           <li><a href="#process">Process</a></li>
           <li><a href="#tooling">Tooling</a></li>
+          <li><a href="#resources">Resources</a></li>
         </ul>
       </div>
       <div>
