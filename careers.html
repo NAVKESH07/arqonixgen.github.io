@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Careers · ArqonixGen</title>
+<meta name="description" content="Open positions at ArqonixGen Semiconductor in Bengaluru: design verification, RTL design, AI architecture, hardware security, physical design, DFT, and internships.">
+<meta property="og:title" content="Careers at ArqonixGen Semiconductor">
+<meta property="og:description" content="Join us in Bengaluru to build AI processors, die-to-die interconnect, and security chips.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.arqonixgen.com/careers.html">
+<meta name="theme-color" content="#ffffff">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23000'/%3E%3Crect x='9' y='9' width='14' height='14' rx='2' fill='none' stroke='%23fff' stroke-width='2'/%3E%3Crect x='13' y='13' width='6' height='6' fill='%23fff'/%3E%3C/svg%3E">
+<script>
+  /* Set the theme before first paint so there is no flash. */
+  (function () {
+    try {
+      var t = localStorage.getItem('agx-theme');
+      if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  })();
+</script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    color-scheme: light;
+    --bg: #ffffff;
+    --bg-soft: #f4f4f2;
+    --ink: #0d0d0d;
+    --ink-2: #4a4a4a;
+    --ink-3: #8a8a8a;
+    --rule: #e3e3e0;
+    --rule-strong: #0d0d0d;
+    --accent: #3d7bfd;
+    --space: #06070b;
+
+    --fig-bg: #f4f4f2;
+    --fig-grid: rgba(0,0,0,.05);
+    --fig-hair: rgba(13,13,13,.08);
+    --fig-line: rgba(13,13,13,.18);
+    --fig-stroke: #0d0d0d;
+    --fig-node: #ffffff;
+    --fig-text: #0d0d0d;
+    --fig-dim: rgba(13,13,13,.5);
+    --fig-mono: rgba(13,13,13,.72);
+
+    --radius: 20px;
+    --gutter: clamp(1.25rem, 4vw, 3rem);
+    --measure: 44rem;
+    --max: 1320px;
+    --nav-h: 64px;
+    --ease: cubic-bezier(.2,.7,.2,1);
+  }
+
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #0b0c10;
+    --bg-soft: #14161c;
+    --ink: #f2f2f0;
+    --ink-2: #a9a9a6;
+    --ink-3: #78787a;
+    --rule: #23252c;
+    --rule-strong: #f2f2f0;
+    --accent: #6f9bff;
+
+    --fig-bg: #12141a;
+    --fig-grid: rgba(255,255,255,.045);
+    --fig-hair: rgba(255,255,255,.07);
+    --fig-line: rgba(255,255,255,.17);
+    --fig-stroke: #e8e8e6;
+    --fig-node: #191c23;
+    --fig-text: #f2f2f0;
+    --fig-dim: rgba(242,242,240,.5);
+    --fig-mono: rgba(242,242,240,.72);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --bg: #0b0c10;
+      --bg-soft: #14161c;
+      --ink: #f2f2f0;
+      --ink-2: #a9a9a6;
+      --ink-3: #78787a;
+      --rule: #23252c;
+      --rule-strong: #f2f2f0;
+      --accent: #6f9bff;
+
+      --fig-bg: #12141a;
+      --fig-grid: rgba(255,255,255,.045);
+      --fig-hair: rgba(255,255,255,.07);
+      --fig-line: rgba(255,255,255,.17);
+      --fig-stroke: #e8e8e6;
+      --fig-node: #191c23;
+      --fig-text: #f2f2f0;
+      --fig-dim: rgba(242,242,240,.5);
+      --fig-mono: rgba(242,242,240,.72);
+    }
+  }
+
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+  }
+
+  body {
+    font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 1rem; line-height: 1.6;
+    color: var(--ink); background: var(--bg);
+    -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+    font-feature-settings: "ss01", "cv11";
+    transition: background-color .4s ease, color .4s ease;
+  }
+
+  a { color: inherit; text-decoration: none; }
+  a:hover { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+  :focus-visible { outline: 2px solid currentColor; outline-offset: 3px; border-radius: 4px; }
+  img, svg { display: block; max-width: 100%; }
+  ul { list-style: none; }
+
+  .wrap { max-width: var(--max); margin: 0 auto; padding-left: var(--gutter); padding-right: var(--gutter); }
+  .measure { max-width: var(--measure); }
+  .skip { position: absolute; left: -999px; top: 0; background: var(--ink); color: var(--bg); padding: .5rem 1rem; z-index: 1000; }
+  .skip:focus { left: 1rem; top: 1rem; }
+
+  /* ---------- Scroll progress ---------- */
+  .progress { position: fixed; top: 0; left: 0; right: 0; height: 2px; z-index: 101; pointer-events: none; }
+  .progress i {
+    display: block; height: 100%; width: 100%;
+    background: linear-gradient(90deg, transparent, var(--accent));
+    transform: scaleX(0); transform-origin: left;
+    box-shadow: 0 0 12px var(--accent);
+  }
+
+  /* ---------- Navigation ---------- */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    height: var(--nav-h);
+    background: color-mix(in srgb, var(--bg) 82%, transparent);
+    backdrop-filter: saturate(160%) blur(14px);
+    -webkit-backdrop-filter: saturate(160%) blur(14px);
+    border-bottom: 1px solid var(--rule);
+    color: var(--ink);
+    transition: background .35s, border-color .35s, color .35s;
+  }
+  .nav-inner { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+  .brand { display: inline-flex; align-items: center; gap: .6rem; font-weight: 600; font-size: 1.05rem; letter-spacing: -.01em; color: inherit; }
+  .brand:hover { text-decoration: none; }
+  .brand-mark { width: 22px; height: 22px; border-radius: 5px; background: currentColor; position: relative; flex: none; }
+  .brand-mark::before { content: ''; position: absolute; inset: 6px; border: 1.5px solid var(--bg); border-radius: 2px; transition: border-color .35s; }
+  .brand-mark::after { content: ''; position: absolute; inset: 9px; background: var(--bg); transition: background .35s; }
+  .brand small { font-weight: 400; opacity: .55; font-size: .85rem; margin-left: .2rem; }
+  .nav-right { display: flex; align-items: center; gap: 1rem; }
+  .nav-links { display: flex; align-items: center; gap: 1.75rem; font-size: .9rem; }
+  .nav-links a { opacity: .7; transition: opacity .2s; }
+  .nav-links a:hover { opacity: 1; text-decoration: none; }
+
+  .btn {
+    position: relative; overflow: hidden;
+    display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+    padding: .65rem 1.15rem; border-radius: 999px;
+    font-size: .9rem; font-weight: 500; line-height: 1;
+    border: 1px solid var(--ink); background: var(--ink); color: var(--bg);
+    transition: background .25s, color .25s, border-color .25s, transform .25s var(--ease), box-shadow .25s;
+    cursor: pointer; white-space: nowrap;
+  }
+  .btn::after {
+    content: ''; position: absolute; top: 0; bottom: 0; width: 45%;
+    background: linear-gradient(100deg, transparent, color-mix(in srgb, var(--bg) 45%, transparent), transparent);
+    transform: translateX(-160%) skewX(-18deg); transition: transform .7s var(--ease);
+  }
+  .btn:hover { transform: translateY(-1px); text-decoration: none; box-shadow: 0 8px 26px color-mix(in srgb, var(--ink) 22%, transparent); }
+  .btn:hover::after { transform: translateX(260%) skewX(-18deg); }
+  .btn.ghost { background: transparent; color: var(--ink); }
+  .btn.ghost::after { background: linear-gradient(100deg, transparent, color-mix(in srgb, var(--ink) 12%, transparent), transparent); }
+  .btn.ghost:hover { background: var(--bg-soft); box-shadow: none; }
+  .btn.lg { padding: .95rem 1.6rem; font-size: 1rem; }
+
+  .icon-btn {
+    width: 38px; height: 38px; flex: none; border-radius: 999px;
+    display: inline-flex; align-items: center; justify-content: center;
+    border: 1px solid var(--rule); background: transparent; color: inherit; cursor: pointer;
+    transition: background .25s, border-color .25s, transform .25s var(--ease);
+  }
+  .icon-btn:hover { background: color-mix(in srgb, currentColor 10%, transparent); transform: translateY(-1px); }
+  .icon-btn svg { width: 17px; height: 17px; }
+  .icon-btn .sun { display: none; }
+  :root[data-theme="dark"] .icon-btn .sun { display: block; }
+  :root[data-theme="dark"] .icon-btn .moon { display: none; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .icon-btn .sun { display: block; }
+    :root:not([data-theme="light"]) .icon-btn .moon { display: none; }
+  }
+
+  .nav-toggle { display: none; background: none; border: 0; width: 40px; height: 40px; cursor: pointer; border-radius: 8px; color: inherit; }
+  .nav-toggle span { display: block; width: 20px; height: 1.5px; background: currentColor; margin: 5px auto; transition: transform .25s, opacity .25s; }
+  .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+  .mobile-menu { display: none; }
+
+  /* Nav floating over the dark hero */
+  .nav.on-dark {
+    background: linear-gradient(to bottom, rgba(6,7,11,.6), rgba(6,7,11,0));
+    border-bottom-color: transparent; color: #fff;
+    backdrop-filter: none; -webkit-backdrop-filter: none;
+  }
+  .nav.on-dark .brand-mark::before { border-color: var(--space); }
+  .nav.on-dark .brand-mark::after { background: var(--space); }
+  .nav.on-dark .btn { background: #fff; color: var(--space); border-color: #fff; }
+  .nav.on-dark .btn::after { background: linear-gradient(100deg, transparent, rgba(6,7,11,.35), transparent); }
+  .nav.on-dark .icon-btn { border-color: rgba(255,255,255,.28); }
+
+  /* ---------- Type ---------- */
+  .eyebrow { font-size: .8rem; color: var(--ink-3); font-weight: 500; letter-spacing: .12em; text-transform: uppercase; }
+  h1, h2, h3 { font-weight: 400; letter-spacing: -.03em; line-height: 1.05; text-wrap: balance; }
+  h1 { font-size: clamp(2.6rem, 6.2vw, 5.4rem); }
+  h2 { font-size: clamp(2rem, 4.2vw, 3.6rem); }
+  h3 { font-size: clamp(1.25rem, 1.8vw, 1.5rem); letter-spacing: -.015em; line-height: 1.25; }
+  .lede { font-size: clamp(1.15rem, 1.6vw, 1.45rem); line-height: 1.5; letter-spacing: -.01em; color: var(--ink); }
+  .lede + .lede { margin-top: 1.25rem; }
+
+  .btn::before {
+    content: ''; position: absolute; inset: auto 1.1rem 5px; height: 5px;
+    border-left: 1px solid currentColor; border-bottom: 1px solid currentColor;
+    opacity: .45; transform: scaleX(0); transform-origin: left; transition: transform .45s var(--ease);
+  }
+  .btn:hover::before, .btn:focus-visible::before { transform: scaleX(1); }
+  .hero-actions { margin-top: 2.5rem; display: flex; gap: .75rem; flex-wrap: wrap; }
+  section { padding: clamp(3.5rem, 7vw, 6.5rem) 0; }
+  section + section { border-top: 1px solid var(--rule); }
+  .hero + section { border-top: 0; }
+  .section-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 2rem clamp(2rem, 6vw, 6rem); align-items: start; margin-bottom: clamp(2.5rem, 5vw, 4rem); }
+  .section-head h2 { margin-top: .9rem; }
+  @media (max-width: 900px) { .section-head { grid-template-columns: 1fr; gap: 1.5rem; } }
+
+  .tag { font-size: .78rem; color: var(--ink-2); border: 1px solid var(--rule); border-radius: 999px; padding: .28rem .7rem; transition: border-color .25s, color .25s, transform .25s var(--ease); }
+  /* Contact */
+  .contact-grid { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 3rem clamp(2rem, 6vw, 6rem); align-items: start; }
+  .contact-grid h2 { max-width: 16ch; }
+  .contact-list { border-top: 1px solid var(--rule-strong); }
+  .contact-list li { display: flex; justify-content: space-between; gap: 1rem; padding: 1.1rem 0; border-bottom: 1px solid var(--rule); font-size: .98rem; }
+  .contact-list li span:first-child { color: var(--ink-3); flex: none; }
+  .contact-list li span:last-child { text-align: right; }
+  @media (max-width: 900px) { .contact-grid { grid-template-columns: 1fr; } }
+
+  /* Footer */
+  footer { border-top: 1px solid var(--rule); padding: 3rem 0 2.5rem; font-size: .85rem; color: var(--ink-2); }
+  .foot-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; }
+  .foot-grid h4 { font-size: .78rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--ink); margin-bottom: 1rem; }
+  .foot-grid li + li { margin-top: .55rem; }
+  .foot-grid address { font-style: normal; line-height: 1.7; margin-top: .75rem; max-width: 26rem; }
+  .foot-bottom { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--rule); display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; color: var(--ink-3); font-size: .8rem; }
+  @media (max-width: 900px) { .foot-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 540px) { .foot-grid { grid-template-columns: 1fr; } }
+
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .85s var(--ease), transform .85s var(--ease); transition-delay: var(--rd, 0s); }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; stroke-dashoffset: 0; }
+  }
+
+  /* Mobile nav */
+  @media (max-width: 900px) {
+    .nav-links, .nav-cta { display: none; }
+    .nav-toggle { display: block; }
+    .mobile-menu {
+      display: block; position: fixed; top: var(--nav-h); left: 0; right: 0; height: calc(100vh - var(--nav-h)); z-index: 99;
+      background: var(--bg); padding: 1.5rem var(--gutter) 2rem;
+      transform: translateY(-8px); opacity: 0; pointer-events: none; transition: opacity .25s, transform .25s;
+    }
+    .mobile-menu.open { opacity: 1; transform: none; pointer-events: auto; }
+    .mobile-menu a { display: block; font-size: 1.55rem; letter-spacing: -.02em; padding: .9rem 0; border-bottom: 1px solid var(--rule); color: var(--ink); }
+    .mobile-menu .btn { display: inline-flex; margin-top: 1.5rem; padding: .9rem 1.5rem; font-size: 1rem; border-bottom: 1px solid var(--ink); background: var(--ink); color: var(--bg); }
+    body.menu-open { overflow: hidden; }
+    .brand small { display: none; }
+  }
+  .nav-links a[aria-current="page"] { opacity: 1; }
+  .mobile-menu a[aria-current="page"] { color: var(--accent); }
+</style>
+<noscript><style>
+  .reveal { opacity: 1 !important; transform: none !important; }
+  #roles .filters, #roles .roles-count { display: none; }
+</style></noscript>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="progress" aria-hidden="true"><i id="progressBar"></i></div>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html" aria-label="ArqonixGen home">
+      <span class="brand-mark" aria-hidden="true"></span>
+      ArqonixGen <small>Semiconductor</small>
+    </a>
+    <div class="nav-right">
+      <nav class="nav-links" aria-label="Primary">
+        <a href="index.html#about">About</a>
+        <a href="careers.html" aria-current="page">Careers</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+      <button class="icon-btn" id="themeToggle" aria-label="Switch colour theme" title="Switch colour theme">
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.6 6.6 0 0 0 9.8 9.8z"/></svg>
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.4v2.2M12 19.4v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.4 12h2.2M19.4 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg>
+      </button>
+      <a class="btn nav-cta" href="mailto:contact@arqonixgen.com">Get in touch</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+<div class="mobile-menu" id="mobileMenu" inert>
+  <a href="index.html#about">About</a>
+  <a href="careers.html" aria-current="page">Careers</a>
+  <a href="index.html#contact">Contact</a>
+  <a class="btn" href="mailto:contact@arqonixgen.com">Get in touch</a>
+</div>
+
+<main id="main">
+
+<style>
+  /* ---------- Careers page ---------- */
+  .page-head { padding-top: calc(var(--nav-h) + clamp(3rem, 7vw, 6rem)); }
+  .page-head h1 { margin-top: .9rem; max-width: 18ch; }
+  .page-head .lede { margin-top: 1.5rem; max-width: 40rem; color: var(--ink-2); font-size: 1.15rem; }
+
+  #roles .roles-bar { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  #roles .roles-count { font-size: .9rem; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+  #roles .filters { display: flex; flex-wrap: wrap; gap: .5rem; }
+  #roles .filter {
+    font: inherit; font-size: .82rem; color: var(--ink-2); background: transparent; cursor: pointer;
+    border: 1px solid var(--rule); border-radius: 999px; padding: .4rem .9rem;
+    transition: border-color .25s, color .25s, background .25s;
+  }
+  #roles .filter:hover { border-color: color-mix(in srgb, var(--ink) 30%, transparent); color: var(--ink); }
+  #roles .filter[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+
+  #roles .role-list { border-top: 1px solid var(--rule-strong); }
+  #roles .role { border-bottom: 1px solid var(--rule); position: relative; }
+  #roles .role[hidden] { display: none; }
+  #roles .role::before { content: ''; position: absolute; top: -1px; left: 0; height: 1px; width: 0; background: var(--accent); box-shadow: 0 0 10px var(--accent); transition: width .7s var(--ease); }
+  #roles .role:hover::before, #roles .role[open]::before { width: 100%; }
+  #roles summary {
+    list-style: none; cursor: pointer;
+    display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 1rem 2rem; align-items: center;
+    padding: 1.6rem 0; transition: padding-left .4s var(--ease);
+  }
+  #roles summary::-webkit-details-marker { display: none; }
+  #roles summary:hover { padding-left: .6rem; }
+  #roles summary h3 { font-size: clamp(1.2rem, 1.7vw, 1.45rem); }
+  #roles .role-meta { margin-top: .6rem; display: flex; flex-wrap: wrap; gap: .5rem; }
+  #roles .role-chev {
+    width: 38px; height: 38px; border-radius: 999px; border: 1px solid var(--rule);
+    display: inline-flex; align-items: center; justify-content: center; color: var(--ink-2);
+    transition: transform .35s var(--ease), border-color .25s, color .25s;
+  }
+  #roles .role-chev svg { width: 14px; height: 14px; }
+  #roles summary:hover .role-chev { border-color: color-mix(in srgb, var(--ink) 30%, transparent); color: var(--ink); }
+  #roles .role[open] .role-chev { transform: rotate(45deg); }
+  #roles .role-body { padding: 0 0 2.25rem; max-width: 62rem; }
+  #roles .role-body > p { color: var(--ink-2); max-width: 44rem; }
+  #roles .role-cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem clamp(2rem, 5vw, 4rem); margin: 1.75rem 0 2rem; }
+  #roles .role-cols h4 { font-size: .78rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); margin-bottom: .9rem; }
+  #roles .role-cols li { color: var(--ink-2); font-size: .97rem; padding-left: 1.1rem; position: relative; }
+  #roles .role-cols li + li { margin-top: .5rem; }
+  #roles .role-cols li::before { content: ''; position: absolute; left: 0; top: .7em; width: 5px; height: 5px; border-radius: 1px; background: var(--accent); }
+  #roles .roles-empty { padding: 2rem 0; color: var(--ink-3); }
+  @media (max-width: 720px) { #roles .role-cols { grid-template-columns: 1fr; } }
+  @media (prefers-reduced-motion: reduce) {
+    #roles summary, #roles .role-chev { transition: none; }
+    #roles summary:hover { padding-left: 0; }
+  }
+
+  #general .contact-list li span:last-child { max-width: 28rem; }
+</style>
+
+<section class="page-head" aria-labelledby="careers-h">
+  <div class="wrap">
+    <p class="eyebrow reveal">Careers</p>
+    <h1 id="careers-h" class="reveal">Build the silicon that powers AI</h1>
+    <p class="lede reveal">We are a small team in Bengaluru designing AI processors, die-to-die interconnect chips, and security chips. Every engineer here owns real blocks on real tape-outs.</p>
+  </div>
+</section>
+
+<section id="roles" aria-labelledby="roles-h">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow reveal">Open positions</p>
+        <h2 id="roles-h" class="reveal">Current openings</h2>
+      </div>
+      <p class="lede reveal" style="font-size:1.15rem;color:var(--ink-2)">All roles are on-site at our Bengaluru office. Open a role to see what the work involves, then apply by email with your CV.</p>
+    </div>
+
+    <div class="roles-bar reveal">
+      <div class="filters" role="group" aria-label="Filter by team">
+        <button class="filter" type="button" data-team="all" aria-pressed="true">All teams</button>
+        <button class="filter" type="button" data-team="interconnect" aria-pressed="false">Interconnect</button>
+        <button class="filter" type="button" data-team="ai" aria-pressed="false">AI processors</button>
+        <button class="filter" type="button" data-team="security" aria-pressed="false">Security</button>
+        <button class="filter" type="button" data-team="implementation" aria-pressed="false">Implementation</button>
+        <button class="filter" type="button" data-team="early" aria-pressed="false">Early careers</button>
+      </div>
+      <p class="roles-count" id="rolesCount" aria-live="polite">7 open roles</p>
+    </div>
+
+    <div class="role-list reveal" id="roleList">
+
+      <details class="role" data-team="interconnect">
+        <summary>
+          <div>
+            <h3>Design Verification Engineer &mdash; UCIe</h3>
+            <div class="role-meta"><span class="tag">Interconnect</span><span class="tag">Bengaluru</span><span class="tag">Full-time</span><span class="tag">3&ndash;8 years</span></div>
+          </div>
+          <span class="role-chev" aria-hidden="true"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M7 1.5v11M1.5 7h11"/></svg></span>
+        </summary>
+        <div class="role-body">
+          <p>Verify our UCIe die-to-die controller and adapter, from link training through the protocol layers, and sign off the blocks that go to tape-out.</p>
+          <div class="role-cols">
+            <div>
+              <h4>What you will do</h4>
+              <ul>
+                <li>Build and own UVM environments for the UCIe adapter, link training, and sideband</li>
+                <li>Write test plans, functional coverage, and assertions from the specification</li>
+                <li>Drive regressions to coverage closure and debug failures with designers</li>
+                <li>Bring up PCIe and CXL traffic over the die-to-die link</li>
+              </ul>
+            </div>
+            <div>
+              <h4>What you bring</h4>
+              <ul>
+                <li>3+ years of SystemVerilog and UVM verification</li>
+                <li>Experience with a serial or die-to-die protocol: UCIe, PCIe, CXL, or Ethernet</li>
+                <li>Comfort with SVA, coverage closure, and regression scripting</li>
+                <li>Nice to have: UCIe specification or formal verification experience</li>
+              </ul>
+            </div>
+          </div>
+          <a class="btn" href="mailto:contact@arqonixgen.com?subject=Application%3A%20Design%20Verification%20Engineer%20-%20UCIe">Apply for this role</a>
+        </div>
+      </details>
+
+      <details class="role" data-team="interconnect">
+        <summary>
+          <div>
+            <h3>RTL Design Engineer &mdash; Die-to-die interconnect</h3>
+            <div class="role-meta"><span class="tag">Interconnect</span><span class="tag">Bengaluru</span><span class="tag">Full-time</span><span class="tag">4&ndash;10 years</span></div>
+          </div>
+          <span class="role-chev" aria-hidden="true"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M7 1.5v11M1.5 7h11"/></svg></span>
+        </summary>
+        <div class="role-body">
+          <p>Design the controller and adapter logic that moves data between dies at high bandwidth and low power.</p>
+          <div class="role-cols">
+            <div>
+              <h4>What you will do</h4>
+              <ul>
+                <li>Write micro-architecture specifications and synthesisable RTL</li>
+                <li>Design link-layer logic: retry, CRC, flow control, and clock-domain crossings</li>
+                <li>Close timing, area, and power with the implementation team</li>
+                <li>Run lint and CDC checks and support verification through sign-off</li>
+              </ul>
+            </div>
+            <div>
+              <h4>What you bring</h4>
+              <ul>
+                <li>4+ years of RTL design in Verilog or SystemVerilog</li>
+                <li>Experience with high-speed interface controllers (PCIe, CXL, UCIe, or DDR)</li>
+                <li>Working knowledge of synthesis, STA, lint, and CDC tools</li>
+                <li>Nice to have: chiplet or multi-die system experience</li>
+              </ul>
+            </div>
+          </div>
+          <a class="btn" href="mailto:contact@arqonixgen.com?subject=Application%3A%20RTL%20Design%20Engineer%20-%20Die-to-die%20interconnect">Apply for this role</a>
+        </div>
+      </details>
+
+      <details class="role" data-team="ai">
+        <summary>
+          <div>
+            <h3>AI Accelerator Architect</h3>
+            <div class="role-meta"><span class="tag">AI processors</span><span class="tag">Bengaluru</span><span class="tag">Full-time</span><span class="tag">6+ years</span></div>
+          </div>
+          <span class="role-chev" aria-hidden="true"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M7 1.5v11M1.5 7h11"/></svg></span>
+        </summary>
+        <div class="role-body">
+          <p>Define the compute, memory, and dataflow architecture of our AI processor, working from real model workloads.</p>
+          <div class="role-cols">
+            <div>
+              <h4>What you will do</h4>
+              <ul>
+                <li>Profile training and inference workloads and turn them into architecture requirements</li>
+                <li>Build performance and power models to compare design options</li>
+                <li>Specify compute arrays, on-chip memory, and the network-on-chip</li>
+                <li>Work with RTL and compiler engineers from specification to silicon</li>
+              </ul>
+            </div>
+            <div>
+              <h4>What you bring</h4>
+              <ul>
+                <li>6+ years in processor, GPU, or accelerator architecture</li>
+                <li>Strong grasp of neural-network operators, numerics, and memory hierarchies</li>
+                <li>Performance modelling in C++ or Python</li>
+                <li>Nice to have: shipped an accelerator or worked on an ML compiler</li>
+              </ul>
+            </div>
+          </div>
+          <a class="btn" href="mailto:contact@arqonixgen.com?subject=Application%3A%20AI%20Accelerator%20Architect">Apply for this role</a>
+        </div>
+      </details>
+
+      <details class="role" data-team="security">
+        <summary>
+          <div>
+            <h3>Hardware Security Engineer</h3>
+            <div class="role-meta"><span class="tag">Security</span><span class="tag">Bengaluru</span><span class="tag">Full-time</span><span class="tag">4+ years</span></div>
+          </div>
+          <span class="role-chev" aria-hidden="true"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M7 1.5v11M1.5 7h11"/></svg></span>
+        </summary>
+        <div class="role-body">
+          <p>Design the root of trust and cryptographic blocks in our data-centre security chips, and protect them against physical and logical attacks.</p>
+          <div class="role-cols">
+            <div>
+              <h4>What you will do</h4>
+              <ul>
+                <li>Design secure boot, key storage, and attestation hardware</li>
+                <li>Implement and integrate cryptographic engines (AES, SHA, ECC, post-quantum)</li>
+                <li>Threat-model designs and add countermeasures against side-channel and fault attacks</li>
+                <li>Support security certification and review</li>
+              </ul>
+            </div>
+            <div>
+              <h4>What you bring</h4>
+              <ul>
+                <li>4+ years in hardware security or cryptographic RTL</li>
+                <li>Knowledge of roots of trust, secure boot, and key management</li>
+                <li>Familiarity with side-channel and fault-injection countermeasures</li>
+                <li>Nice to have: Caliptra, OpenTitan, or FIPS 140-3 experience</li>
+              </ul>
+            </div>
+          </div>
+          <a class="btn" href="mailto:contact@arqonixgen.com?subject=Application%3A%20Hardware%20Security%20Engineer">Apply for this role</a>
+        </div>
+      </details>
+
+      <details class="role" data-team="implementation">
+        <summary>
+          <div>
+            <h3>Physical Design Engineer</h3>
+            <div class="role-meta"><span class="tag">Implementation</span><span class="tag">Bengaluru</span><span class="tag">Full-time</span><span class="tag">3&ndash;8 years</span></div>
+          </div>
+          <span class="role-chev" aria-hidden="true"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M7 1.5v11M1.5 7h11"/></svg></span>
+        </summary>
+        <div class="role-body">
+          <p>Take blocks from netlist to GDS in advanced nodes and close timing, power, and physical verification for tape-out.</p>
+          <div class="role-cols">
+            <div>
+              <h4>What you will do</h4>
+              <ul>
+                <li>Own floorplanning, placement, clock-tree synthesis, and routing for complex blocks</li>
+                <li>Close timing across corners and handle ECOs</li>
+                <li>Run power, IR-drop, and electromigration analysis</li>
+                <li>Clean DRC and LVS for sign-off</li>
+              </ul>
+            </div>
+            <div>
+              <h4>What you bring</h4>
+              <ul>
+                <li>3+ years of block-level physical design in 7&nbsp;nm or below</li>
+                <li>Hands-on experience with industry place-and-route and STA tools</li>
+                <li>Scripting in Tcl and Python</li>
+                <li>Nice to have: high-speed I/O or multi-die package experience</li>
+              </ul>
+            </div>
+          </div>
+          <a class="btn" href="mailto:contact@arqonixgen.com?subject=Application%3A%20Physical%20Design%20Engineer">Apply for this role</a>
+        </div>
+      </details>
+
+      <details class="role" data-team="implementation">
+        <summary>
+          <div>
+            <h3>Design-for-Test Engineer</h3>
+            <div class="role-meta"><span class="tag">Implementation</span><span class="tag">Bengaluru</span><span class="tag">Full-time</span><span class="tag">3&ndash;7 years</span></div>
+          </div>
+          <span class="role-chev" aria-hidden="true"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M7 1.5v11M1.5 7h11"/></svg></span>
+        </summary>
+        <div class="role-body">
+          <p>Make our chips testable, from scan and memory BIST in each die to test access across multi-die packages.</p>
+          <div class="role-cols">
+            <div>
+              <h4>What you will do</h4>
+              <ul>
+                <li>Plan and insert scan, compression, and memory BIST</li>
+                <li>Generate ATPG patterns and drive test-coverage targets</li>
+                <li>Build die-to-die and package-level test access (IEEE 1838, 1500)</li>
+                <li>Support silicon bring-up and production test</li>
+              </ul>
+            </div>
+            <div>
+              <h4>What you bring</h4>
+              <ul>
+                <li>3+ years of DFT implementation</li>
+                <li>Experience with scan insertion, ATPG, and MBIST flows</li>
+                <li>Gate-level simulation and pattern debug</li>
+                <li>Nice to have: 2.5D or 3D multi-die test experience</li>
+              </ul>
+            </div>
+          </div>
+          <a class="btn" href="mailto:contact@arqonixgen.com?subject=Application%3A%20Design-for-Test%20Engineer">Apply for this role</a>
+        </div>
+      </details>
+
+      <details class="role" data-team="early">
+        <summary>
+          <div>
+            <h3>VLSI Intern &mdash; Design and verification</h3>
+            <div class="role-meta"><span class="tag">Early careers</span><span class="tag">Bengaluru</span><span class="tag">Internship, 6 months</span><span class="tag">Final-year students</span></div>
+          </div>
+          <span class="role-chev" aria-hidden="true"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M7 1.5v11M1.5 7h11"/></svg></span>
+        </summary>
+        <div class="role-body">
+          <p>Work alongside our design and verification engineers on real blocks, with a path to a full-time role.</p>
+          <div class="role-cols">
+            <div>
+              <h4>What you will do</h4>
+              <ul>
+                <li>Write RTL or testbench components for a block on a live project</li>
+                <li>Run simulations and regressions, and debug failures</li>
+                <li>Automate flows with Python and shell scripts</li>
+                <li>Present your work to the team at the end of the internship</li>
+              </ul>
+            </div>
+            <div>
+              <h4>What you bring</h4>
+              <ul>
+                <li>Final-year B.Tech/B.E. or M.Tech in ECE, EEE, or a related field</li>
+                <li>Digital design fundamentals and some Verilog or SystemVerilog</li>
+                <li>A project you can walk us through, in coursework or on your own</li>
+                <li>Nice to have: UVM, computer architecture, or FPGA experience</li>
+              </ul>
+            </div>
+          </div>
+          <a class="btn" href="mailto:contact@arqonixgen.com?subject=Application%3A%20VLSI%20Intern">Apply for this role</a>
+        </div>
+      </details>
+
+      <p class="roles-empty" id="rolesEmpty" hidden>No open roles in this team right now. You can still send us a general application below.</p>
+    </div>
+  </div>
+</section>
+
+<section id="general" aria-labelledby="general-h">
+  <div class="wrap contact-grid">
+    <div>
+      <p class="eyebrow reveal">General application</p>
+      <h2 id="general-h" class="reveal">Don&rsquo;t see your role?</h2>
+      <p class="lede reveal" style="margin-top:1.5rem;font-size:1.15rem;color:var(--ink-2);max-width:34rem">If you want to work on AI silicon and your skills fit somewhere in the stack, send us your CV and a short note on what you would like to build.</p>
+      <div class="hero-actions reveal">
+        <a class="btn lg" href="mailto:contact@arqonixgen.com?subject=General%20application">Email your CV</a>
+      </div>
+    </div>
+    <ul class="contact-list reveal">
+      <li><span>Apply to</span><span><a href="mailto:contact@arqonixgen.com">contact@arqonixgen.com</a></span></li>
+      <li><span>Include</span><span>Your CV and the role title in the subject line</span></li>
+      <li><span>Location</span><span>On-site, Bengaluru, Karnataka</span></li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<!-- ---------- Footer ---------- -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span>ArqonixGen <small>Semiconductor Pvt Ltd</small></a>
+        <address>21, Royal Homes Layout Road, AECS Layout – A Block,<br>Singasandra, Bengaluru, Karnataka 560068, India</address>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:contact@arqonixgen.com">contact@arqonixgen.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p>© <span id="year">2026</span> ArqonixGen Semiconductor Private Limited. All rights reserved.</p>
+      <p>CIN: U62011PB2025PTC066273</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var toggle = document.getElementById('navToggle');
+  var menu = document.getElementById('mobileMenu');
+  var bar = document.getElementById('progressBar');
+  var menuOpen = false;
+
+  /* theme */
+  var themeBtn = document.getElementById('themeToggle');
+  function currentDark() {
+    var t = root.getAttribute('data-theme');
+    if (t) return t === 'dark';
+    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+  }
+  function syncThemeColor() {
+    var meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute('content', currentDark() ? '#0b0c10' : '#ffffff');
+  }
+  syncThemeColor();
+  themeBtn.addEventListener('click', function () {
+    var next = currentDark() ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('agx-theme', next); } catch (e) {}
+    syncThemeColor();
+  });
+
+  /* mobile menu */
+  function setMenu(open) {
+    menuOpen = open;
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    menu.classList.toggle('open', open);
+    menu.inert = !open;
+    document.body.classList.toggle('menu-open', open);
+  }
+  toggle.addEventListener('click', function () { setMenu(toggle.getAttribute('aria-expanded') !== 'true'); });
+  menu.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
+  window.addEventListener('resize', function () { if (window.innerWidth > 900 && menuOpen) setMenu(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && menuOpen) setMenu(false); });
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* team filter */
+  var roles = Array.prototype.slice.call(document.querySelectorAll('#roleList .role'));
+  var filters = Array.prototype.slice.call(document.querySelectorAll('#roles .filter'));
+  var count = document.getElementById('rolesCount');
+  var empty = document.getElementById('rolesEmpty');
+  function applyFilter(team) {
+    var shown = 0;
+    roles.forEach(function (r) {
+      var on = team === 'all' || r.getAttribute('data-team') === team;
+      r.hidden = !on;
+      if (on) shown++; else r.open = false;
+    });
+    filters.forEach(function (f) { f.setAttribute('aria-pressed', String(f.getAttribute('data-team') === team)); });
+    count.textContent = shown + (shown === 1 ? ' open role' : ' open roles');
+    empty.hidden = shown > 0;
+  }
+  filters.forEach(function (f) {
+    f.addEventListener('click', function () { applyFilter(f.getAttribute('data-team')); });
+  });
+  applyFilter('all');
+
+  /* reveals */
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.08, rootMargin: '0px 0px -6% 0px' });
+    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
+  }
+
+  /* scroll progress */
+  var pending = false;
+  function onScroll() {
+    if (pending) return;
+    pending = true;
+    requestAnimationFrame(function () {
+      pending = false;
+      var doc = document.documentElement;
+      var max = doc.scrollHeight - window.innerHeight;
+      var p = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+      if (bar) bar.style.transform = 'scaleX(' + p + ')';
+    });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  onScroll();
+})();
+</script>
+</body>
+</html>
